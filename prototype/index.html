@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приёмка квартир в Калининграде — Принято.Про</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="proto-bar">⚙️ Ч/б прототип «Принято.Про» — структура многостраничного сайта. Без дизайна, цветов и реальных данных. Кликайте по меню, чтобы пройти по страницам.</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">Принято<span>.Про</span></a>
+    <nav class="nav-links">
+      <a href="uslugi.html">Услуги</a>
+      <a href="ceny.html">Цены</a>
+      <a href="zhk.html">ЖК Калининграда</a>
+      <a href="otzyvy.html">Отзывы</a>
+      <a href="blog.html">Блог</a>
+      <a href="o-nas.html">О компании</a>
+      <a href="kontakty.html">Контакты</a>
+    </nav>
+    <a href="tel:+74012000000" class="phone">+7 (4012) 00-00-00</a>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section>
+  <div class="wrap">
+    <span class="pagemark">Страница: Главная /</span>
+    <div class="grid-2" style="align-items:center;margin-top:0">
+      <div>
+        <span class="tag">Калининград и побережье</span>
+        <h1>Приёмка квартир в Калининграде</h1>
+        <p class="lead">Выявим дефекты до подписания акта — сэкономим от 50 000 ₽ на будущем ремонте. Официальный акт. Без предоплаты.</p>
+        <div class="btn-row">
+          <a href="#cta" class="btn">Записаться</a>
+          <a href="ceny.html" class="btn ghost">Узнать стоимость</a>
+        </div>
+      </div>
+      <div class="ph tall">[ видео-фон / фото инженера на объекте ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ТРАСТЫ -->
+<section class="soft-sec">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>с 2014</b><small>года на рынке</small></div>
+      <div class="stat"><b>500+</b><small>квартир принято</small></div>
+      <div class="stat"><b>98%</b><small>рекомендуют нас</small></div>
+      <div class="stat"><b>НОПРИЗ</b><small>инженеры в реестре</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. КАРТОЧКИ УСЛУГ -->
+<section>
+  <div class="wrap">
+    <span class="tag">Услуги</span>
+    <h2>Что мы делаем</h2>
+    <div class="grid-3">
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Приёмка без отделки</h3><p class="note">от 4 900 ₽</p></a>
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Приёмка с отделкой</h3><p class="note">от 6 500 ₽</p></a>
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Приёмка по 214-ФЗ</h3><p class="note">от 7 500 ₽</p></a>
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Тепловизионное обследование</h3><p class="note">от 3 000 ₽</p></a>
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Строительная экспертиза</h3><p class="note">от 15 000 ₽</p></a>
+      <a href="usluga.html" class="card"><div class="ph sq" style="min-height:90px;margin-bottom:12px">[ иконка ]</div><h3>Технадзор за ремонтом</h3><p class="note">от 5 000 ₽</p></a>
+    </div>
+    <div class="btn-row"><a href="uslugi.html" class="btn ghost">Все услуги →</a></div>
+  </div>
+</section>
+
+<!-- 4. КАК РАБОТАЕМ -->
+<section class="soft-sec">
+  <div class="wrap">
+    <span class="tag">Процесс</span>
+    <h2>Как мы работаем</h2>
+    <div class="steps">
+      <div class="step"><h3>Заявка</h3><p class="note">Перезвоним за 15 минут.</p></div>
+      <div class="step"><h3>Согласование</h3><p class="note">Дата и время выезда.</p></div>
+      <div class="step"><h3>Выезд</h3><p class="note">Проверка объекта.</p></div>
+      <div class="step"><h3>Отчёт</h3><p class="note">Акт с дефектами.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. КАЛЬКУЛЯТОР -->
+<section>
+  <div class="wrap">
+    <span class="tag">Калькулятор</span>
+    <h2>Рассчитайте стоимость</h2>
+    <div class="calc">
+      <form onsubmit="return false">
+        <div class="field"><label>Тип объекта</label><select><option>Студия</option><option>1-комнатная</option><option>2-комнатная</option><option>3-комнатная</option><option>Дом / таунхаус</option></select></div>
+        <div class="field"><label>Площадь, м²</label><input type="number" placeholder="например, 45"></div>
+        <div class="field"><label>Тип отделки</label><select><option>Без отделки</option><option>Предчистовая</option><option>Чистовая</option></select></div>
+        <a href="#cta" class="btn">Заказать за эту цену</a>
+      </form>
+      <div class="price-box"><p>Ориентировочно</p><div class="num">от 6 000 ₽</div><p>выезд, замер и акт включены</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ФОРМА (CTA) -->
+<section id="cta" class="soft-sec">
+  <div class="wrap">
+    <span class="tag">Заявка</span>
+    <h2>Запишитесь на приёмку</h2>
+    <p>Перезвоним за 15 минут, ответим на вопросы и согласуем выезд.</p>
+    <form class="form" onsubmit="return false">
+      <input type="text" placeholder="Ваше имя">
+      <input type="tel" placeholder="Телефон">
+      <select><option>Выберите услугу</option><option>Приёмка без отделки</option><option>Приёмка с отделкой</option><option>Тепловизор</option></select>
+      <button class="btn" type="submit">Отправить заявку</button>
+      <span class="note">→ передаётся в CRM + UTM-метки</span>
+    </form>
+  </div>
+</section>
+
+<!-- 7. ВИДЕО -->
+<section>
+  <div class="wrap">
+    <span class="tag">Видео с приёмок</span>
+    <h2>Как проходит приёмка</h2>
+    <div class="grid-3">
+      <div class="ph wide">[ видео mp4 / ВК ]</div>
+      <div class="ph wide">[ видео mp4 / ВК ]</div>
+      <div class="ph wide">[ видео mp4 / ВК ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ОТЗЫВЫ -->
+<section class="soft-sec">
+  <div class="wrap">
+    <span class="tag">Отзывы</span>
+    <h2>Что говорят клиенты</h2>
+    <div class="grid-3">
+      <div class="card"><div class="stars">★★★★★</div><p>«Нашли дефект отопления, застройщик всё исправил.»</p><p class="note">Ольга · ЖК Сердце города</p></div>
+      <div class="card"><div class="stars">★★★★★</div><p>«Приняли квартиру дистанционно, мы из Москвы.»</p><p class="note">Артём · ЖК Новая Европа</p></div>
+      <div class="card"><div class="stars">★★★★★</div><p>«Подробный акт, всё по делу. Рекомендую.»</p><p class="note">Ирина · ЖК Пенелопа</p></div>
+    </div>
+    <div class="btn-row"><a href="otzyvy.html" class="btn ghost">Все отзывы →</a></div>
+  </div>
+</section>
+
+<!-- 9. ЖК -->
+<section>
+  <div class="wrap">
+    <span class="tag">SEO-блок</span>
+    <h2>ЖК Калининграда, где мы работаем</h2>
+    <p class="note">Каждая ссылка ведёт на отдельную страницу с типичными дефектами этого ЖК.</p>
+    <div class="chips">
+      <a href="zhk.html" class="chip">Балтийская жемчужина</a>
+      <a href="zhk.html" class="chip">Сердце города</a>
+      <a href="zhk.html" class="chip">Новая Европа</a>
+      <a href="zhk.html" class="chip">Пенелопа</a>
+      <a href="zhk.html" class="chip">Северный парк</a>
+      <a href="zhk.html" class="chip">Зелёный бульвар</a>
+      <a href="zhk.html" class="chip">Рыбный рынок</a>
+      <a href="zhk.html" class="chip">Каштановый квартал</a>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="soft-sec">
+  <div class="wrap">
+    <span class="tag">Вопросы</span>
+    <h2>Частые вопросы</h2>
+    <details><summary>Сколько стоит приёмка?</summary><p>От 4 900 ₽ — зависит от площади и типа отделки. Точную цену покажет калькулятор.</p></details>
+    <details><summary>Когда возможен выезд?</summary><p>Как правило, в день обращения или на следующий день.</p></details>
+    <details><summary>Что именно проверяете?</summary><p>Более 90 параметров: геометрия, электрика, сантехника, вентиляция, тепловизор.</p></details>
+    <details><summary>Дадите официальный акт?</summary><p>Да — акт с печатью и подписью инженера, фото с привязкой к квартире.</p></details>
+    <details><summary>Работаете по 214-ФЗ?</summary><p>Да, помогаем зафиксировать недостатки и составить претензию застройщику.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-cols">
+    <div>
+      <a href="index.html" class="logo" style="color:#fff">Принято<span style="color:#888">.Про</span></a>
+      <p style="color:#bbb;margin-top:10px;max-width:320px">Профессиональная приёмка квартир и домов у застройщика в Калининграде и на побережье.</p>
+      <p style="margin-top:10px"><a href="tel:+74012000000">+7 (4012) 00-00-00</a></p>
+      <p class="note" style="color:#888">пн–вс 9:00–21:00</p>
+    </div>
+    <div>
+      <h4>Услуги</h4>
+      <a href="usluga.html">Приёмка без отделки</a>
+      <a href="usluga.html">Приёмка с отделкой</a>
+      <a href="usluga.html">Тепловизор</a>
+      <a href="usluga.html">Экспертиза</a>
+      <a href="usluga.html">Технадзор</a>
+    </div>
+    <div>
+      <h4>Компания</h4>
+      <a href="o-nas.html">О нас</a>
+      <a href="otzyvy.html">Отзывы</a>
+      <a href="blog.html">Блог</a>
+      <a href="kontakty.html">Контакты</a>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

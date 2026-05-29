@@ -1,0 +1,7 @@
+# Конфигурация Netlify
+# Сайт — статический прототип в папке prototype/.
+# Netlify раздаёт её как корень сайта (index.html открывается на главной).
+
+[build]
+  publish = "prototype"
+  command = ""

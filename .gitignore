@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Отдельный git-репозиторий Claude-плагина — не часть сайта
+plugin/
+
+# Зависимости/мусор
+node_modules/
+*.log

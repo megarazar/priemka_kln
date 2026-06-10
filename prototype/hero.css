@@ -1,0 +1,144 @@
+/* ===== Принято.Про — hero v1 (стиль «акт приёмки») ===== */
+:root{
+  --paper:#ece7db;       /* «стол» — светлее, без желтизны */
+  --paper-2:#efe6d3;
+  --panel:#f8f1e0;       /* светлый лист «акта» */
+  --ink:#221d16;
+  --ink-soft:#4f463a;
+  --red:#cc2018;
+  --red-dark:#a8170f;
+  --line:#d3c5a6;
+  --line-dark:#bdac88;
+  --paper-tex:none;      /* подложка-стол */
+  --panel-tex:none;      /* лист акта */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PT Sans",-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background-color:var(--paper);
+  background-image:var(--paper-tex);
+  background-size:cover;
+  background-attachment:fixed;
+  line-height:1.5;
+  position:relative;
+}
+/* зерно поверх всего — добавляет фактуру */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.05;mix-blend-mode:multiply;
+}
+/* виньетка — затемнение к краям, создаёт глубину */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(125% 95% at 50% 32%, transparent 60%, rgba(80,62,34,.12) 100%);
+}
+header,.hero{position:relative;z-index:1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.oswald{font-family:"Oswald",sans-serif}
+.hand{font-family:"Caveat",cursive;color:var(--red);line-height:1.1}
+
+/* плашка-прототип */
+.proto-bar{background:#2a241b;color:#d8cab0;font-size:12px;text-align:center;padding:7px}
+
+/* ===== ШАПКА ===== */
+header{border-bottom:2px solid var(--ink);background:rgba(244,236,221,.85);backdrop-filter:saturate(1.1) blur(2px);position:sticky;top:0;z-index:20}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{height:100px;width:auto}
+.brand .tg{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:.04em;color:var(--ink);line-height:1.15;max-width:230px}
+.head-info{display:flex;align-items:center;gap:26px}
+.gost{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:12px;color:var(--ink-soft);border:1px dashed var(--line-dark);padding:6px 12px;border-radius:4px;line-height:1.2;text-align:center}
+.contact{text-align:right}
+.contact .hours{font-size:12px;color:var(--ink-soft)}
+.contact .phone{font-family:"Oswald",sans-serif;font-weight:700;font-size:24px;color:var(--ink);text-decoration:none;display:block;letter-spacing:.01em}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.03em;font-weight:600;padding:13px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;box-shadow:0 3px 0 var(--red-dark);transition:transform .05s}
+.btn:hover{background:var(--red-dark);box-shadow:0 2px 0 var(--red-dark)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.sm{padding:10px 18px;font-size:13px}
+.btn.lg{padding:18px 38px;font-size:20px}
+
+/* ===== HERO / БЛАНК АКТА ===== */
+.hero{padding:34px 0 56px}
+/* лист-досье: фон сгенерирован нейросетью (рваные края, скрепка, тень — в самой картинке) */
+.akt{
+  position:relative;
+  max-width:1180px;
+  margin:0 auto;
+  background:var(--plate) center/cover no-repeat;
+  border-radius:4px;
+  box-shadow:0 26px 52px rgba(30,20,8,.34);
+  padding:74px 92px 84px;
+  min-height:640px;
+}
+
+/* строка-реквизиты */
+.akt-meta{display:grid;grid-template-columns:1fr 1fr auto;gap:8px 26px;border-bottom:1.5px dashed var(--line-dark);padding-bottom:14px;margin-bottom:8px;font-size:14px}
+.akt-meta .f{display:flex;gap:8px;align-items:baseline}
+.akt-meta .f .k{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:11px;color:var(--ink-soft);white-space:nowrap}
+.akt-meta .f .v{flex:1;border-bottom:1px solid var(--line-dark);font-weight:700;min-width:60px}
+.akt-no{font-family:"Oswald",sans-serif;font-weight:700;color:var(--red);font-size:20px;text-align:right}
+
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;margin-top:18px;align-items:start}
+
+/* левая колонка */
+.h1{font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;font-size:64px;line-height:.92;letter-spacing:.005em;color:var(--ink);margin:6px 0 14px}
+.lead-red{font-weight:700;font-size:21px;line-height:1.3;color:var(--ink);display:inline;}
+#mark-lead{color:var(--red)}
+.lead{color:var(--ink-soft);font-size:16px;margin:18px 0 22px;max-width:540px}
+
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 26px}
+.benefit{display:flex;flex-direction:column;gap:8px}
+.benefit .ic{width:42px;height:42px;color:var(--red)}
+.benefit p{font-size:13.5px;color:var(--ink);line-height:1.25}
+
+.cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.cta-note{font-size:26px;transform:rotate(-5deg)}
+
+/* правая колонка — фото */
+.photo-wrap{position:relative}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border:8px solid #fff;box-shadow:4px 6px 0 rgba(34,29,22,.18);display:block;background:#cfc7b6}
+.photo-cap{position:absolute;left:-6px;bottom:26px;background:transparent;font-family:"Caveat",cursive;color:#fff;font-size:30px;line-height:1;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.7);padding:6px 12px;max-width:80%;transform:rotate(-2deg)}
+/* «скотч» */
+.tape{position:absolute;width:120px;height:30px;background:rgba(214,200,160,.55);border-left:1px dashed rgba(0,0,0,.12);border-right:1px dashed rgba(0,0,0,.12);top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.1)}
+
+/* штамп */
+.stamp{
+  position:absolute;
+  font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;
+  color:var(--red);border:3px double var(--red);border-radius:8px;
+  padding:8px 16px;font-size:24px;letter-spacing:.04em;
+  transform:rotate(-13deg);opacity:.82;
+  box-shadow:inset 0 0 0 2px rgba(204,32,24,.15);
+  background:rgba(251,246,234,.25);
+  mix-blend-mode:multiply;
+}
+.stamp small{display:block;font-size:9px;letter-spacing:.12em;text-align:center;font-weight:400}
+.stamp.notchecked{top:18px;right:24px}
+
+/* скрепка (SVG inline уже окрашен) */
+.clip{position:absolute;top:-12px;right:60px;width:34px;height:auto;transform:rotate(8deg);opacity:.8}
+
+@media(max-width:900px){
+  .topbar{flex-wrap:wrap;gap:10px}
+  .brand img{height:74px}
+  .gost{display:none}
+  .contact .hours{display:none}
+  .contact .phone{font-size:18px}
+  .head-info{gap:12px}
+  .head-info .btn.sm{padding:9px 14px}
+  /* вертикальная плита-фон под мобилку */
+  .akt{background-image:var(--plate-m);padding:104px 30px 64px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr;gap:22px}
+  .h1{font-size:44px}
+  .akt-meta{grid-template-columns:1fr;gap:6px}
+  .akt-no{text-align:left}
+  .benefits{grid-template-columns:1fr;gap:10px}
+  .benefit{flex-direction:row;align-items:center}
+  .benefit .ic{flex:0 0 auto}
+  .photo{max-width:360px;margin:0 auto;display:block}
+  .photo-cap{font-size:26px}
+  .stamp.notchecked{top:10px;right:14px;font-size:18px;padding:6px 12px}
+}

@@ -4,6 +4,17 @@
 # Отдельный git-репозиторий Claude-плагина — не часть сайта
 plugin/
 
+# Секреты/доступы — НИКОГДА не коммитить
+.env
+.env.*
+*.local
+.claude/settings.local.json
+shared/hosting-credentials.local
+
 # Зависимости/мусор
 node_modules/
 *.log
+
+# Локальный мусор инструментов (IDE / MCP)
+.cursor/
+.playwright-mcp/

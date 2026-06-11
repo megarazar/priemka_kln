@@ -356,8 +356,29 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .ft-policy a:hover{color:#fff}
 .ft-policy + .ft-legal{border-top:0;margin-top:14px;padding-top:0}
 
+/* ===== ФОРМА ЗАЯВКИ (CF7 → Битрикс24) ===== */
+.lead-card{max-width:680px;margin:0 auto;background:var(--paper-2,#f3ece0);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius,10px);padding:34px 30px;box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.lead-card .sec-head{margin-bottom:22px;text-align:left}
+.lead-card .lead-sub{color:#5a5346;font-size:15px;margin-top:8px}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.lf-row{grid-template-columns:1fr}}
+.lead-card input[type=text],.lead-card input[type=tel]{width:100%;padding:14px 16px;font-size:15px;font-family:inherit;color:var(--ink,#2b2620);border:1px solid #cbbfa8;border-radius:8px;background:#fff;margin-top:14px}
+.lf-row .wpcf7-form-control-wrap input{margin-top:0}
+.lead-card input::placeholder{color:#9a907d}
+.lead-card input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(204,32,24,.12)}
+.lf-consents{margin:18px 0 4px;display:flex;flex-direction:column;gap:11px}
+.lf-consents .wpcf7-list-item{margin:0}
+.lf-consents label{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#5a5346;line-height:1.5;cursor:pointer}
+.lf-consents input[type=checkbox]{margin-top:1px;width:17px;height:17px;accent-color:var(--red);flex:0 0 auto}
+.lf-consents a{color:var(--red);text-decoration:underline}
+.lead-card .wpcf7-submit{width:100%;margin-top:20px;background:var(--red);color:#fff;border:none;border-radius:var(--radius,10px);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.03em;font-weight:600;font-size:16px;padding:16px 26px;cursor:pointer;box-shadow:0 3px 0 var(--red-dark);transition:background .15s}
+.lead-card .wpcf7-submit:hover{background:var(--red-dark)}
+.lead-card .wpcf7-spinner{margin:14px auto 0;display:block}
+.wpcf7 .wpcf7-not-valid-tip{color:var(--red);font-size:12.5px;margin-top:5px}
+.lead-card .wpcf7-response-output{margin:16px 0 0!important;padding:12px 14px!important;border-radius:8px;font-size:14px}
+
 /* ===== РВАНЫЕ ГРАНИЦЫ МЕЖДУ ВСЕМИ БЛОКАМИ ===== */
-#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#experts,#video,#reviews,#geo,#faq{position:relative}
+#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq{position:relative}
 #trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before{
   content:"";position:absolute;left:0;right:0;top:-13px;height:16px;z-index:3;pointer-events:none;
   background:var(--sec-bg,var(--paper));

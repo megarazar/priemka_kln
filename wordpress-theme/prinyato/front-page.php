@@ -289,6 +289,20 @@
   </div>
 </section>
 
+<!-- ===================== 7.5 ЗАЯВКА (форма → Битрикс24) ===================== -->
+<section class="sec lead" id="lead" data-section="lead">
+  <div class="wrap">
+    <div class="lead-card" data-reveal>
+      <div class="sec-head">
+        <span class="eyebrow">Заявка</span>
+        <h2 class="sh">Оставьте заявку на приёмку</h2>
+        <p class="lead-sub">Перезвоним, уточним детали объекта и рассчитаем стоимость. Ни к чему не обязывает.</p>
+      </div>
+      <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== 8. ЭКСПЕРТЫ ===================== -->
 <section class="sec" id="experts" data-section="experts">
   <div class="wrap">

@@ -34,3 +34,57 @@ if ( ! isset( $content_width ) ) $content_width = 800;
  * (Тип услуги, Район, Застройщик) — см. wp_structure_prinyato.md §3.2-3.3.
  * Пока главная самодостаточна, оставляем заготовку.
  */
+
+/**
+ * Интеграция Contact Form 7 → Битрикс24 (создание Лида).
+ * Срабатывает только для формы заявки (ID 33). Вебхук — в константе
+ * PRINYATO_B24_WEBHOOK (wp-config.php, секрет, вне репозитория).
+ */
+add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
+    if ( (int) $contact_form->id() !== 33 ) return;
+    if ( ! defined( 'PRINYATO_B24_WEBHOOK' ) || ! PRINYATO_B24_WEBHOOK ) return;
+
+    $sub = WPCF7_Submission::get_instance();
+    if ( ! $sub ) return;
+    $d = $sub->get_posted_data();
+
+    $val = function ( $k ) use ( $d ) {
+        if ( ! isset( $d[ $k ] ) ) return '';
+        $v = is_array( $d[ $k ] ) ? reset( $d[ $k ] ) : $d[ $k ];
+        return sanitize_text_field( (string) $v );
+    };
+
+    $first = $val( 'first-name' );
+    $last  = $val( 'last-name' );
+    $phone = $val( 'phone' );
+    $name  = trim( $first . ' ' . $last );
+
+    $fields = array(
+        'TITLE'              => 'Заявка с сайта' . ( $name ? ' — ' . $name : '' ),
+        'NAME'               => $first,
+        'LAST_NAME'          => $last,
+        'SOURCE_ID'          => 'WEB',
+        'SOURCE_DESCRIPTION' => 'Форма «Заявка» на prinyatopro.ru',
+        'PHONE'              => array( array( 'VALUE' => $phone, 'VALUE_TYPE' => 'WORK' ) ),
+        'COMMENTS'           => 'Заявка с главной страницы. Согласие на обработку ПД и ознакомление с политикой конфиденциальности получены.',
+    );
+
+    $url  = rtrim( PRINYATO_B24_WEBHOOK, '/' ) . '/crm.lead.add.json';
+    $resp = wp_remote_post( $url, array(
+        'timeout' => 15,
+        'body'    => array(
+            'fields' => $fields,
+            'params' => array( 'REGISTER_SONET_EVENT' => 'Y' ),
+        ),
+    ) );
+
+    if ( is_wp_error( $resp ) ) {
+        error_log( '[B24] lead error: ' . $resp->get_error_message() );
+        return;
+    }
+    $code = wp_remote_retrieve_response_code( $resp );
+    $body = wp_remote_retrieve_body( $resp );
+    if ( 200 !== (int) $code || false !== strpos( $body, '"error"' ) ) {
+        error_log( '[B24] lead failed (' . $code . '): ' . substr( $body, 0, 300 ) );
+    }
+}, 10, 1 );

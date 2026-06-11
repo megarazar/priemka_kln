@@ -70,18 +70,20 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
     $page     = $post( 'pp_page' );
     $landing  = $post( 'pp_landing' );
     $referrer = $post( 'pp_referrer' );
+    $quiz     = $post( 'pp_quiz' ); // ответы квиза «Расчёт стоимости» (js/quiz.js)
 
     $comments = 'Заявка с сайта prinyatopro.ru. Согласие на обработку ПД и ознакомление с политикой получены.';
+    if ( $quiz )     { $comments .= "\nОтветы квиза: " . $quiz; }
     if ( $page )     { $comments .= "\nСтраница заявки: " . $page; }
     if ( $landing )  { $comments .= "\nПервый вход: " . $landing; }
     if ( $referrer ) { $comments .= "\nРеферер: " . $referrer; }
 
     $fields = array(
-        'TITLE'              => 'Заявка с сайта' . ( $name ? ' — ' . $name : '' ),
+        'TITLE'              => ( $quiz ? 'Заявка с квиза' : 'Заявка с сайта' ) . ( $name ? ' — ' . $name : '' ),
         'NAME'               => $first,
         'LAST_NAME'          => $last,
         'SOURCE_ID'          => 'WEB',
-        'SOURCE_DESCRIPTION' => 'Форма «Заявка» на prinyatopro.ru',
+        'SOURCE_DESCRIPTION' => $quiz ? 'Квиз «Расчёт стоимости» на prinyatopro.ru' : 'Форма «Заявка» на prinyatopro.ru',
         'PHONE'              => array( array( 'VALUE' => $phone, 'VALUE_TYPE' => 'WORK' ) ),
         'COMMENTS'           => $comments,
     );

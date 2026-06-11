@@ -58,6 +58,18 @@
   </div>
 </footer>
 
+<!-- ===================== МОДАЛЬНАЯ ФОРМА ЗАЯВКИ ===================== -->
+<div class="lead-modal" id="lead-modal" aria-hidden="true">
+  <div class="lead-modal__overlay" data-lead-close></div>
+  <div class="lead-modal__card" role="dialog" aria-modal="true" aria-label="Заявка на приёмку">
+    <button class="lead-modal__close" type="button" data-lead-close aria-label="Закрыть">&times;</button>
+    <span class="eyebrow">Заявка на приёмку</span>
+    <h2 class="lead-modal__title">Узнайте стоимость приёмки вашей квартиры</h2>
+    <p class="lead-modal__sub">Перезвоним в течение 15 минут, уточним детали объекта и назовём точную цену.</p>
+    <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+  </div>
+</div>
+
 <!-- вендоры (локально, buildless, вне критического пути LCP) -->
 <script src="<?php echo $T; ?>/js/vendor/lenis.min.js" defer></script>
 <script src="<?php echo $T; ?>/js/vendor/rough-notation.iife.js" defer></script>
@@ -65,5 +77,6 @@
 <script src="<?php echo $T; ?>/js/smooth-scroll.js" defer></script>
 <script src="<?php echo $T; ?>/js/process.js" defer></script>
 <script src="<?php echo $T; ?>/js/main.js" defer></script>
+<script src="<?php echo $T; ?>/js/lead.js" defer></script>
 </body>
 </html>

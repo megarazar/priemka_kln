@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo $T; ?>/css/tokens.css">
-<link rel="stylesheet" href="<?php echo $T; ?>/css/styles.css">
+<link rel="stylesheet" href="<?php echo $T; ?>/css/styles.css?v=<?php echo filemtime(get_template_directory() . '/css/styles.css'); ?>">
 
 <!-- Schema.org JSON-LD: HomeAndConstructionBusiness + FAQPage. Реальные NAP/телефон/соцсети клиента. -->
 <script type="application/ld+json">
@@ -127,7 +127,7 @@
         <span class="hours">Ежедневно с 9:00 до 21:00</span>
         <a class="phone" href="tel:+79062167091">+7 (906) 216-70-91</a>
       </div>
-      <a class="btn sm" href="#quiz">Рассчитать цену</a>
+      <a class="btn sm" href="#lead-modal" data-lead-open>Рассчитать цену</a>
       <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -143,6 +143,6 @@
     <a href="/kontakty/">Контакты</a>
     <a href="#faq">Вопросы</a>
     <a class="phone" href="tel:+79062167091">+7 (906) 216-70-91</a>
-    <a class="btn" href="#quiz">Рассчитать цену</a>
+    <a class="btn" href="#lead-modal" data-lead-open>Рассчитать цену</a>
   </div>
 </header>

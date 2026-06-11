@@ -31,7 +31,7 @@
           </ul>
 
           <div class="cta-row">
-            <a href="#quiz" class="btn lg">Рассчитать стоимость за минуту</a>
+            <a href="#lead-modal" data-lead-open class="btn lg">Рассчитать стоимость за минуту</a>
             <span class="hand cta-note">6 вопросов —<br>и узнаете цену!</span>
           </div>
           <p class="cta-sub">Покажем ориентировочную цену и предварительное заключение по вашему объекту.</p>
@@ -235,7 +235,7 @@
       <div class="svc" data-reveal style="justify-content:center;align-items:flex-start;background:var(--ink);color:var(--paper-2)">
         <h3 style="color:#fff">Не знаете, что выбрать?</h3>
         <p style="color:#d3c8b2">Пройдите короткий опрос — подберём услугу и покажем ориентировочную цену по вашему объекту.</p>
-        <a class="btn" href="#quiz" style="margin-top:14px">Подобрать и рассчитать</a>
+        <a class="btn" href="#lead-modal" data-lead-open style="margin-top:14px">Подобрать и рассчитать</a>
       </div>
     </div>
     <p class="micro" data-reveal>Точную цену зафиксируем в договоре, без «доплат на месте».</p>
@@ -261,7 +261,7 @@
       </ul>
       <div>
         <div class="dist-video" data-reveal>[Видеообзор реальной дистанционной приёмки: как клиент из другого города принял квартиру, ни разу не приехав в Калининград. — плейсхолдер]</div>
-        <a class="btn lg dist-cta" href="#quiz">Оставить заявку на дистанционную приёмку</a>
+        <a class="btn lg dist-cta" href="#lead-modal" data-lead-open>Оставить заявку на дистанционную приёмку</a>
       </div>
     </div>
   </div>
@@ -292,13 +292,16 @@
 <!-- ===================== 7.5 ЗАЯВКА (форма → Битрикс24) ===================== -->
 <section class="sec lead" id="lead" data-section="lead">
   <div class="wrap">
-    <div class="lead-card" data-reveal>
-      <div class="sec-head">
-        <span class="eyebrow">Заявка</span>
-        <h2 class="sh">Оставьте заявку на приёмку</h2>
-        <p class="lead-sub">Перезвоним, уточним детали объекта и рассчитаем стоимость. Ни к чему не обязывает.</p>
+    <div class="lead-band" data-reveal>
+      <div class="lead-left">
+        <span class="eyebrow">Заявка на приёмку</span>
+        <h2 class="lead-title">Узнайте стоимость приёмки именно вашей квартиры</h2>
+        <p class="lead-sub">Перезвоним в течение 15 минут, уточним площадь и тип отделки, назовём точную цену и подберём свободную дату эксперта. Отвечаем по делу — без навязчивых звонков.</p>
+        <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
       </div>
-      <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+      <div class="lead-right">
+        <img src="<?php echo $T; ?>/assets/img/apartment.jpg" alt="Новая квартира без отделки в новостройке Калининграда — готова к приёмке" loading="lazy" decoding="async">
+      </div>
     </div>
   </div>
 </section>

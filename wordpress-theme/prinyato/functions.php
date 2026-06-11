@@ -35,6 +35,10 @@ if ( ! isset( $content_width ) ) $content_width = 800;
  * Пока главная самодостаточна, оставляем заготовку.
  */
 
+// Contact Form 7: отключаем авто-<p>/<br>, иначе wpautop оборачивает поля в <p>
+// и вставляет <br> между ними — наша grid-вёрстка формы (Имя/Фамилия в ряд) ломается.
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
 /**
  * Интеграция Contact Form 7 → Битрикс24 (создание Лида).
  * Срабатывает только для формы заявки (ID 33). Вебхук — в константе
@@ -59,6 +63,19 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
     $phone = $val( 'phone' );
     $name  = trim( $first . ' ' . $last );
 
+    // UTM-метки и источник перехода — приходят скрытыми полями формы (см. js/lead.js) в $_POST.
+    $post = function ( $k ) {
+        return isset( $_POST[ $k ] ) ? sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) : '';
+    };
+    $page     = $post( 'pp_page' );
+    $landing  = $post( 'pp_landing' );
+    $referrer = $post( 'pp_referrer' );
+
+    $comments = 'Заявка с сайта prinyatopro.ru. Согласие на обработку ПД и ознакомление с политикой получены.';
+    if ( $page )     { $comments .= "\nСтраница заявки: " . $page; }
+    if ( $landing )  { $comments .= "\nПервый вход: " . $landing; }
+    if ( $referrer ) { $comments .= "\nРеферер: " . $referrer; }
+
     $fields = array(
         'TITLE'              => 'Заявка с сайта' . ( $name ? ' — ' . $name : '' ),
         'NAME'               => $first,
@@ -66,8 +83,55 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
         'SOURCE_ID'          => 'WEB',
         'SOURCE_DESCRIPTION' => 'Форма «Заявка» на prinyatopro.ru',
         'PHONE'              => array( array( 'VALUE' => $phone, 'VALUE_TYPE' => 'WORK' ) ),
-        'COMMENTS'           => 'Заявка с главной страницы. Согласие на обработку ПД и ознакомление с политикой конфиденциальности получены.',
+        'COMMENTS'           => $comments,
     );
+
+    // Штатные UTM-поля лида Битрикс24 (заполняются только при наличии).
+    $utm_map = array(
+        'utm_source'   => 'UTM_SOURCE',
+        'utm_medium'   => 'UTM_MEDIUM',
+        'utm_campaign' => 'UTM_CAMPAIGN',
+        'utm_content'  => 'UTM_CONTENT',
+        'utm_term'     => 'UTM_TERM',
+    );
+    foreach ( $utm_map as $src => $b24 ) {
+        $v = $post( $src );
+        if ( '' !== $v ) { $fields[ $b24 ] = $v; }
+    }
+
+    // --- Дедупликация (#4): повторная отправка с того же телефона не плодит лиды.
+    // Ищем активный лид по телефону; если есть «живой» (в работе) — клеим комментарий
+    // в его таймлайн и НЕ создаём дубль. К успешным (S) / отказным/мусорным (F) лидам
+    // новую заявку не клеим — это уже новый запрос, создаём свежий лид.
+    $b24 = function ( $method, $body ) {
+        $r = wp_remote_post( rtrim( PRINYATO_B24_WEBHOOK, '/' ) . '/' . $method . '.json', array(
+            'timeout' => 12,
+            'body'    => $body,
+        ) );
+        if ( is_wp_error( $r ) ) return null;
+        return json_decode( wp_remote_retrieve_body( $r ), true );
+    };
+    if ( '' !== $phone ) {
+        $dup = $b24( 'crm.duplicate.findbycomm', array(
+            'type'        => 'PHONE',
+            'values'      => array( $phone ),
+            'entity_type' => 'LEAD',
+        ) );
+        $lead_ids = ( $dup && isset( $dup['result']['LEAD'] ) ) ? (array) $dup['result']['LEAD'] : array();
+        foreach ( $lead_ids as $lid ) {
+            $got = $b24( 'crm.lead.get', array( 'id' => $lid ) );
+            $sem = isset( $got['result']['STATUS_SEMANTIC_ID'] ) ? $got['result']['STATUS_SEMANTIC_ID'] : '';
+            if ( 'S' === $sem || 'F' === $sem ) { continue; } // закрытый лид — это новый запрос
+            $b24( 'crm.timeline.comment.add', array(
+                'fields' => array(
+                    'ENTITY_ID'   => (int) $lid,
+                    'ENTITY_TYPE' => 'lead',
+                    'COMMENT'     => "Повторная заявка с сайта (тот же телефон).\n" . $comments,
+                ),
+            ) );
+            return; // дубль не создаём
+        }
+    }
 
     $url  = rtrim( PRINYATO_B24_WEBHOOK, '/' ) . '/crm.lead.add.json';
     $resp = wp_remote_post( $url, array(

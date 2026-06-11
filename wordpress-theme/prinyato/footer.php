@@ -71,12 +71,19 @@
 </div>
 
 <!-- вендоры (локально, buildless, вне критического пути LCP) -->
-<script src="<?php echo $T; ?>/js/vendor/lenis.min.js" defer></script>
-<script src="<?php echo $T; ?>/js/vendor/rough-notation.iife.js" defer></script>
-<!-- наши скрипты -->
-<script src="<?php echo $T; ?>/js/smooth-scroll.js" defer></script>
-<script src="<?php echo $T; ?>/js/process.js" defer></script>
-<script src="<?php echo $T; ?>/js/main.js" defer></script>
-<script src="<?php echo $T; ?>/js/lead.js" defer></script>
+<?php
+/* версия = mtime файла: сбрасывает 7-дневный браузерный кэш статики при каждом деплое */
+function prinyato_js($T, $rel) {
+  echo '<script src="' . $T . '/js/' . $rel . '?v=' . filemtime(get_template_directory() . '/js/' . $rel) . '" defer></script>' . "\n";
+}
+prinyato_js($T, 'vendor/lenis.min.js');
+prinyato_js($T, 'vendor/rough-notation.iife.js');
+/* наши скрипты */
+prinyato_js($T, 'smooth-scroll.js');
+prinyato_js($T, 'process.js');
+prinyato_js($T, 'main.js');
+prinyato_js($T, 'lead.js');
+prinyato_js($T, 'quiz.js');
+?>
 </body>
 </html>

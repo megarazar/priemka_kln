@@ -31,7 +31,7 @@
           </ul>
 
           <div class="cta-row">
-            <a href="#lead-modal" data-lead-open class="btn lg">Рассчитать стоимость за минуту</a>
+            <a href="#quiz" class="btn lg">Рассчитать стоимость за минуту</a>
             <span class="hand cta-note">6 вопросов —<br>и узнаете цену!</span>
           </div>
           <p class="cta-sub">Покажем ориентировочную цену и предварительное заключение по вашему объекту.</p>
@@ -72,21 +72,84 @@
     <div class="sec-head" data-reveal style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow" style="justify-content:center">Расчёт за минуту</span>
       <h2 class="sh">Узнайте стоимость приёмки</h2>
-      <p class="sec-lead">Ответьте на 6 коротких вопросов. Покажем ориентировочную цену и предварительное заключение по вашему объекту. Это бесплатно и ни к чему не обязывает.</p>
+      <p class="sec-lead">Ответьте на 4 коротких вопроса — покажем ориентировочную цену и подберём формат приёмки под ваш объект. Расчёт бесплатный.</p>
     </div>
 
     <div class="quiz-embed" data-reveal>
-      <!-- MARQUIZ: сюда вставить код квиза с marquiz.ru
-           1) перед <?php wp_footer(); ?>
-</body> подключить: <script src="https://script.marquiz.ru/v2.js"></script>
-           2) тут разместить контейнер: <div class="marquiz-embed" data-id="ВАШ_ID" data-fallback-mode="modal"></div>
-           Заглушка ниже — заменить на виджет Marquiz. -->
-      <div class="quiz-placeholder">
-        <span class="qp-stamp">Опрос · 6 вопросов</span>
-        <strong>Подберём услугу и посчитаем стоимость</strong>
-        <p>Ответите на 6 коротких вопросов — покажем ориентировочную цену и предварительное заключение по вашему объекту. Бесплатно и ни к чему не обязывает.</p>
-        <a class="btn lg" href="#quiz" id="quizCta">Пройти опрос и узнать цену</a>
-        <span class="qp-note">Здесь будет встроен квиз Marquiz</span>
+      <!-- Собственный квиз (без Marquiz): 4 вопроса → контакты → лид в Битрикс24. Логика — js/quiz.js -->
+      <div class="pp-quiz" id="ppQuiz">
+        <div class="ppq-top">
+          <span class="ppq-counter">Шаг <b id="ppqStepNum">1</b> из 5</span>
+          <div class="ppq-bar"><span id="ppqBarFill" style="width:20%"></span></div>
+        </div>
+
+        <!-- Шаг 1: объект -->
+        <div class="ppq-step is-active" data-step="1" data-key="Объект">
+          <h3 class="ppq-q">Что нужно принять?</h3>
+          <div class="ppq-opts ppq-opts--img">
+            <button type="button" class="ppq-opt" data-value="Квартира без отделки" data-price="rough">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-rough.jpg" alt="Квартира без отделки" loading="lazy"></span>
+              <span class="ppq-label">Квартира без отделки</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Квартира с отделкой" data-price="whitebox">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-whitebox.jpg" alt="Квартира с отделкой от застройщика" loading="lazy"></span>
+              <span class="ppq-label">Квартира с отделкой</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Дом или таунхаус" data-price="house">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-house.jpg" alt="Дом или таунхаус" loading="lazy"></span>
+              <span class="ppq-label">Дом или таунхаус</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="После ремонта / технадзор" data-price="renovated">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-renovated.jpg" alt="Приёмка после ремонта или технадзор" loading="lazy"></span>
+              <span class="ppq-label">После ремонта / технадзор</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Шаг 2: площадь -->
+        <div class="ppq-step" data-step="2" data-key="Площадь">
+          <h3 class="ppq-q">Какая площадь объекта?</h3>
+          <div class="ppq-opts ppq-opts--text">
+            <button type="button" class="ppq-opt" data-value="До 40 м²" data-area="s"><span class="ppq-big">до 40</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="40–60 м²" data-area="m"><span class="ppq-big">40–60</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="60–90 м²" data-area="l"><span class="ppq-big">60–90</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="Более 90 м²" data-area="xl"><span class="ppq-big">90+</span><span class="ppq-label">м²</span></button>
+          </div>
+        </div>
+
+        <!-- Шаг 3: сроки -->
+        <div class="ppq-step" data-step="3" data-key="Сроки">
+          <h3 class="ppq-q">Когда нужна приёмка?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Приглашение уже пришло">Приглашение на приёмку уже пришло</button>
+            <button type="button" class="ppq-opt" data-value="В ближайший месяц">Ключи выдают в ближайший месяц</button>
+            <button type="button" class="ppq-opt" data-value="Через 1–3 месяца">Через 1–3 месяца</button>
+            <button type="button" class="ppq-opt" data-value="Пока изучаю вопрос">Пока изучаю вопрос</button>
+          </div>
+        </div>
+
+        <!-- Шаг 4: присутствие -->
+        <div class="ppq-step" data-step="4" data-key="Присутствие">
+          <h3 class="ppq-q">Как вам удобнее провести приёмку?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Буду присутствовать лично">Буду присутствовать лично</button>
+            <button type="button" class="ppq-opt" data-value="Дистанционно по доверенности">Дистанционно — я в другом городе</button>
+            <button type="button" class="ppq-opt" data-value="Ещё не решил">Ещё не решил(а)</button>
+          </div>
+        </div>
+
+        <!-- Шаг 5: контакты -->
+        <div class="ppq-step ppq-step--final" data-step="5">
+          <div class="ppq-result" id="ppqResult" hidden>
+            <span class="ppq-result-label">Ориентировочная стоимость</span>
+            <span class="ppq-result-price" id="ppqPrice">от 4 900 ₽</span>
+            <span class="ppq-result-note">Точную цену назовём после уточнения деталей — она фиксируется в договоре и не меняется на месте.</span>
+          </div>
+          <h3 class="ppq-q">Куда отправить расчёт?</h3>
+          <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+        </div>
+
+        <button type="button" class="ppq-back" id="ppqBack" hidden>&larr; Назад</button>
       </div>
     </div>
   </div>
@@ -113,28 +176,32 @@
     </div>
 
     <div class="equip">
-      <h3 class="sh3" data-reveal>Оборудование и зачем оно нужно</h3>
-      <p class="sec-lead" data-reveal>Глазом скрытый дефект не поймать. Поэтому на каждую приёмку едем с поверенными приборами.</p>
-      <div class="equip-grid">
-        <div class="equip-card" data-reveal>
-          <svg class="ec-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10M12 17v4"/></svg>
-          <b>Тепловизор</b><span>Показывает мостики холода и продувание, из которых зимой растёт плесень и счета за отопление.</span>
-        </div>
-        <div class="equip-card" data-reveal>
-          <svg class="ec-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
-          <b>Лазерный нивелир</b><span>Меряет вертикаль стен и перепады пола. Кривые поверхности всё равно вылезут на ремонте.</span>
-        </div>
-        <div class="equip-card" data-reveal>
-          <svg class="ec-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3v18M5 12h9l3-4-3-4H5"/></svg>
-          <b>Пирометр</b><span>Точечно снимает температуру поверхностей и ловит теплопотери у окон, откосов, радиаторов.</span>
-        </div>
-        <div class="equip-card" data-reveal>
-          <svg class="ec-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4"/><path d="M10 10l8 8-2 2-8-8"/></svg>
-          <b>Эндоскоп</b><span>Заглядывает туда, куда рукой не достать: вентиляция, ниши, стыки за коробами.</span>
-        </div>
-        <div class="equip-card" data-reveal>
-          <svg class="ec-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
-          <b>Электротестер</b><span>Проверяет напряжение, заземление и работу электрики по ПУЭ.</span>
+      <div class="hs" data-hscroll>
+        <div class="hs-pin">
+          <h3 class="sh3" data-reveal>Оборудование и зачем оно нужно</h3>
+          <p class="sec-lead" data-reveal>Глазом скрытый дефект не поймать. Поэтому на каждую приёмку едем с поверенными приборами.</p>
+          <div class="equip-grid" data-hscroll-track>
+            <div class="equip-card" data-reveal>
+              <img class="ec-photo" src="<?php echo $T; ?>/assets/img/equip-thermal.jpg" alt="Тепловизор — поиск мостиков холода и продувания на приёмке квартиры" width="360" height="240" loading="lazy" decoding="async">
+              <b>Тепловизор</b><span>Показывает мостики холода и продувание, из которых зимой растёт плесень и счета за отопление.</span>
+            </div>
+            <div class="equip-card" data-reveal>
+              <img class="ec-photo" src="<?php echo $T; ?>/assets/img/equip-laser.jpg" alt="Лазерный нивелир — проверка вертикали стен и перепадов пола" width="360" height="240" loading="lazy" decoding="async">
+              <b>Лазерный нивелир</b><span>Меряет вертикаль стен и перепады пола. Кривые поверхности всё равно вылезут на ремонте.</span>
+            </div>
+            <div class="equip-card" data-reveal>
+              <img class="ec-photo" src="<?php echo $T; ?>/assets/img/equip-pyrometer.jpg" alt="Пирометр — точечное измерение температуры поверхностей" width="360" height="240" loading="lazy" decoding="async">
+              <b>Пирометр</b><span>Точечно снимает температуру поверхностей и ловит теплопотери у окон, откосов, радиаторов.</span>
+            </div>
+            <div class="equip-card" data-reveal>
+              <img class="ec-photo" src="<?php echo $T; ?>/assets/img/equip-endoscope.jpg" alt="Эндоскоп — осмотр вентиляции и скрытых полостей" width="360" height="240" loading="lazy" decoding="async">
+              <b>Эндоскоп</b><span>Заглядывает туда, куда рукой не достать: вентиляция, ниши, стыки за коробами.</span>
+            </div>
+            <div class="equip-card" data-reveal>
+              <img class="ec-photo" src="<?php echo $T; ?>/assets/img/equip-tester.jpg" alt="Электротестер — проверка розеток, напряжения и заземления по ПУЭ" width="360" height="240" loading="lazy" decoding="async">
+              <b>Электротестер</b><span>Проверяет напряжение, заземление и работу электрики по ПУЭ.</span>
+            </div>
+          </div>
         </div>
       </div>
       <p class="micro" data-reveal>Приборы поверены, а измерения вы видите своими глазами. Мы не говорим «тут холодно» — мы показываем цифру и кадр с тепловизора.</p>
@@ -309,12 +376,14 @@
 <!-- ===================== 8. ЭКСПЕРТЫ ===================== -->
 <section class="sec" id="experts" data-section="experts">
   <div class="wrap">
+    <div class="hs" data-hscroll>
+    <div class="hs-pin">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">Команда</span>
       <h2 class="sh">Наши эксперты</h2>
       <p class="sec-lead">За вашу приёмку отвечает конкретный человек, а не безымянный колл-центр. Это инженеры с профильным образованием, опытом на реальных стройках и регалиями в профессиональных реестрах. Вы заранее знаете, кто приедет и кто подпишет ваш акт.</p>
     </div>
-    <div class="exp-grid">
+    <div class="exp-grid" data-hscroll-track>
       <div class="exp" data-reveal>
         <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-1.jpg" alt="Андрей Соколов — ведущий инженер-эксперт по приёмке квартир" width="380" height="500" loading="lazy">
         <b>Андрей Соколов</b>
@@ -333,6 +402,8 @@
         <div class="role">Эксперт по дистанционной приёмке</div>
         <div class="meta">Опыт: [N] лет · приёмка по доверенности<br>[профильное образование — подтвердить]</div>
       </div>
+    </div>
+    </div>
     </div>
     <p class="micro" data-reveal>Имена и фото — рабочие плейсхолдеры (можно заменить на реальных экспертов). Регалии и сертификаты показываем по запросу.</p>
   </div>

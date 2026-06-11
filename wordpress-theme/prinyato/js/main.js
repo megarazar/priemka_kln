@@ -56,16 +56,103 @@
     });
   }
 
-  /* ---------- rough-notation (рукописная обводка) ---------- */
+  /* ---------- rough-notation: «красный карандаш» ---------- */
   window.addEventListener('load', function () {
+    if (reduced || !window.RoughNotation) return;
+    var RN = window.RoughNotation;
+
+    /* hero: подчёркивание ключевой фразы */
     try {
       var el = document.getElementById('mark-lead');
-      if (el && window.RoughNotation && !reduced) {
-        var a = window.RoughNotation.annotate(el, { type: 'underline', color: '#cc2018', strokeWidth: 3, padding: 2, multiline: true, iterations: 2 });
+      if (el) {
+        var a = RN.annotate(el, { type: 'underline', color: '#cc2018', strokeWidth: 3, padding: 2, multiline: true, iterations: 2 });
         setTimeout(function () { a.show(); }, 600);
       }
     } catch (e) {}
+
+    /* заголовки секций: пометка рисуется, когда заголовок попадает в кадр.
+       По умолчанию подчёркивание; отдельным секциям — рамка/обводка для разнообразия */
+    var MARK_TYPES = { uslugi: 'box', faq: 'box', experts: 'circle', geo: 'circle' };
+    if (!('IntersectionObserver' in window)) return;
+    var mio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        mio.unobserve(en.target);
+        var h = en.target;
+        var sec = h.closest('section[id]');
+        var type = MARK_TYPES[sec ? sec.id : ''] || 'underline';
+        var dark = !!h.closest('.distance');
+        try {
+          var an = RN.annotate(h, {
+            type: type,
+            color: dark ? '#ff6258' : '#cc2018',
+            strokeWidth: type === 'underline' ? 3 : 2.5,
+            padding: type === 'circle' ? 12 : 6,
+            multiline: true,
+            iterations: 2,
+            animationDuration: 900
+          });
+          /* ждём конца reveal-съезда секции, иначе пометка встанет мимо текста */
+          setTimeout(function () { an.show(); }, 650);
+        } catch (e) {}
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('h2.sh, h3.sh3').forEach(function (h) { mio.observe(h); });
   });
+
+  /* ---------- мобильный «скролл-джек»: вертикальный скролл двигает ленту влево ----------
+     [data-hscroll] — «взлётка» (JS растягивает её по высоте на длину ленты),
+     .hs-pin — липкий экран, [data-hscroll-track] — лента карточек.
+     Фолбэк без JS / reduced-motion: обычная горизонтальная прокрутка пальцем (CSS). */
+  (function () {
+    if (reduced) return;
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-hscroll]'));
+    if (!boxes.length) return;
+    var mq = window.matchMedia('(max-width:680px)');
+    var items = boxes.map(function (box) {
+      return { box: box, pin: box.querySelector('.hs-pin'), track: box.querySelector('[data-hscroll-track]'), dist: 0, x: 0 };
+    }).filter(function (it) { return it.pin && it.track; });
+    if (!items.length) return;
+
+    function measure() {
+      items.forEach(function (it) {
+        it.track.style.transform = '';
+        it.box.style.height = '';
+        it.x = 0;
+        if (!mq.matches) { it.box.classList.remove('hs-on'); it.dist = 0; return; }
+        it.box.classList.add('hs-on');
+        var dist = Math.ceil(it.track.getBoundingClientRect().width - it.pin.clientWidth);
+        it.dist = Math.max(0, dist);
+        if (it.dist) it.box.style.height = (window.innerHeight + it.dist) + 'px';
+        else it.box.classList.remove('hs-on');
+      });
+    }
+    /* непрерывный rAF + lerp: лента плавно догоняет цель, как Lenis догоняет колесо.
+       Жёсткая привязка к scroll-событию на таче дёргается — скролл идёт в компо-
+       зиторе, а JS отстаёт на кадр; сглаживание это маскирует. */
+    function raf() {
+      if (mq.matches) {
+        var vh = window.innerHeight;
+        items.forEach(function (it) {
+          if (!it.dist) return;
+          var r = it.box.getBoundingClientRect();
+          var total = r.height - vh;
+          if (total <= 0) return;
+          var p = Math.min(1, Math.max(0, -r.top / total));
+          var target = -p * it.dist;
+          it.x += (target - it.x) * 0.14;
+          if (Math.abs(target - it.x) < 0.1) it.x = target;
+          it.track.style.transform = 'translate3d(' + it.x.toFixed(2) + 'px,0,0)';
+        });
+      }
+      requestAnimationFrame(raf);
+    }
+    window.addEventListener('resize', function () { requestAnimationFrame(measure); });
+    if (mq.addEventListener) mq.addEventListener('change', measure);
+    window.addEventListener('load', measure);
+    measure();
+    requestAnimationFrame(raf);
+  })();
 
   /* ---------- КВИЗ ---------- */
   var STEPS = [

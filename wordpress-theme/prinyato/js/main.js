@@ -70,6 +70,15 @@
       }
     } catch (e) {}
 
+    /* hero: обводка блока «Telegram · ВКонтакте · Позвонить» — все три разом */
+    try {
+      var msgs = document.getElementById('heroMsgs');
+      if (msgs) {
+        var m = RN.annotate(msgs, { type: 'circle', color: '#cc2018', strokeWidth: 2.5, padding: 8, iterations: 2, animationDuration: 800 });
+        setTimeout(function () { m.show(); }, 1500);
+      }
+    } catch (e) {}
+
     /* заголовки секций: пометка рисуется, когда заголовок попадает в кадр.
        По умолчанию подчёркивание; отдельным секциям — рамка/обводка для разнообразия */
     var MARK_TYPES = { uslugi: 'box', faq: 'box', experts: 'circle', geo: 'circle' };
@@ -108,9 +117,17 @@
     if (reduced) return;
     var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-hscroll]'));
     if (!boxes.length) return;
-    var mq = window.matchMedia('(max-width:680px)');
+    /* data-hscroll="desktop" → джек на ПК (на мобиле остаётся ручной свайп);
+       data-hscroll без значения → джек на мобиле */
     var items = boxes.map(function (box) {
-      return { box: box, pin: box.querySelector('.hs-pin'), track: box.querySelector('[data-hscroll-track]'), dist: 0, x: 0 };
+      var desktop = box.getAttribute('data-hscroll') === 'desktop';
+      return {
+        box: box,
+        pin: box.querySelector('.hs-pin'),
+        track: box.querySelector('[data-hscroll-track]'),
+        mq: window.matchMedia(desktop ? '(min-width:681px)' : '(max-width:680px)'),
+        dist: 0, x: 0
+      };
     }).filter(function (it) { return it.pin && it.track; });
     if (!items.length) return;
 
@@ -119,7 +136,7 @@
         it.track.style.transform = '';
         it.box.style.height = '';
         it.x = 0;
-        if (!mq.matches) { it.box.classList.remove('hs-on'); it.dist = 0; return; }
+        if (!it.mq.matches) { it.box.classList.remove('hs-on'); it.dist = 0; return; }
         it.box.classList.add('hs-on');
         var dist = Math.ceil(it.track.getBoundingClientRect().width - it.pin.clientWidth);
         it.dist = Math.max(0, dist);
@@ -131,24 +148,24 @@
        Жёсткая привязка к scroll-событию на таче дёргается — скролл идёт в компо-
        зиторе, а JS отстаёт на кадр; сглаживание это маскирует. */
     function raf() {
-      if (mq.matches) {
-        var vh = window.innerHeight;
-        items.forEach(function (it) {
-          if (!it.dist) return;
-          var r = it.box.getBoundingClientRect();
-          var total = r.height - vh;
-          if (total <= 0) return;
-          var p = Math.min(1, Math.max(0, -r.top / total));
-          var target = -p * it.dist;
-          it.x += (target - it.x) * 0.14;
-          if (Math.abs(target - it.x) < 0.1) it.x = target;
-          it.track.style.transform = 'translate3d(' + it.x.toFixed(2) + 'px,0,0)';
-        });
-      }
+      var vh = window.innerHeight;
+      items.forEach(function (it) {
+        if (!it.dist || !it.mq.matches) return;
+        var r = it.box.getBoundingClientRect();
+        var total = r.height - vh;
+        if (total <= 0) return;
+        var p = Math.min(1, Math.max(0, -r.top / total));
+        var target = -p * it.dist;
+        it.x += (target - it.x) * 0.14;
+        if (Math.abs(target - it.x) < 0.1) it.x = target;
+        it.track.style.transform = 'translate3d(' + it.x.toFixed(2) + 'px,0,0)';
+      });
       requestAnimationFrame(raf);
     }
     window.addEventListener('resize', function () { requestAnimationFrame(measure); });
-    if (mq.addEventListener) mq.addEventListener('change', measure);
+    items.forEach(function (it) {
+      if (it.mq.addEventListener) it.mq.addEventListener('change', measure);
+    });
     window.addEventListener('load', measure);
     measure();
     requestAnimationFrame(raf);

@@ -81,9 +81,10 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' || e.keyCode === 27) closeModal();
     });
-    // Закрыть модалку через 1.6с после успешной отправки формы внутри неё.
-    document.addEventListener('wpcf7mailsent', function (e) {
-      if (modal && modal.contains(e.target)) setTimeout(closeModal, 1600);
+    // Успешная отправка ЛЮБОЙ формы (inline / попап / квиз) → страница «Спасибо».
+    // Визит /spasibo/ — цель в Яндекс.Метрике (конверсия для Директа).
+    document.addEventListener('wpcf7mailsent', function () {
+      setTimeout(function () { location.href = '/spasibo/'; }, 350);
     });
   });
 })();

@@ -37,14 +37,16 @@
           <p class="cta-sub">Покажем ориентировочную цену и предварительное заключение по вашему объекту.</p>
 
           <div class="hero-second">
-            <span>Нужен живой совет? Перезвоним за 15 минут.</span>
-            <span class="msgs"><a href="https://t.me/prinyatopro" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">ВКонтакте</a> · <a href="tel:+79062167091">Позвонить</a></span>
+            <span>Связаться можно здесь:</span>
+            <span class="msgs" id="heroMsgs"><a href="https://t.me/prinyatopro" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">ВКонтакте</a> · <a href="tel:+79062167091">Позвонить</a></span>
           </div>
         </div>
 
-        <div class="photo-wrap">
+        <div class="photo-wrap photo-fan">
+          <img class="photo fan-b2" src="<?php echo $T; ?>/assets/img/hero-fan-3.jpg" alt="" aria-hidden="true" width="440" height="550" loading="lazy" decoding="async">
+          <img class="photo fan-b1" src="<?php echo $T; ?>/assets/img/hero-fan-2.jpg" alt="" aria-hidden="true" width="440" height="550" loading="lazy" decoding="async">
+          <img class="photo fan-front" src="<?php echo $T; ?>/assets/img/hero-fan-1.jpg" alt="Приёмка квартиры без отделки в новостройке Калининграда" width="440" height="550">
           <span class="tape"></span>
-          <img class="photo" src="<?php echo $T; ?>/assets/img/apartment.jpg" alt="Приёмка квартиры без отделки в новостройке Калининграда" width="440" height="550">
           <div class="photo-cap">Видим проблемы,<br>которые стоят дорого</div>
           <div class="stamp notchecked">Не проверено<small>статус объекта</small></div>
         </div>
@@ -158,21 +160,49 @@
 <!-- ===================== 3. ЧТО ПРОВЕРЯЕМ ===================== -->
 <section class="sec" id="check" data-section="check">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">Объём работ</span>
-      <h2 class="sh">Что мы проверяем</h2>
-      <p class="sec-lead">Приёмка — это не прогулка по комнатам с блокнотом. Мы проходим 90+ параметров по ГОСТ, СП и ПУЭ: от вертикали стен до тяги в вентканале. Каждый дефект уходит в дефектную ведомость с фотографией, привязанной к вашей квартире.</p>
-    </div>
-
-    <div class="check-grid">
-      <div class="check-item" data-reveal><b>Геометрия и поверхности</b><span>Отклонение стен от вертикали, ровность пола и потолка, перепады стяжки.</span></div>
-      <div class="check-item" data-reveal><b>Окна, балконы, лоджии</b><span>Стеклопакеты, фурнитура, монтажные швы, подоконники, отливы, продувание и промерзание.</span></div>
-      <div class="check-item" data-reveal><b>Электрика по ПУЭ</b><span>Щиток, автоматы, заземление, работа розеток и выводов, защитная автоматика.</span></div>
-      <div class="check-item" data-reveal><b>Сантехника и отопление</b><span>Водоснабжение и водоотведение, опрессовка, радиаторы, узлы, протечки.</span></div>
-      <div class="check-item" data-reveal><b>Вентиляция</b><span>Тяга в каналах и работа естественной вытяжки.</span></div>
-      <div class="check-item" data-reveal><b>Тепловой контур</b><span>Холодные швы, мостики холода, промерзание углов и стыков — смотрим тепловизором.</span></div>
-      <div class="check-item" data-reveal><b>Дверь и комплектация</b><span>Входная дверь, замки, петли, соответствие площади данным ДДУ и БТИ.</span></div>
-      <div class="check-item" data-reveal><b>Документы и фиксация</b><span>Каждый дефект — отдельный кадр с привязкой к помещению, всё в дефектную ведомость.</span></div>
+    <div class="hs" data-hscroll="desktop">
+      <div class="hs-pin">
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow">Объём работ</span>
+          <h2 class="sh">Что мы проверяем</h2>
+          <p class="sec-lead">Приёмка — это не прогулка по комнатам с блокнотом. Мы проходим 90+ параметров по ГОСТ, СП и ПУЭ: от вертикали стен до тяги в вентканале. Каждый дефект уходит в дефектную ведомость с фотографией, привязанной к вашей квартире.</p>
+        </div>
+        <div class="check-track" data-hscroll-track>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-geometry.jpg" alt="Проверка геометрии стен правилом на приёмке квартиры" width="400" height="267" loading="lazy" decoding="async">
+            <b>Геометрия и поверхности</b><span>Отклонение стен от вертикали, ровность пола и потолка, перепады стяжки.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-windows.jpg" alt="Проверка фурнитуры и стеклопакетов окна" width="400" height="267" loading="lazy" decoding="async">
+            <b>Окна, балконы, лоджии</b><span>Стеклопакеты, фурнитура, монтажные швы, подоконники, отливы, продувание и промерзание.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-electro.jpg" alt="Проверка электрощитка и автоматов по ПУЭ" width="400" height="267" loading="lazy" decoding="async">
+            <b>Электрика по ПУЭ</b><span>Щиток, автоматы, заземление, работа розеток и выводов, защитная автоматика.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-plumbing.jpg" alt="Проверка стояков водоснабжения и счётчиков" width="400" height="267" loading="lazy" decoding="async">
+            <b>Сантехника и отопление</b><span>Водоснабжение и водоотведение, опрессовка, радиаторы, узлы, протечки.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-vent.jpg" alt="Проверка тяги вентиляции анемометром" width="400" height="267" loading="lazy" decoding="async">
+            <b>Вентиляция</b><span>Тяга в каналах и работа естественной вытяжки.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-thermal.jpg" alt="Тепловизор показывает промерзание угла комнаты" width="400" height="267" loading="lazy" decoding="async">
+            <b>Тепловой контур</b><span>Холодные швы, мостики холода, промерзание углов и стыков — смотрим тепловизором.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-door.jpg" alt="Проверка замков и петель входной двери" width="400" height="267" loading="lazy" decoding="async">
+            <b>Дверь и комплектация</b><span>Входная дверь, замки, петли, соответствие площади данным ДДУ и БТИ.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg" alt="Эксперт заполняет дефектную ведомость с фотофиксацией" width="400" height="267" loading="lazy" decoding="async">
+            <b>Документы и фиксация</b><span>Каждый дефект — отдельный кадр с привязкой к помещению, всё в дефектную ведомость.</span>
+          </div>
+        </div>
+        <div class="swipe-hint" aria-hidden="true">Листайте вправо →</div>
+      </div>
     </div>
 
     <div class="equip">
@@ -327,7 +357,10 @@
         <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10V7a2 2 0 0 0-2-2h-3M3 14v3a2 2 0 0 0 2 2h3M7 11l5-5 5 5M12 6v12"/></svg><span><b>Ключи и пакет документов.</b> Закрываем формальности на месте и пересылаем вам всё необходимое.</span></li>
       </ul>
       <div>
-        <div class="dist-video" data-reveal>[Видеообзор реальной дистанционной приёмки: как клиент из другого города принял квартиру, ни разу не приехав в Калининград. — плейсхолдер]</div>
+        <picture class="dist-pic" data-reveal>
+          <source media="(max-width:680px)" srcset="<?php echo $T; ?>/assets/img/dist-remote-mobile.jpg">
+          <img src="<?php echo $T; ?>/assets/img/dist-remote.jpg" alt="Дистанционная приёмка: эксперт показывает квартиру клиенту по видеосвязи" width="450" height="600" loading="lazy" decoding="async">
+        </picture>
         <a class="btn lg dist-cta" href="#lead-modal" data-lead-open>Оставить заявку на дистанционную приёмку</a>
       </div>
     </div>

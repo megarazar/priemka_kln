@@ -101,10 +101,12 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
         if ( '' !== $v ) { $fields[ $b24 ] = $v; }
     }
 
-    // --- Дедупликация (#4): повторная отправка с того же телефона не плодит лиды.
-    // Ищем активный лид по телефону; если есть «живой» (в работе) — клеим комментарий
-    // в его таймлайн и НЕ создаём дубль. К успешным (S) / отказным/мусорным (F) лидам
-    // новую заявку не клеим — это уже новый запрос, создаём свежий лид.
+    // --- Дедупликация (#4), версия под «простой режим» CRM (включён на портале):
+    // crm.lead.add мгновенно авто-конвертируется в Контакт+Сделку, поэтому искать
+    // «живые лиды» бессмысленно (все S/CONVERTED). Логика по сущностям простого режима:
+    //   контакт по телефону есть + у него ОТКРЫТАЯ сделка → комментарий в сделку, дубль не плодим;
+    //   контакт есть, открытых сделок нет → новая сделка на этого контакта (новый запрос);
+    //   контакта нет → обычный crm.lead.add (авто-конверт создаст контакт+сделку).
     $b24 = function ( $method, $body ) {
         $r = wp_remote_post( rtrim( PRINYATO_B24_WEBHOOK, '/' ) . '/' . $method . '.json', array(
             'timeout' => 12,
@@ -117,21 +119,43 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
         $dup = $b24( 'crm.duplicate.findbycomm', array(
             'type'        => 'PHONE',
             'values'      => array( $phone ),
-            'entity_type' => 'LEAD',
+            'entity_type' => 'CONTACT',
         ) );
-        $lead_ids = ( $dup && isset( $dup['result']['LEAD'] ) ) ? (array) $dup['result']['LEAD'] : array();
-        foreach ( $lead_ids as $lid ) {
-            $got = $b24( 'crm.lead.get', array( 'id' => $lid ) );
-            $sem = isset( $got['result']['STATUS_SEMANTIC_ID'] ) ? $got['result']['STATUS_SEMANTIC_ID'] : '';
-            if ( 'S' === $sem || 'F' === $sem ) { continue; } // закрытый лид — это новый запрос
-            $b24( 'crm.timeline.comment.add', array(
-                'fields' => array(
-                    'ENTITY_ID'   => (int) $lid,
-                    'ENTITY_TYPE' => 'lead',
-                    'COMMENT'     => "Повторная заявка с сайта (тот же телефон).\n" . $comments,
-                ),
+        $contact_ids = ( $dup && isset( $dup['result']['CONTACT'] ) ) ? (array) $dup['result']['CONTACT'] : array();
+        if ( $contact_ids ) {
+            $cid   = (int) reset( $contact_ids );
+            $deals = $b24( 'crm.deal.list', array(
+                'filter' => array( 'CONTACT_ID' => $cid, 'CLOSED' => 'N' ),
+                'select' => array( 'ID' ),
+                'order'  => array( 'ID' => 'DESC' ),
             ) );
-            return; // дубль не создаём
+            $open_deal = ( $deals && ! empty( $deals['result'] ) ) ? (int) $deals['result'][0]['ID'] : 0;
+            if ( $open_deal ) {
+                $b24( 'crm.timeline.comment.add', array(
+                    'fields' => array(
+                        'ENTITY_ID'   => $open_deal,
+                        'ENTITY_TYPE' => 'deal',
+                        'COMMENT'     => "Повторная заявка с сайта (тот же телефон).\n" . $comments,
+                    ),
+                ) );
+                return; // дубль не создаём
+            }
+            // Контакт знакомый, но открытых сделок нет — это новый запрос: сделка на него.
+            $deal_fields = array(
+                'TITLE'              => $fields['TITLE'],
+                'CONTACT_ID'         => $cid,
+                'SOURCE_ID'          => 'WEB',
+                'SOURCE_DESCRIPTION' => $fields['SOURCE_DESCRIPTION'],
+                'COMMENTS'           => $comments,
+            );
+            foreach ( array( 'UTM_SOURCE', 'UTM_MEDIUM', 'UTM_CAMPAIGN', 'UTM_CONTENT', 'UTM_TERM' ) as $u ) {
+                if ( isset( $fields[ $u ] ) ) { $deal_fields[ $u ] = $fields[ $u ]; }
+            }
+            $b24( 'crm.deal.add', array(
+                'fields' => $deal_fields,
+                'params' => array( 'REGISTER_SONET_EVENT' => 'Y' ),
+            ) );
+            return;
         }
     }
 

@@ -85,5 +85,6 @@ prinyato_js($T, 'main.js');
 prinyato_js($T, 'lead.js');
 prinyato_js($T, 'quiz.js');
 ?>
+<?php wp_footer(); /* обязателен: грузит AJAX-скрипт CF7 (отправка без перезагрузки + событие wpcf7mailsent для редиректа на /spasibo/) */ ?>
 </body>
 </html>

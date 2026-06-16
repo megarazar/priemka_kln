@@ -33,7 +33,7 @@ section{position:relative;z-index:1}
 .sec-head{margin-bottom:34px;max-width:760px;position:relative}
 /* красная пометка над заголовком — рукописная, наискосок, как «6 вопросов» в hero */
 .eyebrow{font-family:var(--f-hand);font-size:30px;font-weight:700;color:var(--red-mark);line-height:1.05;display:inline-block;transform:rotate(-2deg);margin-bottom:8px}
-h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink)}
+h1.sh,h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink)}
 h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:var(--fs-24);letter-spacing:.02em;color:var(--ink);margin-bottom:8px}
 .sec-lead{font-size:var(--fs-lead);color:var(--ink-soft);margin-top:14px;line-height:1.62}
 .micro{font-size:var(--fs-sm);color:var(--ink-faint);margin-top:18px;font-style:italic}
@@ -252,13 +252,13 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .svc p{font-size:var(--fs-text);color:var(--ink-soft);flex:1;line-height:1.5}
 .svc .price{font-family:var(--f-display);font-weight:700;color:var(--ink);font-size:var(--fs-20);margin:14px 0 4px}
 .svc .price small{font-weight:400;font-size:var(--fs-note);color:var(--ink-faint)}
-.svc a.more{font-family:var(--f-display);text-transform:uppercase;font-size:var(--fs-14);color:var(--red-mark);text-decoration:none;letter-spacing:.03em;margin-top:6px}
-.svc a.more:hover{text-decoration:underline}
+a.more{font-family:var(--f-display);text-transform:uppercase;font-size:var(--fs-14);color:var(--red-mark);text-decoration:none;letter-spacing:.03em;margin-top:6px}
+a.more:hover{text-decoration:underline}
 .svc .num-tag{position:absolute;top:16px;right:18px;font-family:var(--f-display);font-weight:700;color:var(--line-dark);font-size:26px;opacity:.6}
 
 /* ===== ДИСТАНЦИОННАЯ ===== */
 .distance{background:var(--ink);color:var(--paper-2)}
-.distance h2.sh{color:#fff}
+.distance h1.sh,.distance h2.sh{color:#fff}
 .distance .eyebrow{color:#ff6258}
 .distance .sec-lead,.distance p{color:#d3c8b2}
 .dist-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start;margin-top:24px}
@@ -371,7 +371,7 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .site-footer .ft-inner{padding:64px 0 36px;position:relative}
 /* рваный верхний край — декоративный слой над футером */
 .site-footer::before{
-  content:"";position:absolute;left:0;right:0;top:-22px;height:24px;
+  content:"";position:absolute;left:0;right:0;top:-22px;height:24px;z-index:2;
   background:var(--ink);
   -webkit-mask:var(--torn-edge-top);mask:var(--torn-edge-top);
   -webkit-mask-size:auto 100%;mask-size:auto 100%;
@@ -519,19 +519,19 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 }
 
 /* ===== РВАНЫЕ ГРАНИЦЫ МЕЖДУ ВСЕМИ БЛОКАМИ ===== */
-#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq{position:relative}
-#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before{
+#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta{position:relative}
+#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before{
   content:"";position:absolute;left:0;right:0;top:-22px;height:24px;z-index:3;pointer-events:none;
   background:var(--sec-bg,var(--paper));
   -webkit-mask:var(--torn-edge-top);mask:var(--torn-edge-top);
   -webkit-mask-size:auto 100%;mask-size:auto 100%;
   -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
 }
-#trust,#distance{--sec-bg:var(--ink)}
-#quiz,#process,#video,#geo{--sec-bg:var(--paper-2)}
-#check,#uslugi,#garant,#experts,#reviews,#faq{--sec-bg:var(--paper)}
+#trust,#distance,#granicy{--sec-bg:var(--ink)}
+#quiz,#process,#video,#geo,#dop,#cta,#granicy-o{--sec-bg:var(--paper-2)}
+#check,#uslugi,#garant,#experts,#reviews,#faq,#vhodit{--sec-bg:var(--paper)}
 @supports not ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
-  #trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before{display:none}
+  #trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before{display:none}
 }
 
 /* ===== КАРТОЧКИ-«КЛОЧКИ» (рваные края clip-path, желтоватая бумага) ===== */
@@ -609,7 +609,7 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
   .pstep{flex-direction:row}
   .quiz-placeholder{padding:30px 22px}
   .act-sample{min-height:220px}
-  h2.sh,.hero h1{overflow-wrap:break-word}
+  h1.sh,h2.sh,.hero h1{overflow-wrap:break-word}
 }
 @media(max-width:430px){
   .trust .wrap{grid-template-columns:1fr}
@@ -694,3 +694,16 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .thanks-call{font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
 .thanks-call:hover{color:var(--red)}
 @media(max-width:560px){.thanks-card{padding:36px 20px 36px}.thanks-main{padding:48px 0 60px}}
+
+/* ===== Страницы услуг: бежевые секции (#dop, #cta) + светлый icon-list ===== */
+#dop,#cta,#granicy-o{background:var(--paper-2)}
+/* финальный бежевый CTA вплотную к футеру: гасим зазор margin-top:50px футера,
+   чтобы рваный верх футера «врезался» в бежевый фон, а не в paper-зазор */
+#cta,#granicy-o{margin-bottom:-50px}
+.dist-list.dl-light{margin-top:6px}
+.dist-list.dl-light li{color:var(--ink-soft)}
+.dist-list.dl-light li b{color:var(--ink)}
+.dist-list.dl-light .ic{color:var(--red)}
+/* Контакты: ссылки в карточках — фирменный красный вместо дефолтного синего */
+#kontakty .svc a{color:var(--red-mark);text-decoration:none}
+#kontakty .svc a:hover{color:var(--red);text-decoration:underline}

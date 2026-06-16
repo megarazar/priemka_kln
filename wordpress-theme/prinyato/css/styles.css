@@ -30,7 +30,7 @@ section{position:relative;z-index:1}
 
 /* заголовки секций */
 .sec{padding:64px 0}
-.sec-head{margin-bottom:34px;max-width:760px}
+.sec-head{margin-bottom:34px;max-width:760px;position:relative}
 /* красная пометка над заголовком — рукописная, наискосок, как «6 вопросов» в hero */
 .eyebrow{font-family:var(--f-hand);font-size:30px;font-weight:700;color:var(--red-mark);line-height:1.05;display:inline-block;transform:rotate(-2deg);margin-bottom:8px}
 h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink)}
@@ -179,7 +179,7 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 @media(min-width:681px){
   [data-hscroll].hs-on .hs-pin{
     position:sticky;top:0;min-height:100vh;
-    display:flex;flex-direction:column;justify-content:center;
+    display:flex;flex-direction:column;justify-content:flex-start;
     overflow:hidden;padding:96px 0 24px;
   }
   [data-hscroll].hs-on [data-hscroll-track]{overflow:visible;width:max-content;margin-inline:0;padding:8px 0 14px;will-change:transform}
@@ -635,7 +635,7 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
   /* активный режим: секция-«взлётка», контент приклеен, лента едет по transform */
   [data-hscroll].hs-on .hs-pin{
     position:sticky;top:0;min-height:100vh;min-height:100svh;
-    display:flex;flex-direction:column;justify-content:center;
+    display:flex;flex-direction:column;justify-content:flex-start;
     overflow:hidden;padding:76px 0 16px;
   }
   [data-hscroll].hs-on [data-hscroll-track]{overflow:visible;width:max-content;will-change:transform;margin-inline:0;padding:6px 0 10px}

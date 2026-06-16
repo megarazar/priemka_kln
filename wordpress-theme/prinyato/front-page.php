@@ -513,7 +513,7 @@
           <div class="geo-coast">
             <span><a href="/priemka-kvartir-zelenogradsk/">Приёмка квартир в Зеленоградске →</a> <span class="soon">страница в работе</span></span>
             <span><a href="/priemka-kvartir-svetlogorsk/">Приёмка квартир в Светлогорске →</a> <span class="soon">страница в работе</span></span>
-            <span><a href="/priemka-kvartir-pionersky/">Приёмка квартир в Пионерском →</a> <span class="soon">страница в работе</span></span>
+            <span><a href="/priemka-kvartir-pionerskiy/">Приёмка квартир в Пионерском →</a> <span class="soon">страница в работе</span></span>
           </div>
         </li>
       </ul>

@@ -10,7 +10,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     <div class="thanks-card" data-reveal>
       <div class="thanks-hand" role="img" aria-label="Заявка принята"><span class="thanks-hand-text">Заявка принята</span></div>
       <h1 class="thanks-title">Спасибо! Мы уже видим вашу заявку</h1>
-      <p class="thanks-text">Перезвоним в течение 15 минут в рабочее время (ежедневно с 9:00 до 21:00), уточним детали объекта и назовём точную стоимость. Если заявка отправлена ночью — свяжемся утром.</p>
+      <p class="thanks-text">Перезвоним в течение 15 минут в рабочее время (ежедневно с 9:00 до 19:00), уточним детали объекта и назовём точную стоимость. Если заявка отправлена ночью — свяжемся утром.</p>
 
       <div class="thanks-social">
         <p class="thanks-social-lead">А пока — загляните в наши соцсети: показываем реальные приёмки, найденные дефекты и разборы, на чём экономят застройщики.</p>
@@ -28,7 +28,7 @@ get_header(); $T = get_template_directory_uri(); ?>
 
       <div class="thanks-actions">
         <a class="btn" href="<?php echo esc_url( home_url( '/' ) ); ?>">Вернуться на главную</a>
-        <a class="thanks-call" href="tel:+79062167091">Или позвоните сами: +7 (906) 216-70-91</a>
+        <a class="thanks-call" href="tel:+79062377902">Или позвоните сами: +7 (906) 237-79-02</a>
       </div>
     </div>
   </div>

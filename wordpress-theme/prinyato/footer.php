@@ -41,10 +41,10 @@
         <div>
           <h4>Контакты</h4>
           <ul>
-            <li><a href="tel:+79062167091">+7 (906) 216-70-91</a></li>
+            <li><a href="tel:+79062377902">+7 (906) 237-79-02</a></li>
             <li><a href="https://t.me/prinyatopro" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li>
             <li>Калининград, ул. Челнокова, 9, помещение 4, кабинет 410</li>
-            <li>Ежедневно 9:00–21:00</li>
+            <li>Ежедневно 9:00–19:00</li>
           </ul>
         </div>
       </div>

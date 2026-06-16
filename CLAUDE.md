@@ -36,6 +36,11 @@
 | `plugin/` | **Отдельный git-репозиторий** — «офис» из 12 AI-агентов **Nero Network** для генерации и публикации SEO-страниц на WordPress (по SSH/FTP). **Используется** (не легаси). В `.gitignore` сайта — **не коммитить в репозиторий сайта**, но читать/запускать можно. Доступы — в корневом `.env` (на него симлинк `plugin/.env`). Детали — память `office-nero-agents`, `roadmap-status`. |
 | `.claude/agents/` | 11 субагентов офиса Nero (`kirill, seo-kolya, artyom, zhenya, artur, alina, boris, natasha, yura, qa, lenya`) с «адаптером путей» к `plugin/`. Директор-оркестратор = главный ассистент. ⚠️ После добавления субагентов нужен **перезапуск сессии**, чтобы они стали доступны как `subagent_type`. |
 
+## Сбор семантики (Wordstat / Коля)
+
+- Семантику собирает субагент **`seo-kolya`** через MCP-сервер **`mcp-kv`** (SSE), инструмент `wordstat_get_top_requests`. Wordstat-регион: **область `10857`**, город `22`. Низкочастотка 5–25 показов/мес в регионе — уже целевой трафик, не отбрасывать.
+- ⚠️ Гочча: инструменты `mcp-kv` часто **не появляются в реестре** (ToolSearch `select:wordstat_get_top_requests` пустой), хотя хост `mcp-kv.ru` живой. Решение Коли — поднять SSE-сессию MCP вручную (SSE endpoint → `initialize` → `tools/call`). Частоты не выдумывать — если API молчит, помечать `0`/`н/д`.
+
 ## Деплой
 
 - GitHub (приватный): `https://github.com/megarazar/priemka_kln.git`, ветка `main`.

@@ -26,7 +26,7 @@
       "url": "https://prinyatopro.ru/",
       "image": "https://prinyatopro.ru/wp-content/themes/prinyato/assets/img/act-sample.jpg",
       "telephone": "+79062377902",
-      "priceRange": "от 4900 ₽",
+      "priceRange": "от 8000 ₽",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Калининград",
@@ -62,12 +62,10 @@
         "@type": "OfferCatalog",
         "name": "Услуги приёмки и технадзора",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Приёмка квартиры в новостройке" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Приёмка квартиры от застройщика под ключ" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Приёмка домов и таунхаусов" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Приёмка квартиры после ремонта" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Независимый технадзор за ремонтом" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Дистанционная приёмка по доверенности" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Приёмка квартиры от застройщика" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Технический надзор ремонта" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Разовый технический аудит ремонта" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Финальная приёмка ремонта" } }
         ]
       }
     },
@@ -75,7 +73,7 @@
       "@type": "FAQPage",
       "@id": "https://prinyatopro.ru/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "Сколько стоит приёмка квартиры в Калининграде?", "acceptedAnswer": { "@type": "Answer", "text": "Ориентировочно от 4 900 ₽. Точная цена зависит от площади, типа отделки и объекта; по рынку Калининграда приёмка обычно стоит 5 000–15 000 ₽. Стоимость фиксируем в договоре заранее, без доплат на месте." } },
+        { "@type": "Question", "name": "Сколько стоит приёмка квартиры в Калининграде?", "acceptedAnswer": { "@type": "Answer", "text": "Ориентировочно от 8 000 ₽. Точная цена зависит от площади, типа объекта и набора работ; по рынку Калининграда приёмка обычно стоит 8 000–15 000 ₽. Стоимость фиксируем в договоре заранее, без доплат на месте." } },
         { "@type": "Question", "name": "Сколько длится приёмка?", "acceptedAnswer": { "@type": "Answer", "text": "В среднем 1,5–3 часа, дом или таунхаус дольше. За это время эксперт обходит весь объект с оборудованием, фотографирует каждый дефект и вносит замечания в дефектную ведомость." } },
         { "@type": "Question", "name": "Что будет, если найдём дефекты?", "acceptedAnswer": { "@type": "Answer", "text": "Внесём их в официальный акт и дефектную ведомость — документ, который застройщик обязан исполнить. Акт приёма-передачи вы не подписываете, пока дефекты не устранены. После устранения можно заказать повторный выезд, чтобы убедиться, что всё исправлено." } },
         { "@type": "Question", "name": "Нужно ли мне присутствовать лично?", "acceptedAnswer": { "@type": "Answer", "text": "Не обязательно. Вы можете быть рядом с экспертом, подключиться по видеосвязи или полностью доверить приёмку нам по доверенности — это удобно для иногородних. В любом случае получите видеообзор, фото дефектов и официальный акт." } },
@@ -108,12 +106,10 @@
             <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5"/></svg>
           </button>
           <div class="dd-menu" role="menu">
-            <a href="/priemka-kvartiry-v-novostroyke/" role="menuitem">Приёмка в новостройке</a>
-            <a href="/priemka-kvartiry-ot-zastroyschika/" role="menuitem">Приёмка от застройщика</a>
-            <a href="/priemka-domov/" role="menuitem">Приёмка домов и таунхаусов</a>
-            <a href="/priemka-kvartiry-posle-remonta/" role="menuitem">Приёмка после ремонта</a>
-            <a href="/tehnadzor-remonta-kvartiry/" role="menuitem">Технадзор за ремонтом</a>
-            <a href="/distantsionnaya-priemka/" role="menuitem">Дистанционная приёмка</a>
+            <a href="/priemka-kvartiry-ot-zastroyschika/" role="menuitem">Приёмка квартиры от застройщика</a>
+            <a href="/tehnadzor-remonta-kvartiry/" role="menuitem">Технический надзор ремонта</a>
+            <a href="/razovyy-audit-remonta/" role="menuitem">Разовый технический аудит ремонта</a>
+            <a href="/finalnaya-priemka-remonta/" role="menuitem">Финальная приёмка ремонта</a>
             <a href="/uslugi/" role="menuitem" class="dd-all">Все услуги →</a>
           </div>
         </div>

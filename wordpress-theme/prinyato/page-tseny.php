@@ -41,8 +41,8 @@ get_header(); $T = get_template_directory_uri(); ?>
         <span class="num-tag">01</span>
         <h3>Приёмка квартиры от застройщика</h3>
         <p>Осматриваем квартиру до или после подписания акта приёма-передачи. Находим дефекты, фиксируем фото и в акте, говорим простым языком: что принимать, а что застройщик обязан исправить. Повторный выезд после устранения — 50% от первичной приёмки.</p>
-        <div class="price">по площади <small>расчёт за минуту</small></div>
-        <a class="more" href="/priemka-kvartir/">Подробнее →</a>
+        <div class="price">от 8 000 ₽ <small>по площади</small></div>
+        <a class="more" href="/priemka-kvartiry-ot-zastroyschika/">Подробнее →</a>
       </div>
       <div class="svc">
         <span class="num-tag">02</span>
@@ -54,16 +54,16 @@ get_header(); $T = get_template_directory_uri(); ?>
       <div class="svc">
         <span class="num-tag">03</span>
         <h3>Разовый технический аудит ремонта</h3>
-        <p>Один выезд инженера: проверить состояние ремонта или принять отдельный этап перед расчётом с подрядчиком. Каждый следующий этап в том же выезде — +4 000 ₽.</p>
-        <div class="price">8 000 ₽ <small>за этап</small></div>
-        <a class="more" href="/tseny/#dop">Подробнее →</a>
+        <p>Один выезд инженера: проверить состояние ремонта или принять отдельный этап перед расчётом с подрядчиком. Приёмка одного этапа — 8 000 ₽, каждый следующий — +4 000 ₽.</p>
+        <div class="price">от 10 000 ₽ <small>аудит объекта</small></div>
+        <a class="more" href="/razovyy-audit-remonta/">Подробнее →</a>
       </div>
       <div class="svc">
         <span class="num-tag">04</span>
         <h3>Финальная приёмка ремонта</h3>
         <p>Проверяем квартиру или дом перед окончательным расчётом со строителями: финишная отделка, доступная инженерия, фотофиксация, акт. До 2 повторных проверок — по 50% от тарифа.</p>
-        <div class="price">по площади <small>расчёт за минуту</small></div>
-        <a class="more" href="/tseny/#dop">Подробнее →</a>
+        <div class="price">от 15 000 ₽ <small>по площади</small></div>
+        <a class="more" href="/finalnaya-priemka-remonta/">Подробнее →</a>
       </div>
     </div>
   </div>

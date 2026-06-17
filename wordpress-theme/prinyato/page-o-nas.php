@@ -53,10 +53,10 @@ get_header(); $T = get_template_directory_uri(); ?>
       <h2 class="sh">Чем мы помогаем</h2>
     </div>
     <div class="svc-grid" data-reveal>
-      <div class="svc"><span class="num-tag">01</span><h3>Приёмка квартиры от застройщика</h3><p>Проверка до или после подписания акта приёма-передачи.</p><a class="more" href="/priemka-kvartir/">Подробнее →</a></div>
+      <div class="svc"><span class="num-tag">01</span><h3>Приёмка квартиры от застройщика</h3><p>Проверка до или после подписания акта приёма-передачи.</p><a class="more" href="/priemka-kvartiry-ot-zastroyschika/">Подробнее →</a></div>
       <div class="svc"><span class="num-tag">02</span><h3>Технический надзор ремонта</h3><p>Контроль качества на ключевых этапах ремонта.</p><a class="more" href="/tehnadzor-remonta-kvartiry/">Подробнее →</a></div>
-      <div class="svc"><span class="num-tag">03</span><h3>Разовый технический аудит ремонта</h3><p>Один выезд: понять состояние работ или принять этап.</p><a class="more" href="/tseny/">Подробнее →</a></div>
-      <div class="svc"><span class="num-tag">04</span><h3>Финальная приёмка ремонта</h3><p>Проверка перед окончательным расчётом со строителями.</p><a class="more" href="/tseny/">Подробнее →</a></div>
+      <div class="svc"><span class="num-tag">03</span><h3>Разовый технический аудит ремонта</h3><p>Один выезд: понять состояние работ или принять этап.</p><a class="more" href="/razovyy-audit-remonta/">Подробнее →</a></div>
+      <div class="svc"><span class="num-tag">04</span><h3>Финальная приёмка ремонта</h3><p>Проверка перед окончательным расчётом со строителями.</p><a class="more" href="/finalnaya-priemka-remonta/">Подробнее →</a></div>
     </div>
     <p data-reveal style="margin-top:16px"><a class="more" href="/tseny/">Все услуги и цены →</a></p>
   </div>

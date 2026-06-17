@@ -114,7 +114,6 @@
           </div>
         </div>
         <a class="navlink" href="/tseny/">Цены</a>
-        <a class="navlink" href="/zhk/">Объекты</a>
         <a class="navlink" href="/o-nas/">О нас</a>
         <a class="navlink" href="/blog/">Блог</a>
         <a class="navlink" href="/kontakty/">Контакты</a>
@@ -131,13 +130,22 @@
   </div>
   <!-- мобильное меню -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/uslugi/">Услуги</a>
+    <div class="mm-services" id="mmServices">
+      <button type="button" class="mm-toggle" id="mmServicesToggle" aria-expanded="false">Услуги
+        <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5"/></svg>
+      </button>
+      <div class="mm-sub">
+        <a href="/priemka-kvartiry-ot-zastroyschika/">Приёмка квартиры от застройщика</a>
+        <a href="/tehnadzor-remonta-kvartiry/">Технический надзор ремонта</a>
+        <a href="/razovyy-audit-remonta/">Разовый технический аудит ремонта</a>
+        <a href="/finalnaya-priemka-remonta/">Финальная приёмка ремонта</a>
+        <a href="/uslugi/" class="mm-all">Все услуги →</a>
+      </div>
+    </div>
     <a href="/tseny/">Цены</a>
-    <a href="/zhk/">Объекты / ЖК</a>
     <a href="/o-nas/">О нас</a>
     <a href="/blog/">Блог</a>
     <a href="/kontakty/">Контакты</a>
-    <a href="#faq">Вопросы</a>
     <a class="phone" href="tel:+79062377902">+7 (906) 237-79-02</a>
     <a class="btn" href="#lead-modal" data-lead-open>Рассчитать цену</a>
   </div>

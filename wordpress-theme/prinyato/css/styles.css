@@ -707,3 +707,40 @@ a.more:hover{text-decoration:underline}
 /* Контакты: ссылки в карточках — фирменный красный вместо дефолтного синего */
 #kontakty .svc a{color:var(--red-mark);text-decoration:none}
 #kontakty .svc a:hover{color:var(--red);text-decoration:underline}
+
+/* ===== Поведенческий слой (пилот хаба №1): свайп-иконки, счётчики, hover, sticky-CTA ===== */
+/* «Что проверяем» свайп-лентой иконками (без фото) — иконка вместо .cc-photo */
+.check-card .ic{width:38px;height:38px;color:var(--red);display:block;margin-bottom:2px}
+.check-card{transition:transform .22s ease,box-shadow .22s ease}
+.check-card:hover{transform:translateY(-5px);box-shadow:6px 10px 0 rgba(34,29,22,.12)}
+.svc{transition:transform .22s ease,box-shadow .22s ease}
+.svc:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(30,20,8,.16)}
+/* Счётчики (count-up) */
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+.statband .stat{text-align:center;padding:6px 4px}
+.statband .stat b{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(30px,4.4vw,42px);color:var(--ink);line-height:1}
+.statband .stat span{display:block;margin-top:7px;font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.35}
+@media(max-width:680px){.statband{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}}
+/* Sticky-CTA на мобиле (только на странице, где в разметке есть .sticky-cta) */
+.sticky-cta{display:none}
+@media(max-width:680px){
+  .sticky-cta{display:flex;align-items:center;justify-content:center;position:fixed;left:12px;right:12px;bottom:12px;z-index:35;padding:14px 18px;background:var(--ink);color:#fff;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.03em;font-size:var(--fs-text);border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.32);text-decoration:none;opacity:0;transform:translateY(140%);transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+  .sticky-cta.is-visible{opacity:1;transform:none;pointer-events:auto}
+  body:has(.sticky-cta){padding-bottom:78px}
+}
+@media(prefers-reduced-motion:reduce){
+  .check-card,.svc{transition:none}
+  .check-card:hover,.svc:hover{transform:none}
+}
+
+/* ===== Мобильное меню: аккордеон «Услуги» (как дропдаун на ПК) ===== */
+.mobile-menu .mm-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:11px 0;cursor:pointer;font-family:var(--f-display);text-transform:uppercase;font-size:15px;color:var(--ink);text-align:left}
+.mobile-menu .mm-toggle svg{width:14px;height:9px;flex:0 0 auto;transition:transform .2s ease}
+.mobile-menu .mm-services.open .mm-toggle svg{transform:rotate(180deg)}
+.mobile-menu .mm-sub{display:none;flex-direction:column}
+.mobile-menu .mm-services.open .mm-sub{display:flex}
+.mobile-menu .mm-sub a{font-size:13.5px;text-transform:none;color:var(--ink-soft);padding:9px 0 9px 14px;border-bottom:1px dashed var(--line)}
+.mobile-menu .mm-sub a.mm-all{color:var(--red-mark);text-transform:uppercase;font-size:13px;padding-left:0}
+
+/* Картинка в карточке услуги (.svc) — для «частных случаев» и подобных */
+.svc-pic{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;border:3px solid #fff;box-shadow:2px 3px 0 rgba(34,29,22,.12);margin-bottom:14px;display:block;background:#cfc7b6}

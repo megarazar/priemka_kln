@@ -23,7 +23,6 @@
           <ul>
             <li><a href="/o-nas/">О нас</a></li>
             <li><a href="/tseny/">Цены</a></li>
-            <li><a href="/zhk/">Объекты / ЖК</a></li>
             <li><a href="/otzyvy/">Отзывы</a></li>
             <li><a href="/blog/">Блог</a></li>
             <li><a href="/kontakty/">Контакты</a></li>
@@ -35,7 +34,6 @@
             <li><a href="/priemka-kvartir-zelenogradsk/">Зеленоградск</a></li>
             <li><a href="/priemka-kvartir-svetlogorsk/">Светлогорск</a></li>
             <li><a href="/priemka-kvartir-pionerskiy/">Пионерский</a></li>
-            <li><a href="/zhk/">Все объекты</a></li>
           </ul>
         </div>
         <div>

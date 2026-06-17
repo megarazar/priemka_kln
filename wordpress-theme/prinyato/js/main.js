@@ -120,12 +120,16 @@
     /* data-hscroll="desktop" → джек на ПК (на мобиле остаётся ручной свайп);
        data-hscroll без значения → джек на мобиле */
     var items = boxes.map(function (box) {
-      var desktop = box.getAttribute('data-hscroll') === 'desktop';
+      var mode = box.getAttribute('data-hscroll');
+      var mqStr = mode === 'desktop' ? '(min-width:681px)'
+                : mode === 'all' ? '(min-width:1px)'
+                : '(max-width:680px)';
       return {
         box: box,
         pin: box.querySelector('.hs-pin'),
         track: box.querySelector('[data-hscroll-track]'),
-        mq: window.matchMedia(desktop ? '(min-width:681px)' : '(max-width:680px)'),
+        mq: window.matchMedia(mqStr),
+        direct: mode === 'all',
         dist: 0, x: 0
       };
     }).filter(function (it) { return it.pin && it.track; });
@@ -140,7 +144,7 @@
         it.box.classList.add('hs-on');
         var dist = Math.ceil(it.track.getBoundingClientRect().width - it.pin.clientWidth);
         it.dist = Math.max(0, dist);
-        if (it.dist) it.box.style.height = (window.innerHeight + it.dist) + 'px';
+        if (it.dist) { it.lastVh = window.innerHeight; it.box.style.height = (it.lastVh + it.dist) + 'px'; }
         else it.box.classList.remove('hs-on');
       });
     }
@@ -151,12 +155,13 @@
       var vh = window.innerHeight;
       items.forEach(function (it) {
         if (!it.dist || !it.mq.matches) return;
+        if (it.lastVh !== vh) { it.box.style.height = (vh + it.dist) + 'px'; it.lastVh = vh; }
         var r = it.box.getBoundingClientRect();
-        var total = r.height - vh;
+        var total = it.dist;
         if (total <= 0) return;
         var p = Math.min(1, Math.max(0, -r.top / total));
         var target = -p * it.dist;
-        it.x += (target - it.x) * 0.14;
+        it.x += (target - it.x) * (it.direct ? 1 : 0.14);
         if (Math.abs(target - it.x) < 0.1) it.x = target;
         it.track.style.transform = 'translate3d(' + it.x.toFixed(2) + 'px,0,0)';
       });
@@ -302,4 +307,55 @@
 
     render();
   }
+})();
+
+/* ===== Поведенческий слой: count-up счётчиков [data-count] при появлении ===== */
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window)) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var node = e.target,
+          end = parseInt(node.getAttribute('data-count'), 10) || 0,
+          suf = node.getAttribute('data-suffix') || '';
+      if (reduce) { node.textContent = end + suf; return; }
+      var dur = 1100, start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1),
+            eased = 1 - Math.pow(1 - p, 3);
+        node.textContent = Math.round(end * eased) + suf;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.4 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ===== Мобильное меню: аккордеон «Услуги» ===== */
+(function () {
+  var grp = document.getElementById('mmServices');
+  var btn = document.getElementById('mmServicesToggle');
+  if (!grp || !btn) return;
+  btn.addEventListener('click', function () {
+    var open = grp.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
+
+/* ===== Sticky-CTA: показываем после прокрутки (не сразу при загрузке) ===== */
+(function () {
+  var cta = document.querySelector('.sticky-cta');
+  if (!cta) return;
+  function upd() {
+    if (window.pageYOffset > window.innerHeight * 0.8) cta.classList.add('is-visible');
+    else cta.classList.remove('is-visible');
+  }
+  window.addEventListener('scroll', upd, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
 })();

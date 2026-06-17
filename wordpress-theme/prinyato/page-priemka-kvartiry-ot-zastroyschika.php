@@ -36,6 +36,12 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
     <p class="micro" data-reveal>Официальный акт с печатью · Фото дефектов с привязкой к квартире · Фиксированная цена в договоре · Выезд по Калининграду и области</p>
+    <div class="statband" data-reveal>
+      <div class="stat"><b data-count="8">8</b><span>узлов проверки</span></div>
+      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
+      <div class="stat"><b data-count="50" data-suffix="%">50%</b><span>повторный выезд</span></div>
+      <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
+    </div>
   </div>
 </section>
 
@@ -56,23 +62,108 @@ get_header(); $T = get_template_directory_uri(); ?>
 <!-- ===== ЧТО ПРОВЕРЯЕМ ===== -->
 <section class="sec" id="check" data-section="check">
   <div class="wrap">
+    <div class="hs" data-hscroll="all">
+      <div class="hs-pin">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">Объём работ</span>
       <h2 class="sh">Что мы проверяем в квартире</h2>
       <p class="sec-lead">Не осмотр на глаз, а инструментальная проверка узлов, которые потом дорого исправлять.</p>
     </div>
-    <div class="prose" data-reveal>
-      <ul>
-        <li><b>Геометрия и поверхности</b> — вертикаль стен, ровность пола и потолка, перепады стяжки, трещины.</li>
-        <li><b>Окна и остекление</b> — фурнитура, монтажные швы, продувание, промерзание, царапины.</li>
-        <li><b>Электрика</b> — щиток, автоматы, заземление, розетки и выводы по проекту.</li>
-        <li><b>Сантехника и отопление</b> — стояки, разводка, радиаторы, отсутствие протечек.</li>
-        <li><b>Вентиляция</b> — тяга в каждом канале.</li>
-        <li><b>Тепловой контур</b> — мостики холода и промерзание углов (тепловизор — по запросу).</li>
-        <li><b>Входная дверь и комплектация</b> — замки, петли, соответствие договору.</li>
-        <li><b>Площадь и геометрия</b> — сверка с данными ДДУ и БТИ.</li>
-      </ul>
-      <p>Работаем поверенными приборами: правило и рейка, уровень, рулетка, склерометр; тепловизор — по запросу. Измерения вы видите сами — не «тут холодно», а цифра и кадр.</p>
+    <div class="check-track" data-hscroll-track>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-geometry.jpg" alt="Проверка геометрии стен и стяжки на приёмке квартиры" width="400" height="267" loading="lazy" decoding="async"><b>Геометрия и поверхности</b><span>Вертикаль стен, ровность пола и потолка, перепады стяжки, трещины.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-windows.jpg" alt="Проверка окон и остекления при приёмке" width="400" height="267" loading="lazy" decoding="async"><b>Окна и остекление</b><span>Фурнитура, монтажные швы, продувание, промерзание, царапины.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-electro.jpg" alt="Проверка электрики и щитка по ПУЭ" width="400" height="267" loading="lazy" decoding="async"><b>Электрика</b><span>Щиток, автоматы, заземление, розетки и выводы по проекту.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-plumbing.jpg" alt="Проверка сантехники и отопления" width="400" height="267" loading="lazy" decoding="async"><b>Сантехника и отопление</b><span>Стояки, разводка, радиаторы, отсутствие протечек.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-vent.jpg" alt="Проверка вентиляции анемометром" width="400" height="267" loading="lazy" decoding="async"><b>Вентиляция</b><span>Тяга в каждом вентиляционном канале.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-thermal.jpg" alt="Тепловизионная проверка теплового контура" width="400" height="267" loading="lazy" decoding="async"><b>Тепловой контур</b><span>Мостики холода и промерзание углов (тепловизор — по запросу).</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-door.jpg" alt="Проверка входной двери и комплектации" width="400" height="267" loading="lazy" decoding="async"><b>Дверь и комплектация</b><span>Замки, петли, входная дверь, соответствие договору.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg" alt="Сверка площади квартиры с данными ДДУ и БТИ" width="400" height="267" loading="lazy" decoding="async"><b>Площадь и геометрия</b><span>Сверка с данными ДДУ и БТИ.</span></div>
+    </div>
+      </div>
+    </div>
+    <p class="micro" data-reveal>Работаем поверенными приборами: правило и рейка, уровень, рулетка, склерометр; тепловизор — по запросу. Измерения вы видите сами — не «тут холодно», а цифра и кадр.</p>
+  </div>
+</section>
+
+<!-- ===== КВИЗ (расчёт стоимости) — тот же, что на главной ===== -->
+<section class="sec quiz" id="quiz" data-section="quiz">
+  <div class="wrap">
+    <div class="sec-head" data-reveal style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow" style="justify-content:center">Калькулятор</span>
+      <h2 class="sh">Рассчитайте стоимость приёмки</h2>
+      <p class="sec-lead">Ответьте на 4 коротких вопроса — покажем ориентировочную цену и подберём формат под ваш объект. Расчёт бесплатный.</p>
+    </div>
+
+    <div class="quiz-embed" data-reveal>
+      <div class="pp-quiz" id="ppQuiz">
+        <div class="ppq-top">
+          <span class="ppq-counter">Шаг <b id="ppqStepNum">1</b> из 5</span>
+          <div class="ppq-bar"><span id="ppqBarFill" style="width:20%"></span></div>
+        </div>
+
+        <div class="ppq-step is-active" data-step="1" data-key="Объект">
+          <h3 class="ppq-q">Что нужно принять?</h3>
+          <div class="ppq-opts ppq-opts--img">
+            <button type="button" class="ppq-opt" data-value="Квартира без отделки" data-price="rough">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-rough.jpg" alt="Квартира без отделки" loading="lazy"></span>
+              <span class="ppq-label">Квартира без отделки</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Квартира с отделкой" data-price="whitebox">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-whitebox.jpg" alt="Квартира с отделкой от застройщика" loading="lazy"></span>
+              <span class="ppq-label">Квартира с отделкой</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Дом или таунхаус" data-price="house">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-house.jpg" alt="Дом или таунхаус" loading="lazy"></span>
+              <span class="ppq-label">Дом или таунхаус</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="После ремонта / технадзор" data-price="renovated">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-renovated.jpg" alt="Приёмка после ремонта или технадзор" loading="lazy"></span>
+              <span class="ppq-label">После ремонта / технадзор</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="2" data-key="Площадь">
+          <h3 class="ppq-q">Какая площадь объекта?</h3>
+          <div class="ppq-opts ppq-opts--text">
+            <button type="button" class="ppq-opt" data-value="До 40 м²" data-area="s"><span class="ppq-big">до 40</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="40–60 м²" data-area="m"><span class="ppq-big">40–60</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="60–90 м²" data-area="l"><span class="ppq-big">60–90</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="Более 90 м²" data-area="xl"><span class="ppq-big">90+</span><span class="ppq-label">м²</span></button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="3" data-key="Сроки">
+          <h3 class="ppq-q">Когда нужна приёмка?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Приглашение уже пришло">Приглашение на приёмку уже пришло</button>
+            <button type="button" class="ppq-opt" data-value="В ближайший месяц">Ключи выдают в ближайший месяц</button>
+            <button type="button" class="ppq-opt" data-value="Через 1–3 месяца">Через 1–3 месяца</button>
+            <button type="button" class="ppq-opt" data-value="Пока изучаю вопрос">Пока изучаю вопрос</button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="4" data-key="Присутствие">
+          <h3 class="ppq-q">Как вам удобнее провести приёмку?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Буду присутствовать лично">Буду присутствовать лично</button>
+            <button type="button" class="ppq-opt" data-value="Дистанционно по доверенности">Дистанционно — я в другом городе</button>
+            <button type="button" class="ppq-opt" data-value="Ещё не решил">Ещё не решил(а)</button>
+          </div>
+        </div>
+
+        <div class="ppq-step ppq-step--final" data-step="5">
+          <div class="ppq-result" id="ppqResult" hidden>
+            <span class="ppq-result-label">Ориентировочная стоимость</span>
+            <span class="ppq-result-price" id="ppqPrice">от 8 000 ₽</span>
+            <span class="ppq-result-note">Точную цену назовём после уточнения деталей — она фиксируется в договоре и не меняется на месте.</span>
+          </div>
+          <h3 class="ppq-q">Куда отправить расчёт?</h3>
+          <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+        </div>
+
+        <button type="button" class="ppq-back" id="ppqBack" hidden>&larr; Назад</button>
+      </div>
     </div>
   </div>
 </section>
@@ -122,10 +213,10 @@ get_header(); $T = get_template_directory_uri(); ?>
       <p class="sec-lead">У каждой ситуации свои нюансы — выберите свой случай.</p>
     </div>
     <div class="svc-grid" data-reveal>
-      <div class="svc"><span class="num-tag">01</span><h3>Приёмка квартиры в новостройке</h3><p>Голые стены или предчистовая отделка — проверяем перед подписанием акта.</p><a class="more" href="/priemka-kvartiry-v-novostroyke/">Подробнее →</a></div>
-      <div class="svc"><span class="num-tag">02</span><h3>Приёмка домов и таунхаусов</h3><p>Кровля, фундамент, участок, инженерия — дом сложнее квартиры.</p><a class="more" href="/priemka-domov/">Подробнее →</a></div>
-      <div class="svc"><span class="num-tag">03</span><h3>Приёмка квартиры после ремонта</h3><p>Принимаем квартиру с чистовой отделкой от застройщика.</p><a class="more" href="/priemka-kvartiry-posle-remonta/">Подробнее →</a></div>
-      <div class="svc"><span class="num-tag">04</span><h3>Дистанционная приёмка</h3><p>Для иногородних: примем по доверенности и покажем всё по видеосвязи.</p><a class="more" href="/distantsionnaya-priemka/">Подробнее →</a></div>
+      <div class="svc"><img class="svc-pic" src="<?php echo $T; ?>/assets/img/quiz-rough.jpg" alt="Приёмка квартиры в новостройке" loading="lazy"><span class="num-tag">01</span><h3>Приёмка квартиры в новостройке</h3><p>Голые стены или предчистовая отделка — проверяем перед подписанием акта.</p><a class="more" href="/priemka-kvartiry-v-novostroyke/">Подробнее →</a></div>
+      <div class="svc"><img class="svc-pic" src="<?php echo $T; ?>/assets/img/quiz-house.jpg" alt="Приёмка домов и таунхаусов" loading="lazy"><span class="num-tag">02</span><h3>Приёмка домов и таунхаусов</h3><p>Кровля, фундамент, участок, инженерия — дом сложнее квартиры.</p><a class="more" href="/priemka-domov/">Подробнее →</a></div>
+      <div class="svc"><img class="svc-pic" src="<?php echo $T; ?>/assets/img/quiz-renovated.jpg" alt="Приёмка квартиры после ремонта" loading="lazy"><span class="num-tag">03</span><h3>Приёмка квартиры после ремонта</h3><p>Принимаем квартиру с чистовой отделкой от застройщика.</p><a class="more" href="/priemka-kvartiry-posle-remonta/">Подробнее →</a></div>
+      <div class="svc"><img class="svc-pic" src="<?php echo $T; ?>/assets/img/quiz-whitebox.jpg" alt="Дистанционная приёмка квартиры" loading="lazy"><span class="num-tag">04</span><h3>Дистанционная приёмка</h3><p>Для иногородних: примем по доверенности и покажем всё по видеосвязи.</p><a class="more" href="/distantsionnaya-priemka/">Подробнее →</a></div>
     </div>
   </div>
 </section>
@@ -161,5 +252,6 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<a class="sticky-cta" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
 </main>
 <?php get_footer(); ?>

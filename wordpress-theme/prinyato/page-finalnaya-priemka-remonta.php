@@ -35,6 +35,12 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
+    <div class="statband" data-reveal>
+      <div class="stat"><b data-count="15" data-suffix=" 000 ₽">15 000 ₽</b><span>от, по площади</span></div>
+      <div class="stat"><b data-count="2">2</b><span>повтора по 50%</span></div>
+      <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
+      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
+    </div>
   </div>
 </section>
 
@@ -71,6 +77,89 @@ get_header(); $T = get_template_directory_uri(); ?>
         <li>Фотофиксацию каждого замечания.</li>
         <li>Акт финальной приёмки ремонта с перечнем недочётов и рекомендациями.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КВИЗ (расчёт стоимости) — тот же, что на главной ===== -->
+<section class="sec quiz" id="quiz" data-section="quiz">
+  <div class="wrap">
+    <div class="sec-head" data-reveal style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow" style="justify-content:center">Калькулятор</span>
+      <h2 class="sh">Рассчитайте стоимость</h2>
+      <p class="sec-lead">Ответьте на 4 коротких вопроса — покажем ориентировочную цену и подберём формат под ваш объект. Расчёт бесплатный.</p>
+    </div>
+
+    <div class="quiz-embed" data-reveal>
+      <div class="pp-quiz" id="ppQuiz">
+        <div class="ppq-top">
+          <span class="ppq-counter">Шаг <b id="ppqStepNum">1</b> из 5</span>
+          <div class="ppq-bar"><span id="ppqBarFill" style="width:20%"></span></div>
+        </div>
+
+        <div class="ppq-step is-active" data-step="1" data-key="Объект">
+          <h3 class="ppq-q">Что нужно принять?</h3>
+          <div class="ppq-opts ppq-opts--img">
+            <button type="button" class="ppq-opt" data-value="Квартира без отделки" data-price="rough">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-rough.jpg" alt="Квартира без отделки" loading="lazy"></span>
+              <span class="ppq-label">Квартира без отделки</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Квартира с отделкой" data-price="whitebox">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-whitebox.jpg" alt="Квартира с отделкой от застройщика" loading="lazy"></span>
+              <span class="ppq-label">Квартира с отделкой</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="Дом или таунхаус" data-price="house">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-house.jpg" alt="Дом или таунхаус" loading="lazy"></span>
+              <span class="ppq-label">Дом или таунхаус</span>
+            </button>
+            <button type="button" class="ppq-opt" data-value="После ремонта / технадзор" data-price="renovated">
+              <span class="ppq-pic"><img src="<?php echo $T; ?>/assets/img/quiz-renovated.jpg" alt="Приёмка после ремонта или технадзор" loading="lazy"></span>
+              <span class="ppq-label">После ремонта / технадзор</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="2" data-key="Площадь">
+          <h3 class="ppq-q">Какая площадь объекта?</h3>
+          <div class="ppq-opts ppq-opts--text">
+            <button type="button" class="ppq-opt" data-value="До 40 м²" data-area="s"><span class="ppq-big">до 40</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="40–60 м²" data-area="m"><span class="ppq-big">40–60</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="60–90 м²" data-area="l"><span class="ppq-big">60–90</span><span class="ppq-label">м²</span></button>
+            <button type="button" class="ppq-opt" data-value="Более 90 м²" data-area="xl"><span class="ppq-big">90+</span><span class="ppq-label">м²</span></button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="3" data-key="Сроки">
+          <h3 class="ppq-q">Когда нужна финальная приёмка?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Ремонт уже завершён">Ремонт уже завершён</button>
+            <button type="button" class="ppq-opt" data-value="Заканчивается в ближайшую неделю">Заканчивается в ближайшую неделю</button>
+            <button type="button" class="ppq-opt" data-value="Через 2–4 недели">Через 2–4 недели</button>
+            <button type="button" class="ppq-opt" data-value="Пока изучаю вопрос">Пока изучаю вопрос</button>
+          </div>
+        </div>
+
+        <div class="ppq-step" data-step="4" data-key="Присутствие">
+          <h3 class="ppq-q">Как удобнее держать связь?</h3>
+          <div class="ppq-opts ppq-opts--list">
+            <button type="button" class="ppq-opt" data-value="Буду присутствовать лично">Буду присутствовать лично</button>
+            <button type="button" class="ppq-opt" data-value="Дистанционно по доверенности">Дистанционно — я в другом городе</button>
+            <button type="button" class="ppq-opt" data-value="Ещё не решил">Ещё не решил(а)</button>
+          </div>
+        </div>
+
+        <div class="ppq-step ppq-step--final" data-step="5">
+          <div class="ppq-result" id="ppqResult" hidden>
+            <span class="ppq-result-label">Ориентировочная стоимость</span>
+            <span class="ppq-result-price" id="ppqPrice">от 15 000 ₽</span>
+            <span class="ppq-result-note">Точную цену назовём после уточнения деталей — она фиксируется в договоре и не меняется на месте.</span>
+          </div>
+          <h3 class="ppq-q">Куда отправить расчёт?</h3>
+          <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+        </div>
+
+        <button type="button" class="ppq-back" id="ppqBack" hidden>&larr; Назад</button>
+      </div>
     </div>
   </div>
 </section>
@@ -141,5 +230,6 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<a class="sticky-cta" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
 </main>
 <?php get_footer(); ?>

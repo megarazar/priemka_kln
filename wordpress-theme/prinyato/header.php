@@ -5,8 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="приёмка квартир калининград, приёмка квартиры в новостройке, приёмка квартиры от застройщика, приёмка домов, технадзор калининград, строительный контроль калининград, дистанционная приёмка квартиры">
-<link rel="icon" href="<?php echo $T; ?>/assets/img/logo.png" type="image/png">
-<link rel="apple-touch-icon" href="<?php echo $T; ?>/assets/img/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $T; ?>/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="<?php echo $T; ?>/assets/img/favicon-192.png">
+<link rel="apple-touch-icon" href="<?php echo $T; ?>/assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -110,6 +112,7 @@
             <a href="/tehnadzor-remonta-kvartiry/" role="menuitem">Технический надзор ремонта</a>
             <a href="/razovyy-audit-remonta/" role="menuitem">Разовый технический аудит ремонта</a>
             <a href="/finalnaya-priemka-remonta/" role="menuitem">Финальная приёмка ремонта</a>
+            <a href="/distantsionnaya-priemka/" role="menuitem">Дистанционная приёмка</a>
             <a href="/uslugi/" role="menuitem" class="dd-all">Все услуги →</a>
           </div>
         </div>
@@ -139,6 +142,7 @@
         <a href="/tehnadzor-remonta-kvartiry/">Технический надзор ремонта</a>
         <a href="/razovyy-audit-remonta/">Разовый технический аудит ремонта</a>
         <a href="/finalnaya-priemka-remonta/">Финальная приёмка ремонта</a>
+        <a href="/distantsionnaya-priemka/">Дистанционная приёмка</a>
         <a href="/uslugi/" class="mm-all">Все услуги →</a>
       </div>
     </div>

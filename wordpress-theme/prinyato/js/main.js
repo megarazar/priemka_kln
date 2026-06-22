@@ -359,3 +359,207 @@
   window.addEventListener('resize', upd);
   upd();
 })();
+
+/* ===== Услуги: мобильная свайп-«колода» карт (≤680px) =====
+   Переиспользует существующие .svc внутри #uslugi .svc-grid. Десктоп не трогаем.
+   Жест Pointer Events: тянем верхнюю карту влево → улетает и встаёт в низ колоды. */
+(function () {
+  var section = document.getElementById('uslugi');
+  if (!section) return;
+  var grid = section.querySelector('.svc-grid');
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.svc'));
+  if (cards.length < 2) return;
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mq = window.matchMedia('(max-width:680px)');
+  var order = cards.map(function (_, i) { return i; });
+  var active = false, ui = null, dots = [], busy = false, drag = null;
+  var THRESHOLD = 0.30, TAP_SLOP = 8;
+
+  function depthStyle(depth) {
+    var n = cards.length;
+    if (depth === 0) return { t: 'translate3d(0,0,0) scale(1)', o: 1, z: n };
+    if (depth === 1) return { t: 'translate3d(0,9px,0) scale(.965)', o: .9, z: n - 1 };
+    if (depth === 2) return { t: 'translate3d(0,18px,0) scale(.93)', o: .65, z: n - 2 };
+    return { t: 'translate3d(0,18px,0) scale(.93)', o: 0, z: n - depth };
+  }
+  function topCard() { return cards[order[0]]; }
+
+  function paint() {
+    order.forEach(function (idx, depth) {
+      var c = cards[idx], s = depthStyle(depth);
+      c.style.zIndex = String(s.z);
+      c.style.opacity = String(s.o);
+      if (!c.classList.contains('is-dragging') && !c.classList.contains('is-flying')) {
+        c.style.transform = s.t;
+      }
+      c.classList.toggle('is-top', depth === 0);
+      var hidden = depth > 2;
+      Array.prototype.forEach.call(c.querySelectorAll('a'), function (a) {
+        if (hidden) a.setAttribute('tabindex', '-1'); else a.removeAttribute('tabindex');
+      });
+      c.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+    });
+    dots.forEach(function (d, i) { d.classList.toggle('on', i === order[0]); });
+    var cnt = ui && ui.querySelector('.svc-deck-count');
+    if (cnt) cnt.textContent = (order[0] + 1) + ' / ' + cards.length;
+  }
+
+  function measure() {
+    if (!active) return;
+    var prev = cards.map(function (c) { return c.style.cssText; });
+    grid.style.height = '';
+    cards.forEach(function (c) {
+      c.style.position = 'static'; c.style.transform = 'none';
+      c.style.opacity = '1'; c.style.width = '';
+    });
+    var maxH = 0;
+    cards.forEach(function (c) { if (c.offsetHeight > maxH) maxH = c.offsetHeight; });
+    cards.forEach(function (c, i) { c.style.cssText = prev[i]; });
+    grid.style.height = (maxH + 24) + 'px';
+    paint();
+  }
+
+  function cycleToBack() { order.push(order.shift()); }
+
+  function onDown(e) {
+    if (!active || busy || drag) return;
+    var c = topCard();
+    if (e.currentTarget !== c) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, dx: 0, dy: 0, card: c, moved: false };
+    c.classList.add('is-dragging');
+    try { c.setPointerCapture(e.pointerId); } catch (_) {}
+  }
+  function onMove(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag.dx = e.clientX - drag.x0; drag.dy = e.clientY - drag.y0;
+    if (!drag.moved && Math.sqrt(drag.dx * drag.dx + drag.dy * drag.dy) > TAP_SLOP) {
+      drag.moved = true; section.classList.add('swiped');
+    }
+    if (!drag.moved) return;
+    drag.card.style.transform = 'translate3d(' + drag.dx.toFixed(1) + 'px,0,0) rotate(' + (drag.dx * 0.04).toFixed(2) + 'deg)';
+  }
+  function onUp(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var c = drag.card, dx = drag.dx, moved = drag.moved;
+    try { c.releasePointerCapture(e.pointerId); } catch (_) {}
+    c.classList.remove('is-dragging');
+    if (!moved) { c.style.transform = depthStyle(0).t; drag = null; return; }
+    var w = grid.clientWidth || 320;
+    var fly = Math.abs(dx) > w * THRESHOLD;
+    var right = dx > 0;
+    drag = null;
+    if (!fly) { c.style.transform = depthStyle(0).t; c.style.opacity = '1'; return; }
+    if (right) {                         // свайп вправо → вернуть предыдущую карту наверх
+      if (reduced) { order.unshift(order.pop()); paint(); return; }
+      rewind(w);                         // старый верх (c) уедет в стопку через paint()
+      return;
+    }
+    // свайп влево → текущая верхняя улетает, следующая выходит наверх
+    if (reduced) { cycleToBack(); paint(); return; }
+    busy = true;
+    c.classList.add('is-flying');
+    c.style.transform = 'translate3d(' + (-w * 1.3) + 'px,40px,0) rotate(-12deg)';
+    c.style.opacity = '0';
+    var done = function () {
+      c.removeEventListener('transitionend', done);
+      c.classList.remove('is-flying');
+      cycleToBack();
+      c.style.transition = 'none';
+      paint();
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { c.style.transition = ''; busy = false; });
+      });
+    };
+    c.addEventListener('transitionend', done);
+    setTimeout(function () { if (c.classList.contains('is-flying')) done(); }, 540);
+  }
+
+  function rewind(w) {
+    busy = true;
+    var inc = cards[order[order.length - 1]];   // карта снизу колоды → станет верхней
+    inc.style.transition = 'none';
+    inc.style.zIndex = String(cards.length + 1);
+    inc.style.opacity = '1';
+    inc.style.transform = 'translate3d(' + (-w * 1.3) + 'px,40px,0) rotate(-12deg)'; // за левым краем
+    order.unshift(order.pop());
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        inc.style.transition = '';        // вернуть плавность → въезжает слева в центр
+        paint();                          // старый верх уезжает в стопку (depth 1)
+      });
+    });
+    setTimeout(function () { busy = false; }, 460);
+  }
+
+  function bindCard(c) {
+    c.addEventListener('pointerdown', onDown);
+    c.addEventListener('pointermove', onMove);
+    c.addEventListener('pointerup', onUp);
+    c.addEventListener('pointercancel', onUp);
+    c.addEventListener('dragstart', function (ev) { ev.preventDefault(); });
+  }
+  function unbindCard(c) {
+    c.removeEventListener('pointerdown', onDown);
+    c.removeEventListener('pointermove', onMove);
+    c.removeEventListener('pointerup', onUp);
+    c.removeEventListener('pointercancel', onUp);
+  }
+
+  function buildUI() {
+    ui = document.createElement('div');
+    ui.className = 'svc-deck-ui';
+    var hint = document.createElement('div');
+    hint.className = 'svc-deck-hint';
+    var arr = document.createElement('i');
+    arr.className = 'svc-deck-arrow';
+    arr.setAttribute('aria-hidden', 'true');
+    arr.textContent = '↔';
+    var lbl = document.createElement('span');
+    lbl.textContent = 'Листайте в стороны';
+    hint.appendChild(arr); hint.appendChild(lbl);
+    var dw = document.createElement('div');
+    dw.className = 'svc-deck-dots';
+    dots = cards.map(function () { var b = document.createElement('b'); dw.appendChild(b); return b; });
+    var cnt = document.createElement('span');
+    cnt.className = 'svc-deck-count';
+    ui.appendChild(hint); ui.appendChild(dw); ui.appendChild(cnt);
+    grid.insertAdjacentElement('beforebegin', ui);
+  }
+
+  function enable() {
+    if (active) return;
+    active = true;
+    order = cards.map(function (_, i) { return i; });
+    section.classList.add('svc-deck');
+    cards.forEach(bindCard);
+    if (!ui) buildUI();
+    measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  }
+  function disable() {
+    if (!active) return;
+    active = false; busy = false; drag = null;
+    section.classList.remove('svc-deck', 'swiped');
+    cards.forEach(function (c) {
+      unbindCard(c);
+      c.style.cssText = '';
+      c.classList.remove('is-top', 'is-dragging', 'is-flying');
+      c.removeAttribute('aria-hidden');
+      Array.prototype.forEach.call(c.querySelectorAll('a'), function (a) { a.removeAttribute('tabindex'); });
+    });
+    grid.style.height = '';
+    if (ui && ui.parentNode) ui.parentNode.removeChild(ui);
+    ui = null; dots = [];
+  }
+  function sync() { if (mq.matches) enable(); else disable(); }
+
+  window.addEventListener('resize', function () { if (active) requestAnimationFrame(measure); });
+  window.addEventListener('orientationchange', function () { if (active) requestAnimationFrame(measure); });
+  if (mq.addEventListener) mq.addEventListener('change', sync);
+  else if (mq.addListener) mq.addListener(sync);
+  window.addEventListener('load', function () { if (active) measure(); });
+  sync();
+})();

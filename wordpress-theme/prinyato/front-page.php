@@ -5,19 +5,11 @@
 <section class="hero" id="hero" data-section="hero">
   <div class="wrap">
     <div class="akt">
-      <div class="akt-meta">
-        <div class="f"><span class="k">Услуга:</span><span class="v">Приёмка квартир и домов</span></div>
-        <div class="f"><span class="k">Регион:</span><span class="v">Калининград и область</span></div>
-        <div class="akt-no">№ 000174</div>
-        <div class="f"><span class="k">Документ:</span><span class="v">Официальный акт с печатью</span></div>
-        <div class="f"><span class="k">Статус:</span><span class="v">&nbsp;</span></div>
-      </div>
-
       <div class="hero-grid">
         <div>
           <h1>Профессиональная приёмка квартир и домов в Калининграде и на&nbsp;побережье</h1>
           <p class="lead-red">Находим то, что застройщик прячет за свежей краской, и&nbsp;<span id="mark-lead">фиксируем так, что отмахнуться уже нельзя</span>.</p>
-          <p class="lead">Официальный акт с печатью и фото каждого дефекта с привязкой к вашей квартире. Живёте не в Калининграде? Примем квартиру за вас по доверенности.</p>
+          <p class="lead">Официальный акт за 10 минут с печатью и фото каждого дефекта с привязкой к вашей квартире. Живёте не в Калининграде? Примем квартиру за вас по доверенности.</p>
 
           <ul class="hero-bullets">
             <li>
@@ -32,9 +24,8 @@
 
           <div class="cta-row">
             <a href="#quiz" class="btn lg">Рассчитать стоимость за минуту</a>
-            <span class="hand cta-note">6 вопросов —<br>и узнаете цену!</span>
+            <span class="hand cta-note">4 вопроса —<br>и узнаете цену!</span>
           </div>
-          <p class="cta-sub">Покажем ориентировочную цену и предварительное заключение по вашему объекту.</p>
 
           <div class="hero-second">
             <span>Связаться можно здесь:</span>
@@ -167,10 +158,15 @@
           <h2 class="sh">Что мы проверяем</h2>
           <p class="sec-lead">Приёмка — это не прогулка по комнатам с блокнотом. Мы проходим 90+ параметров по ГОСТ, СП и ПУЭ: от вертикали стен до тяги в вентканале. Каждый дефект уходит в дефектную ведомость с фотографией, привязанной к вашей квартире.</p>
         </div>
+        <div class="swipe-hint" aria-hidden="true">Листайте вправо →</div>
         <div class="check-track" data-hscroll-track>
           <div class="check-card" data-reveal>
             <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-geometry.jpg" alt="Проверка геометрии стен правилом на приёмке квартиры" width="400" height="267" loading="lazy" decoding="async">
             <b>Геометрия и поверхности</b><span>Отклонение стен от вертикали, ровность пола и потолка, перепады стяжки.</span>
+          </div>
+          <div class="check-card" data-reveal>
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-screed.jpg" alt="Проверка стяжки пола: толщина, ровность и пустоты" width="400" height="267" loading="lazy" decoding="async">
+            <b>Проверка стяжки</b><span>Толщина, ровность, пустоты и трещины — основа будущего пола.</span>
           </div>
           <div class="check-card" data-reveal>
             <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-windows.jpg" alt="Проверка фурнитуры и стеклопакетов окна" width="400" height="267" loading="lazy" decoding="async">
@@ -201,7 +197,6 @@
             <b>Документы и фиксация</b><span>Каждый дефект — отдельный кадр с привязкой к помещению, всё в дефектную ведомость.</span>
           </div>
         </div>
-        <div class="swipe-hint" aria-hidden="true">Листайте вправо →</div>
       </div>
     </div>
 
@@ -322,6 +317,13 @@
         <div class="price">от 15 000 ₽ <small>по площади</small></div>
         <a class="more" href="/finalnaya-priemka-remonta/">Подробнее →</a>
       </div>
+      <div class="svc" data-reveal>
+        <span class="num-tag">05</span>
+        <h3>Дистанционная приёмка</h3>
+        <p>Для иногородних: примем квартиру по доверенности, покажем всё по видеосвязи и пришлём акт — без вашего приезда.</p>
+        <div class="price">от 11 000 ₽ <small>по доверенности</small></div>
+        <a class="more" href="/distantsionnaya-priemka/">Подробнее →</a>
+      </div>
       <div class="svc" data-reveal style="justify-content:center;align-items:flex-start;background:var(--ink);color:var(--paper-2)">
         <h3 style="color:#fff">Не знаете, что выбрать?</h3>
         <p style="color:#d3c8b2">Пройдите короткий опрос — подберём услугу и покажем ориентировочную цену по вашему объекту.</p>
@@ -329,34 +331,6 @@
       </div>
     </div>
     <p class="micro" data-reveal>Точную цену зафиксируем в договоре, без «доплат на месте».</p>
-  </div>
-</section>
-
-<!-- ===================== 6. ДИСТАНЦИОННАЯ ===================== -->
-<section class="sec distance" id="distance" data-section="distance">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">Для иногородних</span>
-      <h2 class="sh">Дистанционная приёмка «под ключ»</h2>
-      <p class="sec-lead">Купили квартиру у моря, а сами живёте в другом регионе? Лететь в Калининград ради приёмки не нужно. Примем квартиру за вас по доверенности и проведём через весь процесс онлайн.</p>
-      <p style="margin-top:14px;font-size:16px"><b style="color:#fff">Экономит минимум два приезда</b> — на осмотр и на повторный контроль после устранения. Перелёт, гостиница и отгулы остаются при вас.</p>
-    </div>
-    <div class="dist-grid">
-      <ul class="dist-list">
-        <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span><b>Приёмка по доверенности.</b> Эксперт осматривает квартиру, вы подключаетесь по видеосвязи и видите всё в реальном времени.</span></li>
-        <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 10l4.5-2.5v9L15 14M3 6h12v12H3z"/></svg><span><b>Полный видеообзор.</b> Снимаем подробное видео каждого помещения и каждого дефекта и присылаем вам.</span></li>
-        <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span><b>Документы дистанционно.</b> Официальный акт и претензию застройщику оформляем без вашего личного присутствия.</span></li>
-        <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><b>Контроль устранения.</b> После исправлений можем провести повторную проверку — тоже удалённо.</span></li>
-        <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10V7a2 2 0 0 0-2-2h-3M3 14v3a2 2 0 0 0 2 2h3M7 11l5-5 5 5M12 6v12"/></svg><span><b>Ключи и пакет документов.</b> Закрываем формальности на месте и пересылаем вам всё необходимое.</span></li>
-      </ul>
-      <div>
-        <picture class="dist-pic" data-reveal>
-          <source media="(max-width:680px)" srcset="<?php echo $T; ?>/assets/img/dist-remote-mobile.jpg">
-          <img src="<?php echo $T; ?>/assets/img/dist-remote.jpg" alt="Дистанционная приёмка: эксперт показывает квартиру клиенту по видеосвязи" width="450" height="600" loading="lazy" decoding="async">
-        </picture>
-        <a class="btn lg dist-cta" href="#lead-modal" data-lead-open>Оставить заявку на дистанционную приёмку</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -495,23 +469,20 @@
     <div class="sec-head" data-reveal>
       <span class="eyebrow">География</span>
       <h2 class="sh">Где мы работаем</h2>
-      <p class="sec-lead">Работаем по всему Калининграду и Калининградской области. Выезжаем в города и на побережье — туда, где строят и где квартиры всё чаще берут инвесторы и переезжающие к морю.</p>
+      <p class="sec-lead">Работаем по всему Калининграду и области. Чаще всего выезжаем в сам Калининград и в курортные города у моря — туда, где активно строят и где квартиры берут инвесторы и переезжающие.</p>
     </div>
     <div class="geo-grid">
       <ul class="geo-list">
         <li data-reveal><b>Калининград</b> — приёмка квартир в новостройках по всему городу.</li>
-        <li data-reveal><b>Калининградская область</b> — выезд в Гурьевск, Светлый, Балтийск, Советск и другие города.</li>
-        <li data-reveal>
-          <b>Побережье Балтийского моря</b>
-          <div class="geo-coast">
-            <span><a href="/priemka-kvartir-zelenogradsk/">Приёмка квартир в Зеленоградске →</a> <span class="soon">страница в работе</span></span>
-            <span><a href="/priemka-kvartir-svetlogorsk/">Приёмка квартир в Светлогорске →</a> <span class="soon">страница в работе</span></span>
-            <span><a href="/priemka-kvartir-pionerskiy/">Приёмка квартир в Пионерском →</a> <span class="soon">страница в работе</span></span>
-          </div>
-        </li>
+        <li data-reveal><b>Зеленоградск</b> — приёмка квартир в курортных новостройках.</li>
+        <li data-reveal><b>Светлогорск</b> — приёмка квартир и апартаментов у моря.</li>
+        <li data-reveal><b>Пионерский</b> — приёмка в новых жилых комплексах на берегу.</li>
+        <li data-reveal><b>Гурьевск</b> — приёмка в новостройках пригорода Калининграда.</li>
+        <li data-reveal><b>Балтийск</b> — выезд на запад области, к морю.</li>
+        <li data-reveal><b>Янтарный</b> — приёмка квартир и апартаментов на побережье.</li>
       </ul>
       <div class="act-sample has-img" data-reveal>
-        <img src="<?php echo $T; ?>/assets/img/coast-map.jpg" alt="Карта работы: Калининград и побережье — Зеленоградск, Светлогорск, Пионерский" loading="lazy" decoding="async">
+        <img src="<?php echo $T; ?>/assets/img/region-map.jpg" alt="Карта работы: Калининград, Зеленоградск, Светлогорск, Пионерский" loading="lazy" decoding="async">
       </div>
     </div>
     <p class="micro" data-reveal>Не нашли свой город? Мы ездим по всей области — уточните по телефону или в заявке.</p>

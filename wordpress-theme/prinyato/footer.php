@@ -34,6 +34,9 @@
             <li><a href="/priemka-kvartir-zelenogradsk/">Зеленоградск</a></li>
             <li><a href="/priemka-kvartir-svetlogorsk/">Светлогорск</a></li>
             <li><a href="/priemka-kvartir-pionerskiy/">Пионерский</a></li>
+            <li>Балтийск</li>
+            <li>Янтарный</li>
+            <li>Гурьевск</li>
           </ul>
         </div>
         <div>

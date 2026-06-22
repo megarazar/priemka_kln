@@ -158,7 +158,7 @@
           <h2 class="sh">Что мы проверяем</h2>
           <p class="sec-lead">Приёмка — это не прогулка по комнатам с блокнотом. Мы проходим 90+ параметров по ГОСТ, СП и ПУЭ: от вертикали стен до тяги в вентканале. Каждый дефект уходит в дефектную ведомость с фотографией, привязанной к вашей квартире.</p>
         </div>
-        <div class="swipe-hint" aria-hidden="true">Листайте вправо →</div>
+        <div class="swipe-hint" aria-hidden="true">← Листайте влево</div>
         <div class="check-track" data-hscroll-track>
           <div class="check-card" data-reveal>
             <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-geometry.jpg" alt="Проверка геометрии стен правилом на приёмке квартиры" width="400" height="267" loading="lazy" decoding="async">
@@ -385,19 +385,19 @@
     </div>
     <div class="exp-grid" data-hscroll-track>
       <div class="exp" data-reveal>
-        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-1.jpg" alt="Андрей Соколов — ведущий инженер-эксперт по приёмке квартир" width="380" height="500" loading="lazy">
+        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-1.jpg?v=<?php echo filemtime(get_template_directory() . '/assets/img/expert-1.jpg'); ?>" alt="Андрей Соколов — ведущий инженер-эксперт по приёмке квартир" width="380" height="500" loading="lazy">
         <b>Андрей Соколов</b>
         <div class="role">Ведущий инженер-эксперт по приёмке</div>
         <div class="meta">Опыт 13 лет · принял более 900 объектов<br>Инженер в реестре НОПРИЗ</div>
       </div>
       <div class="exp" data-reveal>
-        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-2.jpg" alt="Калгин Дмитрий — инженер технического надзора, тепловизионное обследование" width="380" height="500" loading="lazy">
+        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-2.jpg?v=<?php echo filemtime(get_template_directory() . '/assets/img/expert-2.jpg'); ?>" alt="Калгин Дмитрий — инженер технического надзора, тепловизионное обследование" width="380" height="500" loading="lazy">
         <b>Калгин Дмитрий</b>
         <div class="role">Инженер технического надзора</div>
         <div class="meta">Опыт 11 лет · более 700 объектов<br>Тепловизионное обследование, инженерные системы (вентиляция, отопление), геометрия стен и стяжки</div>
       </div>
       <div class="exp" data-reveal>
-        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-3.jpg" alt="Калужин Игорь — эксперт по дистанционной приёмке квартир" width="380" height="500" loading="lazy">
+        <img class="exp-photo" src="<?php echo $T; ?>/assets/img/expert-3.jpg?v=<?php echo filemtime(get_template_directory() . '/assets/img/expert-3.jpg'); ?>" alt="Калужин Игорь — эксперт по дистанционной приёмке квартир" width="380" height="500" loading="lazy">
         <b>Калужин Игорь</b>
         <div class="role">Эксперт по дистанционной приёмке</div>
         <div class="meta">Опыт 9 лет · более 600 приёмок<br>Дистанционная приёмка по доверенности, окна и остекление, электрика и слаботочные системы</div>

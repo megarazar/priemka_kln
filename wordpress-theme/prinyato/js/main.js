@@ -152,6 +152,10 @@
        Жёсткая привязка к scroll-событию на таче дёргается — скролл идёт в компо-
        зиторе, а JS отстаёт на кадр; сглаживание это маскирует. */
     function raf() {
+      var vv = window.visualViewport;
+      /* при пинч-зуме визуальный вьюпорт != layout-вьюпорта → координаты rect/innerHeight
+         рассинхронятся и лента дёргается. На время зума замораживаем transform. */
+      if (vv && (vv.scale > 1.01 || vv.scale < 0.99)) { requestAnimationFrame(raf); return; }
       var vh = window.innerHeight;
       items.forEach(function (it) {
         if (!it.dist || !it.mq.matches) return;
@@ -168,6 +172,7 @@
       requestAnimationFrame(raf);
     }
     window.addEventListener('resize', function () { requestAnimationFrame(measure); });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', function () { requestAnimationFrame(measure); });
     items.forEach(function (it) {
       if (it.mq.addEventListener) it.mq.addEventListener('change', measure);
     });
@@ -558,6 +563,7 @@
 
   window.addEventListener('resize', function () { if (active) requestAnimationFrame(measure); });
   window.addEventListener('orientationchange', function () { if (active) requestAnimationFrame(measure); });
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', function () { if (active) requestAnimationFrame(measure); });
   if (mq.addEventListener) mq.addEventListener('change', sync);
   else if (mq.addListener) mq.addListener(sync);
   window.addEventListener('load', function () { if (active) measure(); });

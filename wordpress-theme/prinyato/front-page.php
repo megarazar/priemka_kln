@@ -9,16 +9,18 @@
         <div>
           <h1>Профессиональная приёмка квартир и домов в Калининграде и на&nbsp;побережье</h1>
           <p class="lead-red">Находим то, что застройщик прячет за свежей краской, и&nbsp;<span id="mark-lead">фиксируем так, что отмахнуться уже нельзя</span>.</p>
-          <p class="lead">Официальный акт за 10 минут с печатью и фото каждого дефекта с привязкой к вашей квартире. Живёте не в Калининграде? Примем квартиру за вас по доверенности.</p>
-
           <ul class="hero-bullets">
             <li>
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              <span>Акт с печатью и подписью эксперта — застройщик обязан устранить, а не «принять к сведению».</span>
+              <svg class="ic ic--act" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span>Официальный акт за 10 минут осмотра с подписью эксперта — застройщик обязан устранить, а не «принять к сведению».</span>
             </li>
             <li>
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M12 7v5l3 2"/></svg>
+              <svg class="ic ic--recheck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
               <span>После ремонта приедем ещё раз и проверим, всё ли исправили.</span>
+            </li>
+            <li>
+              <svg class="ic ic--remote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <span>Живёте не в Калининграде? Примем квартиру за вас по доверенности.</span>
             </li>
           </ul>
 
@@ -259,7 +261,7 @@
       </article>
       <article class="pstep" role="listitem">
         <div class="pstamp">04<small>акт</small></div>
-        <div class="pbody"><b>Официальный акт и ведомость</b><p>Составляем акт с печатью и подписью эксперта и дефектную ведомость. Это документ, который застройщик обязан исполнить.</p></div>
+        <div class="pbody"><b>Официальный акт и ведомость</b><p>Составляем официальный акт осмотра с подписью эксперта и дефектную ведомость. Это документ, который застройщик обязан исполнить.</p></div>
       </article>
       <article class="pstep" role="listitem">
         <div class="pstamp">05<small>контроль</small></div>
@@ -339,18 +341,27 @@
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">Гарантии</span>
-      <h2 class="sh">Акт с печатью, фото с привязкой и фиксированная цена в договоре</h2>
-      <p class="sec-lead">Главный страх на этом рынке — заплатить за «филькин акт»: бумажку без печати и фото непонятно чьей квартиры, которую застройщик спокойно проигнорирует. У нас так не выйдет. Вот что остаётся у вас на руках.</p>
+      <h2 class="sh">Официальный акт осмотра, фото с привязкой и фиксированная цена в договоре</h2>
+      <p class="sec-lead">Главный страх на этом рынке — заплатить за «филькин акт»: безымянную распечатку с фото непонятно чьей квартиры, которую застройщик спокойно проигнорирует. У нас так не выйдет. Вот что остаётся у вас на руках.</p>
     </div>
     <div class="guarant-grid">
       <div class="guarant-list">
-        <div class="gitem" data-reveal><b>Официальный акт с печатью</b><p>Акт осмотра с печатью компании и подписью эксперта, а не безымянная распечатка. На его основании застройщик обязан устранить дефекты.</p></div>
+        <div class="gitem" data-reveal><b>Официальный акт осмотра</b><p>Акт осмотра с подписью эксперта, а не безымянная распечатка. На его основании застройщик обязан устранить дефекты.</p></div>
         <div class="gitem" data-reveal><b>Фото с привязкой к вашей квартире</b><p>Каждый дефект — отдельный кадр с привязкой к конкретному объекту и помещению. Сказать «это не у нас» уже не получится.</p></div>
         <div class="gitem" data-reveal><b>Проверка по 90+ параметрам</b><p>Идём по чек-листу из 90+ пунктов с профессиональным оборудованием — от геометрии стен до вентиляции и электрики. Видим то, что не заметно на глаз.</p></div>
         <div class="gitem" data-reveal><b>Работаем по договору</b><p>Стоимость зафиксирована заранее. Никаких «доплат на месте» и сюрпризов в цене.</p></div>
       </div>
-      <div class="act-sample has-img" data-reveal>
-        <img src="<?php echo $T; ?>/assets/img/act-sample.jpg" alt="Образец официального акта осмотра квартиры с дефектной ведомостью, печатью и подписями экспертов" loading="lazy" decoding="async">
+      <div class="doc-stack" data-doc-stack data-reveal aria-label="Страницы реального акта осмотра: перечень приборов, нормативы и дефектная ведомость по комнатам с фото дефектов">
+        <span class="doc-stack__hint" aria-hidden="true">нажмите для просмотра</span>
+        <div class="doc-stack__deck">
+          <figure class="doc-card" style="--d:0"><img src="<?php echo $T; ?>/assets/img/doc-1.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-1.jpg'); ?>" alt="Страница акта: перечень приборов и оборудования для обследования квартиры" width="760" height="1069" loading="lazy" decoding="async"></figure>
+          <figure class="doc-card" style="--d:1"><img src="<?php echo $T; ?>/assets/img/doc-2.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-2.jpg'); ?>" alt="Страница акта: перечень нормативной литературы (ГОСТ и СП), по которым ведётся обследование" width="760" height="1083" loading="lazy" decoding="async"></figure>
+          <figure class="doc-card" style="--d:2"><img src="<?php echo $T; ?>/assets/img/doc-3.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-3.jpg'); ?>" alt="Страница акта: дефектная ведомость по кухне с фотографиями дефектов" width="760" height="1072" loading="lazy" decoding="async"></figure>
+          <figure class="doc-card" style="--d:3"><img src="<?php echo $T; ?>/assets/img/doc-4.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-4.jpg'); ?>" alt="Страница акта: продолжение дефектной ведомости с фотографиями дефектов" width="760" height="1074" loading="lazy" decoding="async"></figure>
+          <figure class="doc-card" style="--d:4"><img src="<?php echo $T; ?>/assets/img/doc-5.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-5.jpg'); ?>" alt="Страница акта: дефектная ведомость по комнате с лоджией с фотографиями дефектов" width="760" height="1065" loading="lazy" decoding="async"></figure>
+          <figure class="doc-card" style="--d:5"><img src="<?php echo $T; ?>/assets/img/doc-6.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-6.jpg'); ?>" alt="Страница акта: завершение дефектной ведомости с фотографиями дефектов" width="760" height="1065" loading="lazy" decoding="async"></figure>
+          <span class="doc-stack__cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="46" height="46"><path d="M5 2.6l14 8.3-6 1.7-1.7 6L5 2.6z"/></svg></span>
+        </div>
       </div>
     </div>
   </div>
@@ -361,9 +372,9 @@
   <div class="wrap">
     <div class="lead-band" data-reveal>
       <div class="lead-left">
-        <span class="eyebrow">Заявка на приёмку</span>
-        <h2 class="lead-title">Узнайте стоимость приёмки именно вашей квартиры</h2>
-        <p class="lead-sub">Перезвоним в течение 15 минут, уточним площадь и тип отделки, назовём точную цену и подберём свободную дату эксперта. Отвечаем по делу — без навязчивых звонков.</p>
+        <span class="eyebrow">Заявка</span>
+        <h2 class="lead-title">Оставьте заявку — подберём услугу и рассчитаем стоимость</h2>
+        <p class="lead-sub">Перезвоним в течение 15 минут, поможем выбрать услугу под ваш объект, назовём точную цену и подберём свободную дату эксперта. Отвечаем по делу — без навязчивых звонков.</p>
         <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
       </div>
       <div class="lead-right">
@@ -489,6 +500,23 @@
   </div>
 </section>
 
+<!-- ===================== 12. ЗАЯВКА (гео-нота, форма → Битрикс24) ===================== -->
+<section class="sec lead" id="cta" data-section="cta">
+  <div class="wrap">
+    <div class="lead-band" data-reveal>
+      <div class="lead-left">
+        <span class="eyebrow">География</span>
+        <h2 class="lead-title">Не нашли свой город? Оставьте заявку</h2>
+        <p class="lead-sub">Выезжаем по всему Калининграду и области — от побережья до пригородов. Перезвоним, уточним адрес объекта и подберём свободную дату эксперта.</p>
+        <?php echo do_shortcode('[contact-form-7 id="33" title="Заявка с главной (Битрикс)"]'); ?>
+      </div>
+      <div class="lead-right">
+        <img src="<?php echo $T; ?>/assets/img/apartment.jpg" alt="Приёмка квартир и домов по всему Калининграду и области — выезд эксперта" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== 13. FAQ ===================== -->
 <section class="sec" id="faq" data-section="faq">
   <div class="wrap">
@@ -502,7 +530,7 @@
       <details data-reveal><summary>Что будет, если найдём дефекты?</summary><p>Внесём их в официальный акт и дефектную ведомость — документ, который застройщик обязан исполнить. Акт приёма-передачи вы не подписываете, пока дефекты не устранены. После устранения можно заказать повторный выезд, чтобы убедиться, что всё исправлено.</p></details>
       <details data-reveal><summary>Нужно ли мне присутствовать лично?</summary><p>Не обязательно. Вы можете быть рядом с экспертом, подключиться по видеосвязи или полностью доверить приёмку нам по доверенности — это удобно для иногородних. В любом случае получите видеообзор, фото дефектов и официальный акт.</p></details>
       <details data-reveal><summary>Реально ли принять квартиру дистанционно?</summary><p>Да. Эксперт принимает квартиру по доверенности, показывает всё по видеосвязи в реальном времени, присылает видеообзор и оформляет документы. Так делают иногородние и инвесторы — это экономит минимум два приезда в Калининград.</p></details>
-      <details data-reveal><summary>Чем «официальный акт» отличается от обычной бумажки?</summary><p>Это документ осмотра с печатью компании, подписью эксперта и фотографиями дефектов, привязанными к вашей квартире. Такой акт застройщик обязан принять и исполнить, а не отмахнуться словами «фото чужое».</p></details>
+      <details data-reveal><summary>Чем «официальный акт» отличается от обычной бумажки?</summary><p>Это документ осмотра с подписью эксперта и фотографиями дефектов, привязанными к вашей квартире. Такой акт застройщик обязан принять и исполнить, а не отмахнуться словами «фото чужое».</p></details>
       <details data-reveal><summary>Можно ли взыскать с застройщика неустойку за дефекты?</summary><p>В ряде случаев закон даёт право требовать устранения дефектов или компенсации. <!-- сверить с актуальным законом: мораторий на неустойки периодически ограничивает взыскание; формулировки про неустойку 214-ФЗ проверять перед публикацией -->Конкретные варианты зависят от вашей ситуации и от закона, действующего на момент обращения. Мы зафиксируем дефекты официальными документами и подскажем, что у вас есть.</p></details>
       <details data-reveal><summary>Нужны ли документы об образовании эксперта?</summary><p>Да, наши эксперты — инженеры с профильным образованием и регалиями в профессиональном реестре НОПРИЗ, документы и сертификаты предоставляем по запросу. Некоторые застройщики требуют подтвердить квалификацию специалиста, и у нас с этим проблем не возникает.</p></details>
     </div>

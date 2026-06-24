@@ -18,7 +18,7 @@ get_header(); $T = get_template_directory_uri(); ?>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"Service","name":"Дистанционная приёмка квартиры",
   "serviceType":"Приёмка квартиры по доверенности",
-  "description":"Приёмка квартиры от застройщика по доверенности для иногородних: эксперт осматривает квартиру, вы подключаетесь по видеосвязи, получаете официальный акт с печатью без личного приезда в Калининград.",
+  "description":"Приёмка квартиры от застройщика по доверенности для иногородних: эксперт осматривает квартиру, вы подключаетесь по видеосвязи, получаете официальный акт осмотра без личного приезда в Калининград.",
   "areaServed":[{"@type":"City","name":"Калининград"},{"@type":"AdministrativeArea","name":"Калининградская область"}],
   "provider":{"@id":"https://prinyatopro.ru/#business"},
   "offers":{"@type":"Offer","priceCurrency":"RUB","price":"11000","description":"Дистанционная приёмка по доверенности"} }
@@ -36,7 +36,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
-    <p class="micro" data-reveal>Приёмка по доверенности · Видеосвязь в реальном времени · Официальный акт с печатью · Без вашего приезда в Калининград</p>
+    <p class="micro" data-reveal>Приёмка по доверенности · Видеосвязь в реальном времени · Официальный акт осмотра · Без вашего приезда в Калининград</p>
     <div class="statband" data-reveal>
       <div class="stat"><b>+3 000 ₽</b><span>надбавка за дистант</span></div>
       <div class="stat"><b>0</b><span>ваших приездов</span></div>
@@ -78,8 +78,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       </ul>
       <div>
         <picture class="dist-pic" data-reveal>
-          <source media="(max-width:680px)" srcset="<?php echo $T; ?>/assets/img/dist-remote-mobile.jpg">
-          <img src="<?php echo $T; ?>/assets/img/dist-remote.jpg" alt="Дистанционная приёмка: эксперт показывает квартиру клиенту по видеосвязи" width="450" height="600" loading="lazy" decoding="async">
+          <img src="<?php echo $T; ?>/assets/img/dist-remote.jpg?v=<?php echo filemtime(get_template_directory() . '/assets/img/dist-remote.jpg'); ?>" alt="Дистанционная приёмка: эксперт показывает квартиру клиенту по видеосвязи" width="600" height="600" loading="lazy" decoding="async">
         </picture>
       </div>
     </div>
@@ -200,7 +199,7 @@ get_header(); $T = get_template_directory_uri(); ?>
         <li>Качество видеосвязи зависит от связи на объекте; полный разбор всегда дублируем видео и фото.</li>
         <li>Спор с застройщиком от вашего имени не ведём — при необходимости передадим запрос юристу-партнёру, а наш акт станет основой.</li>
       </ul>
-      <p>В остальном объём проверки и официальный акт с печатью — такие же, как на очной <a href="/priemka-kvartiry-ot-zastroyschika/" style="color:#fff;text-decoration:underline">приёмке от застройщика</a>.</p>
+      <p>В остальном объём проверки и официальный акт осмотра — такие же, как на очной <a href="/priemka-kvartiry-ot-zastroyschika/" style="color:#fff;text-decoration:underline">приёмке от застройщика</a>.</p>
     </div>
   </div>
 </section>
@@ -231,7 +230,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     <div class="faq-list">
       <details data-reveal><summary>Как вы попадёте в квартиру без меня?</summary><p>По доверенности. Вы оформляете доверенность на нашего эксперта — с ней застройщик допускает представителя на осмотр и приёмку. Подскажем, как всё оформить.</p></details>
       <details data-reveal><summary>Я правда увижу все дефекты?</summary><p>Да. Эксперт ведёт осмотр по видеосвязи в реальном времени, а потом присылает подробное видео и фото каждого дефекта с привязкой к помещению.</p></details>
-      <details data-reveal><summary>Акт будет официальным?</summary><p>Да, это тот же официальный акт с печатью и подписью эксперта, что и на очной приёмке. Застройщик обязан устранить зафиксированные дефекты.</p></details>
+      <details data-reveal><summary>Акт будет официальным?</summary><p>Да, это тот же официальный акт осмотра с подписью эксперта, что и на очной приёмке. Застройщик обязан устранить зафиксированные дефекты.</p></details>
       <details data-reveal><summary>Сколько это стоит?</summary><p>От 11 000 ₽: базовая приёмка по площади (от 8 000 ₽) плюс надбавка 3 000 ₽ за дистанционный формат. Повторная проверка после устранения — 50%.</p></details>
     </div>
   </div>

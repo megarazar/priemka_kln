@@ -47,6 +47,11 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .btn.lg{padding:17px 36px;font-size:19px}
 .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
 .btn.ghost:hover{background:var(--ink);color:var(--paper-2)}
+/* header CTA: тёмная (≈чёрная) у верха страницы, краснеет после 2-го экрана (класс .cta-dark на .site-header снимается скриптом) */
+.site-header .btn.sm{transition:background .28s ease, box-shadow .28s ease, color .2s ease, transform .05s}
+.site-header.cta-dark .btn.sm{background:var(--ink);box-shadow:0 3px 0 #0b0907}
+.site-header.cta-dark .btn.sm:hover{background:#000;box-shadow:0 2px 0 #0b0907}
+.site-header.cta-dark .btn.sm:active{box-shadow:none}
 
 /* ===== ШАПКА «оторванный лист» ===== */
 .site-header{position:sticky;top:0;z-index:40;width:100%}
@@ -291,8 +296,7 @@ a.more:hover{text-decoration:underline}
 .dist-list li{display:flex;gap:12px;font-size:17px;color:#e6ddc9;line-height:1.5}
 .dist-list .ic{width:24px;height:24px;color:#ff6258;flex:0 0 auto;margin-top:2px}
 .dist-pic{display:block;max-width:430px;margin:0 auto}
-.dist-pic img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block;border:6px solid #fff;box-shadow:5px 7px 0 rgba(0,0,0,.35)}
-@media(max-width:680px){.dist-pic img{aspect-ratio:4/3}}
+.dist-pic img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;border:6px solid #fff;box-shadow:5px 7px 0 rgba(0,0,0,.35)}
 .dist-cta{margin-top:26px}
 
 /* ===== ГАРАНТИИ / АКТ ===== */
@@ -305,6 +309,35 @@ a.more:hover{text-decoration:underline}
 .act-sample .stamp{position:absolute;top:24px;right:24px;font-size:18px}
 .act-sample.has-img{padding:9px;min-height:0;display:block;background:var(--card-paper)}
 .act-sample.has-img img{width:100%;height:auto;display:block}
+
+/* ===== ДОК-СТОПКА: реальный акт (автолистание) ===== */
+.doc-stack{position:relative}
+.doc-stack__deck{position:relative;aspect-ratio:760/1075;max-width:420px;margin:0 auto;cursor:pointer}
+.doc-card{position:absolute;inset:0;margin:0;background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow-card);overflow:hidden;transform-origin:center;transition:transform .6s cubic-bezier(.4,.05,.2,1),opacity .55s;backface-visibility:hidden;will-change:transform;opacity:0}
+.doc-card img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.doc-stack__deck>.doc-card:first-child{opacity:1;z-index:3} /* no-JS fallback: видна верхняя страница */
+.doc-stack.is-live .doc-card{opacity:0;z-index:1}
+.doc-stack.is-live .doc-card[data-depth="0"]{transform:none;opacity:1;z-index:6}
+.doc-stack.is-live .doc-card[data-depth="1"]{transform:translateY(8px) scale(.985) rotate(-1.1deg);opacity:1;z-index:5}
+.doc-stack.is-live .doc-card[data-depth="2"]{transform:translateY(16px) scale(.97) rotate(1.3deg);opacity:1;z-index:4}
+.doc-stack.is-live .doc-card[data-depth="back"]{transform:translateY(22px) scale(.955);opacity:0;z-index:1}
+.doc-stack.is-live .doc-card.is-leaving{transform:translateX(-34%) rotate(-7deg);opacity:0;z-index:7}
+.doc-stack__hint{display:block;text-align:center;margin:0 0 12px;font-family:var(--f-hand);font-style:italic;font-size:22px;font-weight:600;color:var(--red-mark);transform:rotate(-1.5deg)}
+.doc-stack__cursor{position:absolute;right:20%;bottom:24%;z-index:8;color:var(--red);pointer-events:none;line-height:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+.doc-stack__cursor svg{display:block;fill:currentColor;stroke:#fff;stroke-width:1.1}
+.doc-stack.is-live .doc-stack__cursor{animation:docCursorHint 2.8s ease-in-out infinite}
+.doc-stack.is-live.interacted .doc-stack__cursor{animation:none;opacity:0;transition:opacity .4s}
+.doc-stack:hover .doc-stack__cursor{animation-play-state:paused}
+@keyframes docCursorHint{
+  0%{transform:translate(72%,8%) scale(1);opacity:0}
+  18%{transform:translate(0,0) scale(1);opacity:1}
+  40%{transform:translate(0,0) scale(.82);opacity:1}
+  56%{transform:translate(0,0) scale(1);opacity:1}
+  80%{transform:translate(0,0) scale(1);opacity:1}
+  100%{transform:translate(72%,8%) scale(1);opacity:0}
+}
+@media (max-width:680px){.doc-stack__deck{max-width:320px}.doc-stack__cursor{right:16%;bottom:22%}}
+@media (prefers-reduced-motion:reduce){.doc-card,.doc-stack.is-live .doc-card.is-leaving{transition:none}.doc-stack.is-live .doc-stack__cursor{animation:none}}
 
 /* ===== ЭКСПЕРТЫ ===== */
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
@@ -590,11 +623,17 @@ a.more:hover{text-decoration:underline}
 .js-anim .hero-bullets .ic :is(path,rect),
 .js-anim .dist-list .ic :is(path,rect){stroke-dasharray:90;stroke-dashoffset:90}
 .js-anim .hero-bullets .ic :is(path,rect){animation:ppDraw .7s ease forwards}
-.js-anim .hero-bullets li:nth-child(1) .ic path:nth-child(2){animation-delay:.5s}
-.js-anim .hero-bullets li:nth-child(1) .ic path:nth-child(1){animation-delay:1.05s}
-.js-anim .hero-bullets li:nth-child(2) .ic path:nth-child(1){animation-delay:1.5s}
-.js-anim .hero-bullets li:nth-child(2) .ic path:nth-child(2){animation-delay:2s}
+.js-anim .hero-bullets li:nth-child(1) .ic :is(path,rect){animation-delay:.35s}
+.js-anim .hero-bullets li:nth-child(2) .ic :is(path,rect){animation-delay:.85s}
+.js-anim .hero-bullets li:nth-child(3) .ic :is(path,rect){animation-delay:1.35s}
 @keyframes ppDraw{to{stroke-dashoffset:0}}
+/* живые значки hero: тонкая петля после дорисовки (act — «галочка», recheck — оборот, remote — «полёт») */
+.js-anim .hero-bullets .ic--act{animation:hbPop 4s ease-in-out 2.4s infinite;transform-origin:50% 50%}
+.js-anim .hero-bullets .ic--recheck{animation:hbRecheck 4.5s ease-in-out 2.6s infinite;transform-origin:50% 50%}
+.js-anim .hero-bullets .ic--remote{animation:hbFloat 3s ease-in-out 2.8s infinite}
+@keyframes hbPop{0%,90%,100%{transform:scale(1)}95%{transform:scale(1.18)}}
+@keyframes hbRecheck{0%{transform:rotate(0)}12%,100%{transform:rotate(360deg)}}
+@keyframes hbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(2.5px,-3px)}}
 .js-anim .dist-list li .ic :is(path,rect){transition:stroke-dashoffset .8s ease .15s}
 .js-anim .dist-list li .ic :is(path,rect):nth-child(2){transition-delay:.55s}
 .js-anim .dist-list li.is-in .ic :is(path,rect){stroke-dashoffset:0}
@@ -691,6 +730,9 @@ a.more:hover{text-decoration:underline}
   .js-anim [data-reveal]{opacity:1;transform:none;transition:none}
   .js-anim .hero-bullets .ic :is(path,rect),
   .js-anim .dist-list .ic :is(path,rect){animation:none;transition:none;stroke-dasharray:none;stroke-dashoffset:0}
+  .js-anim .hero-bullets .ic--act,
+  .js-anim .hero-bullets .ic--recheck,
+  .js-anim .hero-bullets .ic--remote{animation:none;transform:none}
 }
 
 /* ===== СТРАНИЦА «СПАСИБО» (/spasibo/) ===== */

@@ -56,6 +56,20 @@
     });
   }
 
+  /* ---------- header CTA: тёмная у верха, краснеет после 2-го экрана (#trust) ----------
+     Стартовый класс .cta-dark ставит PHP на главной (без вспышки). Здесь снимаем его,
+     когда низ 2-го экрана ушёл под шапку, и возвращаем при скролле вверх. */
+  var ctaHeader = document.querySelector('.site-header.cta-dark');
+  var ctaAnchor = document.getElementById('trust');
+  if (ctaHeader && ctaAnchor) {
+    var syncCta = function () {
+      ctaHeader.classList.toggle('cta-dark', ctaAnchor.getBoundingClientRect().bottom > (ctaHeader.offsetHeight || 0));
+    };
+    window.addEventListener('scroll', syncCta, { passive: true });
+    window.addEventListener('resize', syncCta, { passive: true });
+    syncCta();
+  }
+
   /* ---------- rough-notation: «красный карандаш» ---------- */
   window.addEventListener('load', function () {
     if (reduced || !window.RoughNotation) return;
@@ -206,7 +220,7 @@
 
   var RESULTS = {
     A: { title: 'Вам подойдёт: приёмка квартиры в новостройке', price: 'Ориентировочно: от 8 000 ₽',
-      text: 'Пройдём 90+ параметров, найдём скрытые дефекты, оформим акт с печатью. Цену зафиксируем в договоре заранее — без доплат на месте.' },
+      text: 'Пройдём 90+ параметров, найдём скрытые дефекты, оформим официальный акт осмотра. Цену зафиксируем в договоре заранее — без доплат на месте.' },
     B: { title: 'Вам подойдёт: дистанционная приёмка «под ключ»', price: 'Ориентировочно: от 11 000 ₽',
       text: 'Примем квартиру по доверенности, покажем всё по видеосвязи, пришлём видеообзор и акт. Сэкономите минимум два приезда в Калининград.' },
     V: { title: 'Вам подойдёт: приёмка дома / таунхауса + технадзор', price: 'Ориентировочно: от 12 000 ₽',
@@ -568,4 +582,55 @@
   else if (mq.addListener) mq.addListener(sync);
   window.addEventListener('load', function () { if (active) measure(); });
   sync();
+})();
+
+/* ===== Док-стопка «реальный акт»: листание по клику (#garant) =====
+   Клик по стопке → верхняя страница уезжает влево и встаёт в низ стопки. reduced-motion = мгновенная смена.
+   Автоплея нет: листание только по клику (подсказка + стрелка-курсор показывают, что нужно нажать). */
+(function () {
+  var stack = document.querySelector('[data-doc-stack]');
+  if (!stack) return;
+  var deck = stack.querySelector('.doc-stack__deck');
+  if (!deck) return;
+  var cards = Array.prototype.slice.call(deck.querySelectorAll('.doc-card'));
+  if (cards.length < 2) return;
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ANIM = 700;
+  var order = cards.map(function (_, i) { return i; });
+  var busy = false;
+
+  stack.classList.add('is-live');
+
+  function paint() {
+    order.forEach(function (idx, depth) {
+      var c = cards[idx];
+      c.setAttribute('data-depth', depth > 2 ? 'back' : String(depth));
+      c.setAttribute('aria-hidden', depth === 0 ? 'false' : 'true');
+    });
+  }
+
+  function advance() {
+    if (busy) return;
+    var top = cards[order[0]];
+    if (reduced) { order.push(order.shift()); paint(); return; }
+    busy = true;
+    top.classList.add('is-leaving');
+    var done = function () {
+      top.removeEventListener('transitionend', done);
+      order.push(order.shift());            // ушедшая страница — в низ стопки
+      top.classList.remove('is-leaving');
+      top.style.transition = 'none';        // не анимировать возврат в низ
+      paint();
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { top.style.transition = ''; busy = false; });
+      });
+    };
+    top.addEventListener('transitionend', done);
+    setTimeout(function () { if (top.classList.contains('is-leaving')) done(); }, ANIM);
+  }
+
+  deck.addEventListener('click', function () { stack.classList.add('interacted'); advance(); });
+
+  paint();
 })();

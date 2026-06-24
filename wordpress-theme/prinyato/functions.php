@@ -40,6 +40,64 @@ if ( ! isset( $content_width ) ) $content_width = 800;
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**
+ * Карта «слаг страницы → название услуги» — единый источник истины
+ * для заголовка попапа (footer.php) и пометки услуги в CRM (обработчик ниже).
+ */
+function prinyato_service_map() {
+    return array(
+        'priemka-kvartiry-ot-zastroyschika' => 'Приёмка от застройщика',
+        'priemka-kvartiry-v-novostroyke'    => 'Приёмка в новостройке',
+        'priemka-domov'                     => 'Приёмка домов и таунхаусов',
+        'priemka-kvartiry-posle-remonta'    => 'Приёмка после ремонта',
+        'tehnadzor-remonta-kvartiry'        => 'Технадзор за ремонтом',
+        'distantsionnaya-priemka'           => 'Дистанционная приёмка',
+        'razovyy-audit-remonta'             => 'Разовый аудит ремонта',
+        'finalnaya-priemka-remonta'         => 'Финальная приёмка ремонта',
+        'priemka-kvartir-zelenogradsk'      => 'Приёмка в Зеленоградске',
+        'priemka-kvartir-svetlogorsk'       => 'Приёмка в Светлогорске',
+        'priemka-kvartir-pionerskiy'        => 'Приёмка в Пионерском',
+    );
+}
+
+/**
+ * Название услуги по пути/слагу (берём первый сегмент пути). '' если не услуга.
+ */
+function prinyato_service_label( $path_or_slug ) {
+    $slug = trim( (string) $path_or_slug, '/' );
+    if ( false !== strpos( $slug, '/' ) ) {
+        $parts = explode( '/', $slug );
+        $slug  = $parts[0];
+    }
+    $map = prinyato_service_map();
+    return isset( $map[ $slug ] ) ? $map[ $slug ] : '';
+}
+
+/**
+ * Текст попапа заявки под текущую страницу.
+ * Страница услуги → заголовок = название услуги. Иначе универсальный оффер.
+ * Возвращает array( 'eyebrow', 'title', 'sub' ).
+ */
+function prinyato_lead_copy() {
+    $service = '';
+    $obj = get_queried_object();
+    if ( ( $obj instanceof WP_Post ) && ! is_front_page() ) {
+        $service = prinyato_service_label( $obj->post_name );
+    }
+    if ( '' !== $service ) {
+        return array(
+            'eyebrow' => 'Заявка на услугу',
+            'title'   => $service,
+            'sub'     => 'Перезвоним в течение 15 минут, уточним детали объекта и назовём точную цену.',
+        );
+    }
+    return array(
+        'eyebrow' => 'Заявка',
+        'title'   => 'Оставьте заявку — подберём услугу и рассчитаем стоимость',
+        'sub'     => 'Перезвоним в течение 15 минут, поможем выбрать услугу под ваш объект и назовём точную цену.',
+    );
+}
+
+/**
  * Интеграция Contact Form 7 → Битрикс24 (создание Лида).
  * Срабатывает только для формы заявки (ID 33). Вебхук — в константе
  * PRINYATO_B24_WEBHOOK (wp-config.php, секрет, вне репозитория).
@@ -71,22 +129,33 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
     $landing  = $post( 'pp_landing' );
     $referrer = $post( 'pp_referrer' );
     $quiz     = $post( 'pp_quiz' ); // ответы квиза «Расчёт стоимости» (js/quiz.js)
+    $service  = prinyato_service_label( $page ); // на какую услугу заявка (по странице)
 
     $comments = 'Заявка с сайта prinyatopro.ru. Согласие на обработку ПД и ознакомление с политикой получены.';
+    if ( $service )  { $comments .= "\nУслуга: " . $service; }
     if ( $quiz )     { $comments .= "\nОтветы квиза: " . $quiz; }
     if ( $page )     { $comments .= "\nСтраница заявки: " . $page; }
     if ( $landing )  { $comments .= "\nПервый вход: " . $landing; }
     if ( $referrer ) { $comments .= "\nРеферер: " . $referrer; }
 
+    $src_desc = ( $quiz ? 'Квиз «Расчёт стоимости»' : 'Форма «Заявка»' ) . ' на prinyatopro.ru'
+              . ( $service ? ' · ' . $service : '' ); // услуга в источнике — переносится лид→сделка при конвертации
+
     $fields = array(
-        'TITLE'              => ( $quiz ? 'Заявка с квиза' : 'Заявка с сайта' ) . ( $name ? ' — ' . $name : '' ),
+        'TITLE'              => 'Заявка' . ( $service ? ': ' . $service : ' с сайта' ) . ( $quiz ? ' (квиз)' : '' ) . ( $name ? ' — ' . $name : '' ),
         'NAME'               => $first,
         'LAST_NAME'          => $last,
         'SOURCE_ID'          => 'WEB',
-        'SOURCE_DESCRIPTION' => $quiz ? 'Квиз «Расчёт стоимости» на prinyatopro.ru' : 'Форма «Заявка» на prinyatopro.ru',
+        'SOURCE_DESCRIPTION' => $src_desc,
         'PHONE'              => array( array( 'VALUE' => $phone, 'VALUE_TYPE' => 'WORK' ) ),
         'COMMENTS'           => $comments,
     );
+
+    // Услуга в отдельное кастомное поле лида. Код поля (UF_CRM_…) — секрет в wp-config
+    // (константа PRINYATO_B24_UF_SERVICE), чтобы не хардкодить в теме. Нет константы → пропускаем.
+    if ( '' !== $service && defined( 'PRINYATO_B24_UF_SERVICE' ) && PRINYATO_B24_UF_SERVICE ) {
+        $fields[ PRINYATO_B24_UF_SERVICE ] = $service;
+    }
 
     // Штатные UTM-поля лида Битрикс24 (заполняются только при наличии).
     $utm_map = array(
@@ -150,6 +219,9 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
             );
             foreach ( array( 'UTM_SOURCE', 'UTM_MEDIUM', 'UTM_CAMPAIGN', 'UTM_CONTENT', 'UTM_TERM' ) as $u ) {
                 if ( isset( $fields[ $u ] ) ) { $deal_fields[ $u ] = $fields[ $u ]; }
+            }
+            if ( '' !== $service && defined( 'PRINYATO_B24_UF_SERVICE' ) && PRINYATO_B24_UF_SERVICE ) {
+                $deal_fields[ PRINYATO_B24_UF_SERVICE ] = $service;
             }
             $b24( 'crm.deal.add', array(
                 'fields' => $deal_fields,

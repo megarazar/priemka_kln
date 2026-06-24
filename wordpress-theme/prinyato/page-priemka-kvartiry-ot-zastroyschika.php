@@ -18,7 +18,7 @@ get_header(); $T = get_template_directory_uri(); ?>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"Service","name":"Приёмка квартиры от застройщика",
   "serviceType":"Приёмка квартиры в новостройке",
-  "description":"Независимый технический осмотр квартиры от застройщика до или после подписания акта приёма-передачи: фиксация дефектов, фотоотчёт, официальный акт с печатью.",
+  "description":"Независимый технический осмотр квартиры от застройщика до или после подписания акта приёма-передачи: фиксация дефектов, фотоотчёт, официальный акт осмотра.",
   "areaServed":[{"@type":"City","name":"Калининград"},{"@type":"AdministrativeArea","name":"Калининградская область"}],
   "provider":{"@id":"https://prinyatopro.ru/#business"} }
 </script>
@@ -35,7 +35,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
-    <p class="micro" data-reveal>Официальный акт с печатью · Фото дефектов с привязкой к квартире · Фиксированная цена в договоре · Выезд по Калининграду и области</p>
+    <p class="micro" data-reveal>Официальный акт осмотра · Фото дефектов с привязкой к квартире · Фиксированная цена в договоре · Выезд по Калининграду и области</p>
     <div class="statband" data-reveal>
       <div class="stat"><b data-count="8">8</b><span>узлов проверки</span></div>
       <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
@@ -178,7 +178,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     <ul class="dist-list dl-light">
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Запись под вашу дату.</b> Согласуем осмотр под дату приёмки у застройщика.</span></li>
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span><b>Осмотр с приборами — 1–2 часа.</b> Каждый дефект уходит в фото и дефектную ведомость прямо на месте.</span></li>
-      <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span><b>Официальный акт с печатью.</b> Предварительное резюме — за 2–3 часа, полный акт — в течение 24 часов.</span></li>
+      <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span><b>Официальный акт осмотра.</b> Предварительное резюме — за 2–3 часа, полный акт — в течение 24 часов.</span></li>
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg><span><b>Повторный выезд после устранения — 50%</b> от стоимости первичной приёмки.</span></li>
     </ul>
     <p class="micro" data-reveal>Цена — от 8 000 ₽, по площади и типу квартиры; точную сумму <a class="more" href="/tseny/">калькулятор покажет за минуту</a>. Стоимость фиксируем в договоре, без доплат на месте.</p>

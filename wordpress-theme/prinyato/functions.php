@@ -98,6 +98,27 @@ function prinyato_lead_copy() {
 }
 
 /**
+ * Дублирование заявки в Telegram-группу менеджеров (#2).
+ * Токен и chat_id — секреты в wp-config (PRINYATO_TG_BOT_TOKEN / PRINYATO_TG_CHAT_ID).
+ * Нет констант → тихо выходим. Запрос неблокирующий: не тормозит отправку формы
+ * и сбой Telegram не влияет на запись лида в CRM.
+ */
+function prinyato_tg_notify( $text ) {
+    if ( ! defined( 'PRINYATO_TG_BOT_TOKEN' ) || ! PRINYATO_TG_BOT_TOKEN ) return;
+    if ( ! defined( 'PRINYATO_TG_CHAT_ID' )   || ! PRINYATO_TG_CHAT_ID )   return;
+    wp_remote_post( 'https://api.telegram.org/bot' . PRINYATO_TG_BOT_TOKEN . '/sendMessage', array(
+        'timeout'  => 8,
+        'blocking' => false,
+        'body'     => array(
+            'chat_id'                  => PRINYATO_TG_CHAT_ID,
+            'text'                     => $text,
+            'parse_mode'               => 'HTML',
+            'disable_web_page_preview' => 'true',
+        ),
+    ) );
+}
+
+/**
  * Интеграция Contact Form 7 → Битрикс24 (создание Лида).
  * Срабатывает только для формы заявки (ID 33). Вебхук — в константе
  * PRINYATO_B24_WEBHOOK (wp-config.php, секрет, вне репозитория).
@@ -169,6 +190,18 @@ add_action( 'wpcf7_mail_sent', function ( $contact_form ) {
         $v = $post( $src );
         if ( '' !== $v ) { $fields[ $b24 ] = $v; }
     }
+
+    // Дублируем заявку в Telegram-группу менеджеров (#2) — до логики CRM, шлём всегда.
+    $esc = function ( $s ) { return htmlspecialchars( (string) $s, ENT_QUOTES, 'UTF-8' ); };
+    $tg  = "🔔 <b>Новая заявка с сайта</b>\n";
+    if ( $name )  { $tg .= "👤 " . $esc( $name ) . "\n"; }
+    if ( $phone ) { $tg .= "📞 " . $esc( $phone ) . "\n"; }
+    $tg .= "🛠 Услуга: " . ( $service ? $esc( $service ) : 'общая / не указана' ) . "\n";
+    if ( $quiz ) { $tg .= "📝 Квиз: " . $esc( $quiz ) . "\n"; }
+    if ( $page ) { $tg .= "📄 Страница: " . $esc( $page ) . "\n"; }
+    $utm_line = trim( $post( 'utm_source' ) . ' / ' . $post( 'utm_medium' ) . ' / ' . $post( 'utm_campaign' ), ' /' );
+    if ( '' !== $utm_line ) { $tg .= "🔗 UTM: " . $esc( $utm_line ) . "\n"; }
+    prinyato_tg_notify( $tg );
 
     // --- Дедупликация (#4), версия под «простой режим» CRM (включён на портале):
     // crm.lead.add мгновенно авто-конвертируется в Контакт+Сделку, поэтому искать

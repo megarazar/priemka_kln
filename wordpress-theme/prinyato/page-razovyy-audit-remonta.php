@@ -7,7 +7,7 @@
  * Meta title/description задаются в Yoast.
  */
 get_header(); $T = get_template_directory_uri(); ?>
-<main id="primary">
+<main id="primary" class="page-audit">
 
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[

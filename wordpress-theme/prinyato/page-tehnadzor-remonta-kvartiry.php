@@ -7,7 +7,7 @@
  * Ключевая оговорка матрицы: инженер НЕ советует платить/не платить. Meta — в Yoast.
  */
 get_header(); $T = get_template_directory_uri(); ?>
-<main id="primary">
+<main id="primary" class="page-tehnadzor">
 
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[

@@ -7,7 +7,7 @@
  * Без ложного USP «бесплатная повторная» (по матрице — 50% платно). Тепловизор — по запросу. Meta — в Yoast.
  */
 get_header(); $T = get_template_directory_uri(); ?>
-<main id="primary">
+<main id="primary" class="page-priemka-kvartiry">
 
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[

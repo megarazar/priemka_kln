@@ -123,21 +123,26 @@
     document.querySelectorAll('h2.sh, h3.sh3').forEach(function (h) { mio.observe(h); });
   });
 
-  /* ---------- мобильный «скролл-джек»: вертикальный скролл двигает ленту влево ----------
+  /* ---------- «скролл-джек»: вертикальный скролл двигает ленту влево ----------
      [data-hscroll] — «взлётка» (JS растягивает её по высоте на длину ленты),
      .hs-pin — липкий экран, [data-hscroll-track] — лента карточек.
-     Фолбэк без JS / reduced-motion: обычная горизонтальная прокрутка пальцем (CSS). */
+     Джек только при data-hscroll="desktop" (ПК) или ="all" (везде). Пустое значение
+     = без джека: лента всегда листается пальцем (базовый CSS overflow-x:auto).
+     Фолбэк без JS / reduced-motion: тоже обычная горизонтальная прокрутка пальцем. */
   (function () {
     if (reduced) return;
     var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-hscroll]'));
     if (!boxes.length) return;
-    /* data-hscroll="desktop" → джек на ПК (на мобиле остаётся ручной свайп);
-       data-hscroll без значения → джек на мобиле */
+    /* Джек включают только явные режимы:
+         data-hscroll="desktop" → джек на ПК (на мобиле — ручной свайп пальцем),
+         data-hscroll="all"     → джек везде.
+       Пустое значение data-hscroll → БЕЗ джека: лента листается пальцем
+       (базовый CSS [data-hscroll] [data-hscroll-track]{overflow-x:auto}). Атрибут
+       оставляем на разметке — на нём держатся CSS-селекторы свайпа. */
     var items = boxes.map(function (box) {
       var mode = box.getAttribute('data-hscroll');
-      var mqStr = mode === 'desktop' ? '(min-width:681px)'
-                : mode === 'all' ? '(min-width:1px)'
-                : '(max-width:680px)';
+      if (mode !== 'desktop' && mode !== 'all') return null;
+      var mqStr = mode === 'desktop' ? '(min-width:681px)' : '(min-width:1px)';
       return {
         box: box,
         pin: box.querySelector('.hs-pin'),
@@ -146,7 +151,7 @@
         direct: mode === 'all',
         dist: 0, x: 0
       };
-    }).filter(function (it) { return it.pin && it.track; });
+    }).filter(function (it) { return it && it.pin && it.track; });
     if (!items.length) return;
 
     function measure() {
@@ -476,18 +481,20 @@
       rewind(w);                         // старый верх (c) уедет в стопку через paint()
       return;
     }
-    // свайп влево → текущая верхняя улетает, следующая выходит наверх
+    // свайп влево → текущая верхняя улетает, следующая выходит наверх СРАЗУ (без ожидания)
     if (reduced) { cycleToBack(); paint(); return; }
     busy = true;
     c.classList.add('is-flying');
     c.style.transform = 'translate3d(' + (-w * 1.3) + 'px,40px,0) rotate(-12deg)';
     c.style.opacity = '0';
-    var done = function () {
+    cycleToBack();                            // переставляем колоду мгновенно, как rewind() вправо
+    paint();                                  // следующая карта тут же всплывает на верх (у летящей is-flying transform не трогается)
+    c.style.zIndex = String(cards.length + 2); // летящая остаётся поверх, пока уезжает за левый край
+    var done = function () {                    // финальная чистка после улёта
       c.removeEventListener('transitionend', done);
       c.classList.remove('is-flying');
-      cycleToBack();
       c.style.transition = 'none';
-      paint();
+      paint();                                // вернуть отлетевшую карту в её слот колоды
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { c.style.transition = ''; busy = false; });
       });

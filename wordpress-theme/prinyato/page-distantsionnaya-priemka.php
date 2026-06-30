@@ -7,7 +7,7 @@
  * Цена по тарифной сетке: база приёмки от 8 000 ₽ + надбавка 3 000 ₽ = от 11 000 ₽. Meta — в Yoast.
  */
 get_header(); $T = get_template_directory_uri(); ?>
-<main id="primary">
+<main id="primary" class="page-distant">
 
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[

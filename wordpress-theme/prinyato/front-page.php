@@ -5,9 +5,9 @@
 <section class="hero" id="hero" data-section="hero">
   <div class="wrap">
     <div class="akt">
+      <h1>Профессиональная приёмка квартир<br>и&nbsp;домов в&nbsp;Калининграде<br>и&nbsp;на&nbsp;побережье</h1>
       <div class="hero-grid">
         <div>
-          <h1>Профессиональная приёмка квартир и домов в Калининграде и на&nbsp;побережье</h1>
           <p class="lead-red">Находим то, что застройщик прячет за свежей краской, и&nbsp;<span id="mark-lead">фиксируем так, что отмахнуться уже нельзя</span>.</p>
           <ul class="hero-bullets">
             <li>
@@ -35,13 +35,10 @@
           </div>
         </div>
 
-        <div class="photo-wrap photo-fan">
-          <img class="photo fan-b2" src="<?php echo $T; ?>/assets/img/hero-fan-3.jpg" alt="" aria-hidden="true" width="440" height="550" loading="lazy" decoding="async">
-          <img class="photo fan-b1" src="<?php echo $T; ?>/assets/img/hero-fan-2.jpg" alt="" aria-hidden="true" width="440" height="550" loading="lazy" decoding="async">
-          <img class="photo fan-front" src="<?php echo $T; ?>/assets/img/hero-fan-1.jpg" alt="Приёмка квартиры без отделки в новостройке Калининграда" width="440" height="550">
+        <div class="photo-wrap photo-single">
+          <img class="photo" src="<?php echo $T; ?>/assets/img/hero-main.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/hero-main.jpg'); ?>" alt="Команда ПринятоПро — эксперты по приёмке квартир и технадзору в Калининграде" width="1600" height="1280">
           <span class="tape"></span>
           <div class="photo-cap">Видим проблемы,<br>которые стоят дорого</div>
-          <div class="stamp notchecked">Не проверено<small>статус объекта</small></div>
         </div>
       </div>
     </div>
@@ -56,7 +53,7 @@
     <div class="tcard" data-reveal><div class="num">98%</div><div class="lbl">советуют нас своим знакомым</div></div>
     <div class="tcard" data-reveal><div class="num">90+</div><div class="lbl">параметров проверяем по ГОСТ и СП</div></div>
     <div class="tcard" data-reveal><div class="num">НОПРИЗ</div><div class="lbl">инженеры в профильных реестрах</div></div>
-    <div class="tcard" data-reveal><div class="num red">0 ₽</div><div class="lbl">повторная проверка после устранения</div></div>
+    <div class="tcard" data-reveal><div class="num red">−50%</div><div class="lbl">на повторную проверку после устранения</div></div>
     <p class="trust-micro">За каждой цифрой — конкретная приёмка, конкретный акт и конкретный застройщик, который по нашему документу всё переделал.</p>
   </div>
 </section>
@@ -341,7 +338,7 @@
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">Гарантии</span>
-      <h2 class="sh">Официальный акт осмотра, фото с привязкой и фиксированная цена в договоре</h2>
+      <h2 class="sh">Официальный акт осмотра, фото с привязкой<br>и фиксированная цена в договоре</h2>
       <p class="sec-lead">Главный страх на этом рынке — заплатить за «филькин акт»: безымянную распечатку с фото непонятно чьей квартиры, которую застройщик спокойно проигнорирует. У нас так не выйдет. Вот что остаётся у вас на руках.</p>
     </div>
     <div class="guarant-grid">
@@ -352,7 +349,8 @@
         <div class="gitem" data-reveal><b>Работаем по договору</b><p>Стоимость зафиксирована заранее. Никаких «доплат на месте» и сюрпризов в цене.</p></div>
       </div>
       <div class="doc-stack" data-doc-stack data-reveal aria-label="Страницы реального акта осмотра: перечень приборов, нормативы и дефектная ведомость по комнатам с фото дефектов">
-        <span class="doc-stack__hint" aria-hidden="true">нажмите для просмотра</span>
+        <span class="doc-stack__hint" aria-hidden="true">нажмите, чтобы листать</span>
+        <span class="doc-stack__arrow" aria-hidden="true"><svg viewBox="0 0 28 52" width="30" height="56" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4C11 18 17 32 14 44"/><path d="M6 34l8 10 8-10"/></svg></span>
         <div class="doc-stack__deck">
           <figure class="doc-card" style="--d:0"><img src="<?php echo $T; ?>/assets/img/doc-1.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-1.jpg'); ?>" alt="Страница акта: перечень приборов и оборудования для обследования квартиры" width="760" height="1069" loading="lazy" decoding="async"></figure>
           <figure class="doc-card" style="--d:1"><img src="<?php echo $T; ?>/assets/img/doc-2.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-2.jpg'); ?>" alt="Страница акта: перечень нормативной литературы (ГОСТ и СП), по которым ведётся обследование" width="760" height="1083" loading="lazy" decoding="async"></figure>
@@ -360,7 +358,6 @@
           <figure class="doc-card" style="--d:3"><img src="<?php echo $T; ?>/assets/img/doc-4.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-4.jpg'); ?>" alt="Страница акта: продолжение дефектной ведомости с фотографиями дефектов" width="760" height="1074" loading="lazy" decoding="async"></figure>
           <figure class="doc-card" style="--d:4"><img src="<?php echo $T; ?>/assets/img/doc-5.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-5.jpg'); ?>" alt="Страница акта: дефектная ведомость по комнате с лоджией с фотографиями дефектов" width="760" height="1065" loading="lazy" decoding="async"></figure>
           <figure class="doc-card" style="--d:5"><img src="<?php echo $T; ?>/assets/img/doc-6.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/doc-6.jpg'); ?>" alt="Страница акта: завершение дефектной ведомости с фотографиями дефектов" width="760" height="1065" loading="lazy" decoding="async"></figure>
-          <span class="doc-stack__cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="46" height="46"><path d="M5 2.6l14 8.3-6 1.7-1.7 6L5 2.6z"/></svg></span>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
  * Перелинковка-хаб на услуги и SEO-детей. Цены по тарифной сетке. Meta — в Yoast.
  */
 get_header(); $T = get_template_directory_uri(); ?>
-<main id="primary">
+<main id="primary" class="page-uslugi">
 
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[

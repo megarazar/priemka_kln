@@ -30,14 +30,43 @@ body::before{
 section{position:relative;z-index:1}
 
 /* заголовки секций */
-.sec{padding:64px 0}
+.sec{padding:48px 0}
 .sec-head{margin-bottom:34px;max-width:760px;position:relative}
 /* красная пометка над заголовком — рукописная, наискосок, как «6 вопросов» в hero */
 .eyebrow{font-family:var(--f-hand);font-size:30px;font-weight:700;color:var(--red-mark);line-height:1.05;display:inline-block;transform:rotate(-2deg);margin-bottom:8px}
 h1.sh,h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink)}
-h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:var(--fs-24);letter-spacing:.02em;color:var(--ink);margin-bottom:8px}
+h3.sh3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink);margin-bottom:8px}
 .sec-lead{font-size:var(--fs-lead);color:var(--ink-soft);margin-top:14px;line-height:1.62}
 .micro{font-size:var(--fs-sm);color:var(--ink-faint);margin-top:18px;font-style:italic}
+/* ПК: однострочные заголовки секций (квиз/процесс/доказательства) + акты ровно в 2 строки */
+@media(min-width:1100px){
+  #process .sec-head h2.sh,
+  #video .sec-head h2.sh{white-space:nowrap;width:fit-content;max-width:none}
+  #garant .sec-head h2.sh{font-size:clamp(44px,4vw,50px);line-height:1.06;width:max-content;max-width:none}
+  /* страница «Цены»: длинные заголовки в одну строку (пометка по тексту) + воздух между плотными секциями */
+  .page-tseny #uslugi .sec-head h2.sh,
+  .page-tseny #vhodit .sec-head h2.sh,
+  .page-tseny #cta .sec-head h2.sh{white-space:nowrap;width:-webkit-fit-content;width:fit-content;max-width:none}
+  .page-tseny #dop,
+  .page-tseny #vhodit,
+  .page-tseny #cta{padding-bottom:80px}
+  /* страницы-услуги: заголовки с «висячим» одиночным словом — в одну строку, пометка садится по тексту */
+  .page-uslugi #cta .sec-head h2.sh,
+  .page-priemka-kvartiry #check .sec-head h2.sh,
+  .page-priemka-kvartiry #faq .sec-head h2.sh,
+  .page-priemka-kvartiry #cta .sec-head h2.sh,
+  .page-priemka-kvartiry #quiz .sec-head h2.sh,
+  .page-tehnadzor #check .sec-head h2.sh,
+  .page-tehnadzor #faq .sec-head h2.sh,
+  .page-audit #uslugi .sec-head h2.sh,
+  .page-final #granicy .sec-head h2.sh,
+  .page-distant #uslugi .sec-head h2.sh,
+  .page-distant #granicy .sec-head h2.sh{white-space:nowrap;width:-webkit-fit-content;width:fit-content;max-width:none}
+}
+/* rough-notation рисует пометку по боксу заголовка — ужимаем бокс до текста,
+   чтобы линия/рамка/овал обводили именно фразу, а не пустоту справа */
+h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
+.sec-head[style*="center"] h2.sh{margin-inline:auto} /* центрованные заголовки (квиз) — держим по центру */
 
 /* кнопки */
 .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.03em;font-weight:600;padding:14px 26px;border:none;border-radius:var(--radius);cursor:pointer;font-size:15px;box-shadow:0 3px 0 var(--red-dark);transition:transform .05s, background .15s;text-align:center}
@@ -116,8 +145,10 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .akt-meta .f .k{font-family:var(--f-display);text-transform:uppercase;font-size:11px;color:var(--ink-soft);white-space:nowrap}
 .akt-meta .f .v{flex:1;border-bottom:1px solid var(--line-dark);font-weight:700;min-width:60px}
 .akt-no{font-family:var(--f-display);font-weight:700;color:var(--red);font-size:20px;text-align:right}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:32px;margin-top:18px;align-items:start}
-.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(40px,6vw,72px);line-height:.94;letter-spacing:.005em;color:var(--ink);margin:6px 0 18px}
+/* hero: композиция (текст + фото) по центру контейнера — равные поля слева/справа. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:32px;margin-top:18px;align-items:start}
+/* H1 — на всю ширину НАД блоком «текст+фото», крупный (как секционные H2, чуть больше) */
+.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:1.0;letter-spacing:.005em;color:var(--ink);margin:2px 0 4px;overflow-wrap:normal;hyphens:manual;-webkit-hyphens:manual}
 .hero .lead-red{font-weight:700;font-size:22px;line-height:1.34;color:var(--ink)}
 .hero #mark-lead{color:var(--red)}
 .hero .lead{color:var(--ink-soft);font-size:18px;margin:16px 0 22px;max-width:580px;line-height:1.55}
@@ -141,6 +172,9 @@ h3.sh3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;fon
 .photo-fan .fan-b1,.photo-fan .fan-b2{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .photo-fan .fan-b1{transform:rotate(5deg) translate(18px,10px)}
 .photo-fan .fan-b2{transform:rotate(-6.5deg) translate(-20px,14px)}
+/* hero: одиночное командное фото — показываем ЦЕЛИКОМ, без обрезки (натуральные пропорции).
+   Ширину фото задаёт «остаточная» колонка сетки (она выпущена вправо до края экрана). */
+.photo-single .photo{aspect-ratio:auto;height:auto;object-fit:contain;transform:rotate(-1.2deg)}
 .stamp{position:absolute;font-family:var(--f-display);font-weight:700;text-transform:uppercase;color:var(--red);border:3px double var(--red);border-radius:8px;padding:8px 16px;font-size:22px;letter-spacing:.04em;transform:rotate(-13deg);opacity:.82;box-shadow:inset 0 0 0 2px rgba(204,32,24,.15);background:rgba(251,246,234,.25);mix-blend-mode:multiply}
 .stamp small{display:block;font-size:9px;letter-spacing:.12em;text-align:center;font-weight:400}
 .stamp.notchecked{top:16px;right:22px}
@@ -322,22 +356,19 @@ a.more:hover{text-decoration:underline}
 .doc-stack.is-live .doc-card[data-depth="2"]{transform:translateY(16px) scale(.97) rotate(1.3deg);opacity:1;z-index:4}
 .doc-stack.is-live .doc-card[data-depth="back"]{transform:translateY(22px) scale(.955);opacity:0;z-index:1}
 .doc-stack.is-live .doc-card.is-leaving{transform:translateX(-34%) rotate(-7deg);opacity:0;z-index:7}
-.doc-stack__hint{display:block;text-align:center;margin:0 0 12px;font-family:var(--f-hand);font-style:italic;font-size:22px;font-weight:600;color:var(--red-mark);transform:rotate(-1.5deg)}
-.doc-stack__cursor{position:absolute;right:20%;bottom:24%;z-index:8;color:var(--red);pointer-events:none;line-height:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
-.doc-stack__cursor svg{display:block;fill:currentColor;stroke:#fff;stroke-width:1.1}
-.doc-stack.is-live .doc-stack__cursor{animation:docCursorHint 2.8s ease-in-out infinite}
-.doc-stack.is-live.interacted .doc-stack__cursor{animation:none;opacity:0;transition:opacity .4s}
-.doc-stack:hover .doc-stack__cursor{animation-play-state:paused}
-@keyframes docCursorHint{
-  0%{transform:translate(72%,8%) scale(1);opacity:0}
-  18%{transform:translate(0,0) scale(1);opacity:1}
-  40%{transform:translate(0,0) scale(.82);opacity:1}
-  56%{transform:translate(0,0) scale(1);opacity:1}
-  80%{transform:translate(0,0) scale(1);opacity:1}
-  100%{transform:translate(72%,8%) scale(1);opacity:0}
+.doc-stack__hint{display:block;text-align:center;margin:0 0 2px;font-family:var(--f-hand);font-style:italic;font-size:clamp(28px,5.5vw,34px);font-weight:700;line-height:1.05;color:var(--red-mark);transform:rotate(-1.5deg)}
+/* стрелка-указатель «от фразы вниз к актам» — мягко покачивается, ведёт взгляд к стопке; уходит после первого клика */
+.doc-stack__arrow{display:block;width:100%;text-align:center;margin:0 auto 10px;color:var(--red-mark);line-height:0;pointer-events:none}
+.doc-stack__arrow svg{display:inline-block}
+.doc-stack.is-live .doc-stack__arrow{animation:docArrowBob 1.7s ease-in-out infinite}
+.doc-stack.is-live.interacted .doc-stack__arrow{animation:none;opacity:0;transition:opacity .4s}
+.doc-stack:hover .doc-stack__arrow{animation-play-state:paused}
+@keyframes docArrowBob{
+  0%,100%{transform:translateY(0);opacity:.6}
+  50%{transform:translateY(8px);opacity:1}
 }
-@media (max-width:680px){.doc-stack__deck{max-width:320px}.doc-stack__cursor{right:16%;bottom:22%}}
-@media (prefers-reduced-motion:reduce){.doc-card,.doc-stack.is-live .doc-card.is-leaving{transition:none}.doc-stack.is-live .doc-stack__cursor{animation:none}}
+@media (max-width:680px){.doc-stack__deck{max-width:320px}}
+@media (prefers-reduced-motion:reduce){.doc-card,.doc-stack.is-live .doc-card.is-leaving{transition:none}.doc-stack.is-live .doc-stack__arrow{animation:none}}
 
 /* ===== ЭКСПЕРТЫ ===== */
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
@@ -416,7 +447,7 @@ a.more:hover{text-decoration:underline}
 .lead-success{display:none;margin-top:16px;padding:14px;background:rgba(60,122,78,.12);border:1px solid var(--green);border-radius:7px;color:var(--green);font-weight:700}
 
 /* ===== FAQ ===== */
-.faq-list{max-width:840px;margin:8px auto 0}
+.faq-list{max-width:840px;margin:8px 0 0}
 .faq-list details{border-bottom:1px solid var(--line-dark);padding:4px 0}
 .faq-list summary{font-family:var(--f-display);text-transform:none;font-size:var(--fs-21);font-weight:600;color:var(--ink);cursor:pointer;padding:18px 40px 18px 0;position:relative;list-style:none}
 .faq-list summary::-webkit-details-marker{display:none}
@@ -479,6 +510,8 @@ a.more:hover{text-decoration:underline}
 .lead-band .wpcf7-spinner{margin:12px auto 0;display:block}
 .lead-band .wpcf7-not-valid-tip{color:#ff8179;font-size:12px;margin-top:5px}
 .lead-band .wpcf7-response-output{margin:14px 0 0!important;padding:11px 14px!important;border-radius:8px;font-size:13.5px;color:#fff;border-color:rgba(255,255,255,.35)!important}
+/* CF7: пустой/idle блок ответа прячем — иначе под формой видна «линия» (рамка пустого бокса) */
+.wpcf7-response-output[aria-hidden="true"],.wpcf7-response-output:empty{display:none!important}
 @media(max-width:820px){
   .sec.lead .wrap{padding:0}
   .lead-band{grid-template-columns:1fr;border-radius:0;box-shadow:none}
@@ -653,8 +686,9 @@ a.more:hover{text-decoration:underline}
   .sec{padding:44px 0}
   .hero{padding:22px 0 40px}
   .hero-grid{grid-template-columns:1fr;gap:22px}
-  .hero h1{font-size:clamp(30px,8.5vw,42px)}
+  .hero h1{font-size:clamp(30px,8.5vw,44px);line-height:1.14;text-wrap:balance}
   .hero .lead{line-height:1.4}
+  .hero .lead-red{line-height:1.24} /* плотнее на мобиле — строки ближе */
   .akt-meta{grid-template-columns:1fr;gap:6px}
   .akt-no{text-align:left}
   .cta-row{flex-direction:column;align-items:flex-start;gap:12px}
@@ -673,17 +707,18 @@ a.more:hover{text-decoration:underline}
   .brand .tg{font-size:11px;max-width:168px;letter-spacing:.03em}
   .topbar{gap:10px}
   .topbar>.btn.sm{margin-left:auto}
-  .photo{max-width:340px;margin:0 auto}
-  .photo-fan{max-width:340px;margin-inline:auto}
+  .photo-wrap{display:none} /* мобайл: hero-фото скрываем — оставляем только на ПК */
   .pstep{flex-direction:row}
   .quiz-placeholder{padding:30px 22px}
   .act-sample{min-height:220px}
   h1.sh,h2.sh,.hero h1{overflow-wrap:break-word}
+  /* воздух между строк многострочных заголовков на мобиле — «ё»/«й» не липнут к строке выше */
+  h1.sh,h2.sh,h3.sh3,.quiz-placeholder strong{line-height:1.14}
 }
 @media(max-width:430px){
   .trust .wrap{grid-template-columns:1fr}
   .site-header .btn.sm{padding:9px 12px;font-size:12px}
-  .hero h1{font-size:30px}
+  .hero h1{font-size:30px;line-height:1.14}
 }
 
 /* ===== МОБИЛЬНЫЙ «СКРОЛЛ-ДЖЕК»: вертикальный скролл двигает ленту влево =====
@@ -772,6 +807,9 @@ a.more:hover{text-decoration:underline}
 /* финальный бежевый CTA вплотную к футеру: гасим зазор margin-top:50px футера,
    чтобы рваный верх футера «врезался» в бежевый фон, а не в paper-зазор */
 #cta,#granicy-o{margin-bottom:-50px}
+/* главная: #cta — это форма В СЕРЕДИНЕ страницы (за ней #faq), а не финальный CTA у футера.
+   Гасим нахлёст -50px, иначе #faq наезжает на бежевый #cta и виден прямой тоновый шов-«линия». */
+#cta.lead{margin-bottom:0}
 .dist-list.dl-light{margin-top:6px}
 .dist-list.dl-light li{color:var(--ink-soft)}
 .dist-list.dl-light li b{color:var(--ink)}

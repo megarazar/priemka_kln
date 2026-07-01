@@ -34,15 +34,15 @@ section{position:relative;z-index:1}
 .sec-head{margin-bottom:34px;max-width:760px;position:relative}
 /* красная пометка над заголовком — рукописная, наискосок, как «6 вопросов» в hero */
 .eyebrow{font-family:var(--f-hand);font-size:30px;font-weight:700;color:var(--red-mark);line-height:1.05;display:inline-block;transform:rotate(-2deg);margin-bottom:8px}
-h1.sh,h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink)}
-h3.sh3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.0;letter-spacing:.005em;color:var(--ink);margin-bottom:8px}
+h1.sh,h2.sh{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.14;letter-spacing:.005em;color:var(--ink)}
+h3.sh3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,58px);line-height:1.14;letter-spacing:.005em;color:var(--ink);margin-bottom:8px}
 .sec-lead{font-size:var(--fs-lead);color:var(--ink-soft);margin-top:14px;line-height:1.62}
 .micro{font-size:var(--fs-sm);color:var(--ink-faint);margin-top:18px;font-style:italic}
 /* ПК: однострочные заголовки секций (квиз/процесс/доказательства) + акты ровно в 2 строки */
 @media(min-width:1100px){
   #process .sec-head h2.sh,
   #video .sec-head h2.sh{white-space:nowrap;width:fit-content;max-width:none}
-  #garant .sec-head h2.sh{font-size:clamp(44px,4vw,50px);line-height:1.06;width:max-content;max-width:none}
+  #garant .sec-head h2.sh{font-size:clamp(44px,4vw,50px);line-height:1.14;width:max-content;max-width:none}
   /* страница «Цены»: длинные заголовки в одну строку (пометка по тексту) + воздух между плотными секциями */
   .page-tseny #uslugi .sec-head h2.sh,
   .page-tseny #vhodit .sec-head h2.sh,
@@ -61,6 +61,7 @@ h3.sh3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;fon
   .page-audit #uslugi .sec-head h2.sh,
   .page-final #granicy .sec-head h2.sh,
   .page-distant #uslugi .sec-head h2.sh,
+  .page-priemka-novostroyka #shots .sec-head h2.sh,
   .page-distant #granicy .sec-head h2.sh{white-space:nowrap;width:-webkit-fit-content;width:fit-content;max-width:none}
 }
 /* rough-notation рисует пометку по боксу заголовка — ужимаем бокс до текста,
@@ -133,8 +134,8 @@ h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
 .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .mobile-menu{display:none;flex-direction:column;gap:2px;background:var(--panel);border-bottom:2px solid var(--ink);padding:14px 24px 20px}
 .mobile-menu.open{display:flex}
-.mobile-menu a{font-family:var(--f-display);text-transform:uppercase;font-size:15px;color:var(--ink);text-decoration:none;padding:11px 0;border-bottom:1px solid var(--line)}
-.mobile-menu a.phone{font-size:20px;border-bottom:none}
+.mobile-menu a{font-family:var(--f-display);text-transform:uppercase;font-size:18px;color:var(--ink);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line)}
+.mobile-menu a.phone{font-size:22px;border-bottom:none}
 .mobile-menu a.btn{color:#fff;text-align:center;margin-top:10px;border-bottom:none}
 
 /* ===== HERO (чистый, без фоновой плиты) ===== */
@@ -148,7 +149,7 @@ h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
 /* hero: композиция (текст + фото) по центру контейнера — равные поля слева/справа. */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:32px;margin-top:18px;align-items:start}
 /* H1 — на всю ширину НАД блоком «текст+фото», крупный (как секционные H2, чуть больше) */
-.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:1.0;letter-spacing:.005em;color:var(--ink);margin:2px 0 4px;overflow-wrap:normal;hyphens:manual;-webkit-hyphens:manual}
+.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:1.14;letter-spacing:.005em;color:var(--ink);margin:2px 0 4px;overflow-wrap:normal;hyphens:manual;-webkit-hyphens:manual}
 .hero .lead-red{font-weight:700;font-size:22px;line-height:1.34;color:var(--ink)}
 .hero #mark-lead{color:var(--red)}
 .hero .lead{color:var(--ink-soft);font-size:18px;margin:16px 0 22px;max-width:580px;line-height:1.55}
@@ -419,7 +420,7 @@ a.more:hover{text-decoration:underline}
   font-size:13px;color:var(--red);border:2px double var(--red);border-radius:6px;padding:6px 14px;
   transform:rotate(-2deg);margin-bottom:18px;
 }
-.quiz-placeholder strong{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:clamp(24px,3vw,34px);line-height:1.05;color:var(--ink);margin-bottom:14px}
+.quiz-placeholder strong{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:clamp(24px,3vw,34px);line-height:1.14;color:var(--ink);margin-bottom:14px}
 .quiz-placeholder p{font-size:18px;color:var(--ink-soft);max-width:600px;margin:0 auto 26px;line-height:1.55}
 .quiz-placeholder .qp-note{display:block;margin-top:16px;font-size:13px;color:var(--ink-faint);font-style:italic}
 .quiz-box{background:var(--panel);border:2px solid var(--ink);border-radius:0;padding:30px;max-width:780px;margin:24px auto 0;box-shadow:var(--shadow-deep);position:relative}
@@ -609,20 +610,53 @@ a.more:hover{text-decoration:underline}
   .pp-quiz .wpcf7-submit{width:100%}
 }
 
+/* ===== СЕРВИСНЫЕ СТРАНИЦЫ: hero-фото + галерея «реальные приёмки» ===== */
+/* hero в 2 колонки: текст слева + фото в рамке справа (на мобиле — стек) */
+.svc-hero{display:grid;gap:24px;align-items:center}
+@media(min-width:861px){.svc-hero{grid-template-columns:1.18fr .82fr;gap:40px}}
+.svc-hero__text{min-width:0}
+.svc-hero__pic{position:relative;margin:0}
+.svc-hero__pic img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border:8px solid #fff;box-shadow:5px 7px 0 rgba(34,29,22,.18);background:#cfc7b6;transform:rotate(-1.1deg)}
+.svc-hero__cap{position:absolute;left:10px;bottom:-12px;font-family:var(--f-hand);font-weight:700;color:var(--red-mark);font-size:23px;line-height:1;transform:rotate(-2deg);background:var(--paper);padding:2px 9px}
+@media(max-width:860px){.svc-hero__pic{max-width:460px;margin:8px auto 14px}}
+
+/* галерея «реальные приёмки» — фото-полароиды с рукописной подписью */
+.shots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+.shot{margin:0;background:#fff;border:7px solid #fff;box-shadow:4px 6px 0 rgba(34,29,22,.16);position:relative}
+.shot:nth-child(2n){transform:rotate(1deg)}
+.shot:nth-child(3n){transform:rotate(-1.2deg)}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:#cfc7b6}
+.shot figcaption{font-family:var(--f-hand);font-weight:700;color:var(--ink);font-size:18px;line-height:1.15;padding:9px 6px 3px;text-align:center}
+@media(max-width:680px){
+  .shots-grid{display:flex;overflow-x:auto;gap:14px;margin-inline:-24px;padding:6px 24px 14px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .shots-grid::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 78%;scroll-snap-align:center}
+  .svc-hero__pic{display:none} /* мобайл: hero-фото после первого экрана убираем целиком */
+}
+/* доводка эталона: мобильные заголовки длинных секций — ~2 строки (не мельчат сильнее нужного) */
+@media(max-width:680px){
+  .page-priemka-novostroyka #check .sec-head h2.sh,
+  .page-priemka-novostroyka #faq .sec-head h2.sh{font-size:clamp(23px,6.4vw,30px);text-wrap:balance}
+}
+/* статбенд «фишек» под hero — тёмная рваная плашка (переиспользуемый модификатор) */
+.statband.statband--ink{background:var(--ink);padding:26px 26px 28px;-webkit-clip-path:var(--torn-clip);clip-path:var(--torn-clip)}
+.statband.statband--ink .stat b{color:#fff}
+.statband.statband--ink .stat span{color:#d3c8b2}
+
 /* ===== РВАНЫЕ ГРАНИЦЫ МЕЖДУ ВСЕМИ БЛОКАМИ ===== */
-#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta{position:relative}
-#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before{
+#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta,#shots{position:relative}
+#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{
   content:"";position:absolute;left:0;right:0;top:-22px;height:24px;z-index:3;pointer-events:none;
   background:var(--sec-bg,var(--paper));
   -webkit-mask:var(--torn-edge-top);mask:var(--torn-edge-top);
   -webkit-mask-size:auto 100%;mask-size:auto 100%;
   -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
 }
-#trust,#distance,#granicy{--sec-bg:var(--ink)}
-#quiz,#process,#video,#geo,#dop,#cta,#granicy-o{--sec-bg:var(--paper-2)}
+#trust,#distance,#granicy,#shots{--sec-bg:var(--ink)}
+#quiz,#process,#video,#geo,#dop,#cta,#granicy-o,#post-related{--sec-bg:var(--paper-2)}
 #check,#uslugi,#garant,#experts,#reviews,#faq,#vhodit{--sec-bg:var(--paper)}
 @supports not ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
-  #trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before{display:none}
+  #trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{display:none}
 }
 
 /* ===== КАРТОЧКИ-«КЛОЧКИ» (рваные края clip-path, желтоватая бумага) ===== */
@@ -686,7 +720,7 @@ a.more:hover{text-decoration:underline}
   .sec{padding:44px 0}
   .hero{padding:22px 0 40px}
   .hero-grid{grid-template-columns:1fr;gap:22px}
-  .hero h1{font-size:clamp(30px,8.5vw,44px);line-height:1.14;text-wrap:balance}
+  .hero h1{font-size:clamp(30px,8.5vw,44px);text-wrap:balance}
   .hero .lead{line-height:1.4}
   .hero .lead-red{line-height:1.24} /* плотнее на мобиле — строки ближе */
   .akt-meta{grid-template-columns:1fr;gap:6px}
@@ -712,13 +746,11 @@ a.more:hover{text-decoration:underline}
   .quiz-placeholder{padding:30px 22px}
   .act-sample{min-height:220px}
   h1.sh,h2.sh,.hero h1{overflow-wrap:break-word}
-  /* воздух между строк многострочных заголовков на мобиле — «ё»/«й» не липнут к строке выше */
-  h1.sh,h2.sh,h3.sh3,.quiz-placeholder strong{line-height:1.14}
 }
 @media(max-width:430px){
   .trust .wrap{grid-template-columns:1fr}
   .site-header .btn.sm{padding:9px 12px;font-size:12px}
-  .hero h1{font-size:30px;line-height:1.14}
+  .hero h1{font-size:30px}
 }
 
 /* ===== МОБИЛЬНЫЙ «СКРОЛЛ-ДЖЕК»: вертикальный скролл двигает ленту влево =====
@@ -787,7 +819,7 @@ a.more:hover{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){
   .thanks-hand-text{animation:none;clip-path:none;-webkit-clip-path:none}
 }
-.thanks-title{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(26px,4vw,38px);line-height:1.08;color:var(--ink);margin-bottom:14px}
+.thanks-title{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(26px,4vw,38px);line-height:1.14;color:var(--ink);margin-bottom:14px}
 .thanks-text{font-size:var(--fs-text);color:var(--ink-soft);line-height:1.6;max-width:520px;margin:0 auto}
 .thanks-social{border-top:1.5px dashed var(--line-dark);margin-top:26px;padding-top:24px}
 .thanks-social-lead{font-size:15px;color:var(--ink-soft);max-width:500px;margin:0 auto 16px}
@@ -844,13 +876,118 @@ a.more:hover{text-decoration:underline}
 }
 
 /* ===== Мобильное меню: аккордеон «Услуги» (как дропдаун на ПК) ===== */
-.mobile-menu .mm-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:11px 0;cursor:pointer;font-family:var(--f-display);text-transform:uppercase;font-size:15px;color:var(--ink);text-align:left}
+.mobile-menu .mm-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:13px 0;cursor:pointer;font-family:var(--f-display);text-transform:uppercase;font-size:18px;color:var(--ink);text-align:left}
 .mobile-menu .mm-toggle svg{width:14px;height:9px;flex:0 0 auto;transition:transform .2s ease}
 .mobile-menu .mm-services.open .mm-toggle svg{transform:rotate(180deg)}
 .mobile-menu .mm-sub{display:none;flex-direction:column}
 .mobile-menu .mm-services.open .mm-sub{display:flex}
-.mobile-menu .mm-sub a{font-size:13.5px;text-transform:none;color:var(--ink-soft);padding:9px 0 9px 14px;border-bottom:1px dashed var(--line)}
-.mobile-menu .mm-sub a.mm-all{color:var(--red-mark);text-transform:uppercase;font-size:13px;padding-left:0}
+.mobile-menu .mm-sub a{font-size:16px;text-transform:none;color:var(--ink-soft);padding:11px 0 11px 14px;border-bottom:1px dashed var(--line)}
+.mobile-menu .mm-sub a.mm-all{color:var(--red-mark);text-transform:uppercase;font-size:15px;padding-left:0}
 
 /* Картинка в карточке услуги (.svc) — для «частных случаев» и подобных */
 .svc-pic{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;border:3px solid #fff;box-shadow:2px 3px 0 rgba(34,29,22,.12);margin-bottom:14px;display:block;background:#cfc7b6}
+
+/* ======================================================================
+ * БЛОГ — лента (/blog/), рубрики (archive), статья (single).
+ * Шаблоны: home.php / archive.php / single.php / template-parts/blog-card.php
+ * Акцент ссылок в тексте статьи — тёплый коралл (#d64a2f): явно «кликабельно».
+ * Журнальная типографика: глобальный *{margin:0} гасит отступы, задаём ритм явно.
+ * ====================================================================== */
+
+/* ---- хлебные крошки + мета статьи ---- */
+.crumbs{font-family:var(--f-body);font-size:14px;color:var(--ink-faint);margin-bottom:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.crumbs a{color:var(--ink-soft);text-decoration:none}
+.crumbs a:hover{color:var(--red)}
+.post-meta{display:flex;gap:10px;align-items:center;margin-top:18px;font-size:13px;color:var(--ink-faint);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.post-cover{margin-top:30px}
+.post-cover img{width:100%;height:auto;display:block;border:6px solid #fff;box-shadow:var(--shadow-card)}
+/* шапка статьи: заголовок в 2-3 строки, а не четыре */
+.post-head .sec-head{max-width:860px}
+.post-head h1.sh{font-size:clamp(26px,3.4vw,42px);line-height:1.16}
+/* колонка контента статьи — по центру страницы, а не прижата влево */
+.post-head>.wrap>*,.post-body>.wrap>*{margin-left:auto;margin-right:auto;max-width:860px}
+
+/* ---- фильтр рубрик (чипсы): не синие ссылки, а аккуратные пилюли ---- */
+.blog-filter{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{font-family:var(--f-display);text-transform:uppercase;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--ink-soft);background:#fff;text-decoration:none;padding:9px 18px;border:1.5px solid var(--line-dark);border-radius:999px;transition:background .15s,color .15s,border-color .15s}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.is-active{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* ---- сетка карточек ---- */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10px}
+.blog-card{background:var(--card-paper);position:relative;display:flex;flex-direction:column;-webkit-clip-path:var(--torn-clip);clip-path:var(--torn-clip);transition:transform .22s ease}
+.blog-card:nth-child(4n+2){-webkit-clip-path:var(--torn-clip-2);clip-path:var(--torn-clip-2)}
+.blog-card:nth-child(4n+3){-webkit-clip-path:var(--torn-clip-3);clip-path:var(--torn-clip-3)}
+.blog-card:nth-child(4n){-webkit-clip-path:var(--torn-clip-4);clip-path:var(--torn-clip-4)}
+@media(hover:hover){.blog-card:hover{transform:translateY(-4px)}}
+/* padding-top-бокс + абсолютная картинка: детерминированная высота на любом движке
+   (aspect-ratio внутри clip-path-флекса на iOS резолвится нестабильно → обложка «разлетается») */
+.blog-card__media{display:block;position:relative;padding-top:52.5%;overflow:hidden;margin:14px 16px 0}
+.blog-card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.blog-card__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--panel-2);font-family:var(--f-hand);color:var(--red-mark);font-size:26px}
+.blog-card__body{padding:16px 22px 24px;display:flex;flex-direction:column;flex:1}
+.blog-card .eyebrow{font-family:var(--f-hand);font-size:20px;color:var(--red-mark);margin-bottom:4px;text-decoration:none;display:inline-block}
+.blog-card__title{font-family:var(--f-display);text-transform:uppercase;font-size:var(--fs-21);line-height:1.18;margin-bottom:8px}
+.blog-card__title a{color:var(--ink);text-decoration:none}
+.blog-card__title a:hover{color:var(--red)}
+.blog-card__excerpt{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.55;flex:1}
+.blog-card__meta{display:flex;gap:8px;align-items:center;margin-top:16px;font-size:12px;color:var(--ink-faint);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+/* «Читать» — крупная заметная ссылка, а не мелкий текст */
+.blog-card .more{margin-top:14px;font-family:var(--f-display);text-transform:uppercase;font-weight:600;font-size:15px;letter-spacing:.03em;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.blog-card .more:hover{gap:9px}
+@supports not ((clip-path:polygon(0 0)) or (-webkit-clip-path:polygon(0 0))){
+  .blog-card{border:1px solid var(--line);box-shadow:var(--shadow-card);border-radius:6px}
+}
+
+/* ---- пустая лента + пагинация ---- */
+.blog-empty{font-size:var(--fs-lead);color:var(--ink-soft);max-width:600px;line-height:1.6}
+.blog-empty a{color:var(--red-mark)}
+.pagination{margin-top:44px}
+.pagination .nav-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pagination .page-numbers{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;font-family:var(--f-display);font-weight:600;color:var(--ink-soft);text-decoration:none;border:1.5px solid var(--line-dark);border-radius:6px}
+.pagination a.page-numbers:hover{border-color:var(--ink);color:var(--ink)}
+.pagination .page-numbers.current{background:var(--red);color:#fff;border-color:var(--red)}
+.pagination .page-numbers.dots{border:none;min-width:auto}
+
+/* ---- ТЕЛО СТАТЬИ (single): журнальная типографика с воздухом ----
+   Скоуп .post .prose — не задевает .prose на других страницах. */
+#post-related{background:var(--paper-2)}
+.post .prose{max-width:860px;margin-left:auto;margin-right:auto;color:var(--ink-soft);font-size:18px;line-height:1.8}
+.post .prose > * + *{margin-top:1.5em}
+/* лид-абзац крупнее — журнальный зачин */
+.post .prose > p:first-of-type{font-size:20px;line-height:1.7;color:var(--ink)}
+.post .prose p{font-size:18px;line-height:1.8}
+/* H2 — секция с линией-разделителем и большим воздухом сверху: сразу видно структуру */
+.post .prose h2{font-family:var(--f-display);text-transform:uppercase;font-weight:700;color:var(--ink);font-size:clamp(23px,3vw,32px);line-height:1.2;margin-top:2.2em;padding-top:.7em;border-top:2px solid var(--line-dark)}
+.post .prose h3{font-family:var(--f-display);text-transform:uppercase;font-weight:600;color:var(--ink);font-size:clamp(18px,2.2vw,22px);line-height:1.28;margin-top:1.8em}
+.post .prose > *:first-child{margin-top:0;padding-top:0;border-top:0}
+/* ссылки в тексте — тёплый коралл, жирные, подчёркнутые */
+.post .prose a{color:#d64a2f;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.post .prose a:hover{color:#b23a22;text-decoration-thickness:3px}
+.post .prose ul,.post .prose ol{margin-top:1.3em;padding-left:1.4em}
+.post .prose li{margin-top:.55em;line-height:1.7}
+.post .prose ul li::marker{color:#d64a2f}
+.post .prose ol li::marker{color:var(--ink-faint);font-family:var(--f-display)}
+.post .prose strong,.post .prose b{color:var(--ink)}
+.post .prose blockquote{border-left:4px solid var(--red);background:var(--panel);padding:18px 22px;margin:1.6em 0;color:var(--ink);font-size:19px}
+.post .prose img{max-width:100%;height:auto;display:block;border:5px solid #fff;box-shadow:var(--shadow-card)}
+.post .prose figure{margin:1.8em 0}
+.post .prose figcaption{font-size:14px;color:var(--ink-faint);margin-top:10px;font-style:italic;text-align:center}
+.post .prose table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);display:block;overflow-x:auto}
+.post .prose th,.post .prose td{border:1px solid var(--line-dark);padding:10px 12px;text-align:left}
+.post .prose th{background:var(--panel);font-family:var(--f-display);text-transform:uppercase;font-size:var(--fs-label)}
+.post-tags{margin-top:34px;display:flex;flex-wrap:wrap;gap:8px}
+.post-tags a{font-size:var(--fs-sm);color:var(--red-mark);text-decoration:none;border:1px solid var(--line-dark);padding:5px 12px;border-radius:20px}
+.post-tags a:hover{background:var(--panel)}
+
+/* ---- адаптив блога ---- */
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* iOS Safari: clip-path на карточке не клипует object-fit-обложку при инерц-скролле → она «разлетается».
+     На мобиле убираем рваный клип, даём ровные углы — источник артефакта устранён. */
+  .blog-card,.blog-card:nth-child(4n+2),.blog-card:nth-child(4n+3),.blog-card:nth-child(4n){-webkit-clip-path:none;clip-path:none;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow-card)}
+  .post .prose{max-width:none;font-size:17px}
+  .post .prose > p:first-of-type{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.blog-card{transition:none}.blog-card:hover{transform:none}}

@@ -37,10 +37,10 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
     <p class="micro" data-reveal>Приёмка по доверенности · Видеосвязь в реальном времени · Официальный акт осмотра · Без вашего приезда в Калининград</p>
-    <div class="statband" data-reveal>
+    <div class="statband statband--ink" data-reveal>
       <div class="stat"><b>+3 000 ₽</b><span>надбавка за дистант</span></div>
       <div class="stat"><b>0</b><span>ваших приездов</span></div>
-      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
+      <div class="stat"><b data-count="15" data-suffix=" мин">15 мин</b><span>на полный акт</span></div>
       <div class="stat"><b data-count="50" data-suffix="%">50%</b><span>повторный выезд</span></div>
     </div>
   </div>

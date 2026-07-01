@@ -110,7 +110,7 @@ _tmr.push({id: "3775817", type: "pageView", start: (new Date()).getTime()});
 <?php wp_body_open(); ?>
 
 <!-- ===================== ШАПКА ===================== -->
-<header class="site-header<?php echo is_front_page() ? ' cta-dark' : ''; ?>">
+<header class="site-header cta-dark">
   <div class="hd-inner">
     <div class="topbar">
       <a href="<?php echo is_front_page() ? '#hero' : esc_url( home_url( '/' ) ); ?>" class="brand" aria-label="ПринятоПро — на главную">

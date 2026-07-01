@@ -56,14 +56,19 @@
     });
   }
 
-  /* ---------- header CTA: тёмная у верха, краснеет после 2-го экрана (#trust) ----------
-     Стартовый класс .cta-dark ставит PHP на главной (без вспышки). Здесь снимаем его,
-     когда низ 2-го экрана ушёл под шапку, и возвращаем при скролле вверх. */
+  /* ---------- header CTA: тёмная у верха, краснеет при скролле (на всех страницах) ----------
+     Класс .cta-dark ставит PHP всегда (без вспышки). Здесь снимаем его, когда низ якоря
+     ушёл под шапку, и возвращаем при скролле вверх. Якорь: #trust (главная) → hero-секция
+     услуги → фолбэк по scrollY (страницы без секций). */
   var ctaHeader = document.querySelector('.site-header.cta-dark');
-  var ctaAnchor = document.getElementById('trust');
-  if (ctaHeader && ctaAnchor) {
+  if (ctaHeader) {
+    var ctaAnchor = document.getElementById('trust') || document.querySelector('#primary > section.sec, main .sec');
     var syncCta = function () {
-      ctaHeader.classList.toggle('cta-dark', ctaAnchor.getBoundingClientRect().bottom > (ctaHeader.offsetHeight || 0));
+      var headerH = ctaHeader.offsetHeight || 0;
+      var dark = ctaAnchor
+        ? ctaAnchor.getBoundingClientRect().bottom > headerH
+        : window.scrollY < (window.innerHeight * 0.7);
+      ctaHeader.classList.toggle('cta-dark', dark);
     };
     window.addEventListener('scroll', syncCta, { passive: true });
     window.addEventListener('resize', syncCta, { passive: true });

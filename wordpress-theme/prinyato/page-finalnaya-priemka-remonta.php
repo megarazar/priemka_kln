@@ -35,11 +35,11 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
-    <div class="statband" data-reveal>
+    <div class="statband statband--ink" data-reveal>
       <div class="stat"><b data-count="15" data-suffix=" 000 ₽">15 000 ₽</b><span>от, по площади</span></div>
       <div class="stat"><b data-count="2">2</b><span>повтора по 50%</span></div>
       <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
-      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
+      <div class="stat"><b data-count="15" data-suffix=" мин">15 мин</b><span>на полный акт</span></div>
     </div>
   </div>
 </section>
@@ -210,7 +210,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       <details data-reveal><summary>Чем финальная приёмка отличается от разового аудита?</summary><p>Аудит обычно проверяет промежуточный этап или общее состояние. Финальная приёмка — это проверка готового ремонта перед последним платежом подрядчику.</p></details>
       <details data-reveal><summary>Что делать с найденными замечаниями?</summary><p>Они попадают в акт. С этим документом вы просите бригаду доделать работы до окончательного расчёта.</p></details>
       <details data-reveal><summary>Сколько стоит повторная проверка?</summary><p>После устранения замечаний — 50% от тарифа, до двух повторных выездов.</p></details>
-      <details data-reveal><summary>Успею ли до расчёта с бригадой?</summary><p>Осмотр занимает 1–2 часа, полный акт — до 24 часов. Финальную приёмку лучше заказывать до того, как отдадите последнюю оплату.</p></details>
+      <details data-reveal><summary>Успею ли до расчёта с бригадой?</summary><p>Осмотр занимает 1–2 часа, а полный акт с фото вы получаете на месте — за 15 минут. Финальную приёмку лучше заказывать до того, как отдадите последнюю оплату.</p></details>
     </div>
   </div>
 </section>

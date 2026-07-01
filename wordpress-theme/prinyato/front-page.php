@@ -192,7 +192,7 @@
             <b>Дверь и комплектация</b><span>Входная дверь, замки, петли, соответствие площади данным ДДУ и БТИ.</span>
           </div>
           <div class="check-card" data-reveal>
-            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg" alt="Эксперт заполняет дефектную ведомость с фотофиксацией" width="400" height="267" loading="lazy" decoding="async">
+            <img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/check-docs.jpg'); ?>" alt="Эксперт заполняет дефектную ведомость с фотофиксацией" width="400" height="267" loading="lazy" decoding="async">
             <b>Документы и фиксация</b><span>Каждый дефект — отдельный кадр с привязкой к помещению, всё в дефектную ведомость.</span>
           </div>
         </div>

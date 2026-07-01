@@ -36,11 +36,11 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
-    <div class="statband" data-reveal>
+    <div class="statband statband--ink" data-reveal>
       <div class="stat"><b data-count="8" data-suffix=" 000 ₽">8 000 ₽</b><span>приёмка этапа</span></div>
       <div class="stat"><b data-count="1">1</b><span>выезд, без подписки</span></div>
       <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
-      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
+      <div class="stat"><b data-count="15" data-suffix=" мин">15 мин</b><span>на полный акт</span></div>
     </div>
   </div>
 </section>
@@ -213,7 +213,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     </div>
     <div class="faq-list">
       <details data-reveal><summary>Чем разовый аудит отличается от технадзора?</summary><p>Технадзор — это сопровождение всего ремонта с регулярными выездами. Аудит — один выезд под конкретный вопрос: проверить этап или общее состояние объекта.</p></details>
-      <details data-reveal><summary>Сколько длится осмотр?</summary><p>Обычно 1–2 часа. Предварительное резюме — за 2–3 часа, полный акт — в течение 24 часов.</p></details>
+      <details data-reveal><summary>Сколько длится осмотр?</summary><p>Обычно 1–2 часа. Полный акт с фото готовим на месте — за 15 минут после осмотра.</p></details>
       <details data-reveal><summary>Можно ли вызвать инженера повторно?</summary><p>Да. Это оформляется как новый выезд либо как переход на месячный технадзор со своими условиями.</p></details>
       <details data-reveal><summary>Принимаете ли скрытые работы?</summary><p>Только пока они доступны для осмотра. После того как этап закрыт — например, стяжка залита поверх коммуникаций, — проверить его без вскрытия уже нельзя.</p></details>
     </div>

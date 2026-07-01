@@ -26,21 +26,29 @@ get_header(); $T = get_template_directory_uri(); ?>
 <!-- ===== HERO ===== -->
 <section class="sec" id="priemka" data-section="priemka">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">Услуга</span>
-      <h1 class="sh">Приёмка квартиры от застройщика</h1>
-      <p class="sec-lead">Проверяем квартиру до или после подписания акта приёма-передачи: находим дефекты застройщика, фиксируем их фото и в официальном акте и объясняем простым языком, что принимать, а что обязаны исправить.</p>
-    </div>
-    <div class="cta-row" data-reveal>
-      <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
-      <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
-    </div>
-    <p class="micro" data-reveal>Официальный акт осмотра · Фото дефектов с привязкой к квартире · Фиксированная цена в договоре · Выезд по Калининграду и области</p>
-    <div class="statband" data-reveal>
-      <div class="stat"><b data-count="8">8</b><span>узлов проверки</span></div>
-      <div class="stat"><b data-count="24" data-suffix=" ч">24 ч</b><span>на полный акт</span></div>
-      <div class="stat"><b data-count="50" data-suffix="%">50%</b><span>повторный выезд</span></div>
-      <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
+    <div class="svc-hero">
+      <div class="svc-hero__text">
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow">Услуга</span>
+          <h1 class="sh">Приёмка квартиры от застройщика</h1>
+          <p class="sec-lead">Проверяем квартиру до или после подписания акта приёма-передачи: находим дефекты застройщика, фиксируем их фото и в официальном акте и объясняем простым языком, что принимать, а что обязаны исправить.</p>
+        </div>
+        <div class="cta-row" data-reveal>
+          <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
+          <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
+        </div>
+        <p class="micro" data-reveal>Официальный акт осмотра · Фото дефектов с привязкой к квартире · Фиксированная цена в договоре · Выезд по Калининграду и области</p>
+        <div class="statband statband--ink" data-reveal>
+          <div class="stat"><b data-count="8">8</b><span>узлов проверки</span></div>
+          <div class="stat"><b data-count="15" data-suffix=" мин">15 мин</b><span>на полный акт</span></div>
+          <div class="stat"><b data-count="50" data-suffix="%">50%</b><span>повторный выезд</span></div>
+          <div class="stat"><b>1–2 ч</b><span>длится осмотр</span></div>
+        </div>
+      </div>
+      <figure class="svc-hero__pic" data-reveal>
+        <img src="<?php echo $T; ?>/assets/img/svc-hub-hero.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/svc-hub-hero.jpg'); ?>" alt="Проверка входной двери и окна на приёмке квартиры от застройщика — эксперт ПринятоПро" width="900" height="1200" loading="eager" decoding="async">
+        <figcaption class="svc-hero__cap">Дверь и окно — по фурнитуре</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -62,7 +70,7 @@ get_header(); $T = get_template_directory_uri(); ?>
 <!-- ===== ЧТО ПРОВЕРЯЕМ ===== -->
 <section class="sec" id="check" data-section="check">
   <div class="wrap">
-    <div class="hs" data-hscroll="all">
+    <div class="hs" data-hscroll>
       <div class="hs-pin">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">Объём работ</span>
@@ -77,11 +85,27 @@ get_header(); $T = get_template_directory_uri(); ?>
       <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-vent.jpg" alt="Проверка вентиляции анемометром" width="400" height="267" loading="lazy" decoding="async"><b>Вентиляция</b><span>Тяга в каждом вентиляционном канале.</span></div>
       <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-thermal.jpg" alt="Тепловизионная проверка теплового контура" width="400" height="267" loading="lazy" decoding="async"><b>Тепловой контур</b><span>Мостики холода и промерзание углов (тепловизор — по запросу).</span></div>
       <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-door.jpg" alt="Проверка входной двери и комплектации" width="400" height="267" loading="lazy" decoding="async"><b>Дверь и комплектация</b><span>Замки, петли, входная дверь, соответствие договору.</span></div>
-      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg" alt="Сверка площади квартиры с данными ДДУ и БТИ" width="400" height="267" loading="lazy" decoding="async"><b>Площадь и геометрия</b><span>Сверка с данными ДДУ и БТИ.</span></div>
+      <div class="check-card"><img class="cc-photo" src="<?php echo $T; ?>/assets/img/check-docs.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/check-docs.jpg'); ?>" alt="Сверка площади квартиры с данными ДДУ и БТИ" width="400" height="267" loading="lazy" decoding="async"><b>Площадь и геометрия</b><span>Сверка с данными ДДУ и БТИ.</span></div>
     </div>
       </div>
     </div>
     <p class="micro" data-reveal>Работаем поверенными приборами: правило и рейка, уровень, рулетка, склерометр; тепловизор — по запросу. Измерения вы видите сами — не «тут холодно», а цифра и кадр.</p>
+  </div>
+</section>
+
+<!-- ===== РЕАЛЬНЫЕ ПРИЁМКИ (фото с выездов) ===== -->
+<section class="sec distance" id="shots" data-section="shots">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">С наших выездов</span>
+      <h2 class="sh">Реальные приёмки в Калининграде</h2>
+      <p class="sec-lead">Не стоковые картинки — кадры с реальных приёмок квартир у застройщиков Калининграда. Вот что находим при осмотре.</p>
+    </div>
+    <div class="shots-grid" data-reveal>
+      <figure class="shot"><img src="<?php echo $T; ?>/assets/img/priemka-hub-1.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/priemka-hub-1.jpg'); ?>" alt="Царапина на оконном откосе — дефект, найденный на приёмке квартиры" width="820" height="1093" loading="lazy" decoding="async"><figcaption>Царапина на откосе</figcaption></figure>
+      <figure class="shot"><img src="<?php echo $T; ?>/assets/img/priemka-real-2.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/priemka-real-2.jpg'); ?>" alt="Незаделанный вывод труб в полу — дефект на приёмке квартиры" width="820" height="1093" loading="lazy" decoding="async"><figcaption>Щель вокруг труб</figcaption></figure>
+      <figure class="shot"><img src="<?php echo $T; ?>/assets/img/priemka-posle-1.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/priemka-posle-1.jpg'); ?>" alt="Щель между плинтусом и стеной — дефект отделки на приёмке" width="820" height="1093" loading="lazy" decoding="async"><figcaption>Щель у плинтуса</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -178,7 +202,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     <ul class="dist-list dl-light">
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span><b>Запись под вашу дату.</b> Согласуем осмотр под дату приёмки у застройщика.</span></li>
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span><b>Осмотр с приборами — 1–2 часа.</b> Каждый дефект уходит в фото и дефектную ведомость прямо на месте.</span></li>
-      <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span><b>Официальный акт осмотра.</b> Предварительное резюме — за 2–3 часа, полный акт — в течение 24 часов.</span></li>
+      <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg><span><b>Официальный акт осмотра.</b> Полный акт с фото и привязкой к квартире готовим на месте — за 15 минут после осмотра.</span></li>
       <li data-reveal><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg><span><b>Повторный выезд после устранения — 50%</b> от стоимости первичной приёмки.</span></li>
     </ul>
     <p class="micro" data-reveal>Цена — от 8 000 ₽, по площади и типу квартиры; точную сумму <a class="more" href="/tseny/">калькулятор покажет за минуту</a>. Стоимость фиксируем в договоре, без доплат на месте.</p>
@@ -232,7 +256,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       <details data-reveal><summary>Когда вызывать эксперта — до или после подписания акта?</summary><p>Лучше до подписания: пока акт приёма-передачи не подписан, у вас больше рычагов. Но и после передачи ключей дефекты можно зафиксировать актом и требовать устранения в гарантийный срок.</p></details>
       <details data-reveal><summary>Застройщик не пускает эксперта — что делать?</summary><p>Вы вправе осматривать квартиру с помощником. Подскажем, как заявить об участии эксперта, и приедем вместе с вами.</p></details>
       <details data-reveal><summary>Что делать с актом дальше?</summary><p>Передаёте дефектную ведомость застройщику. Акт приёма-передачи стоит подписывать после устранения недостатков или с зафиксированными замечаниями.</p></details>
-      <details data-reveal><summary>Сколько стоит и сколько занимает приёмка?</summary><p>Цена — от 8 000 ₽ по площади и типу квартиры, калькулятор посчитает за минуту. Осмотр занимает 1–2 часа, полный акт — до 24 часов.</p></details>
+      <details data-reveal><summary>Сколько стоит и сколько занимает приёмка?</summary><p>Цена — от 8 000 ₽ по площади и типу квартиры, калькулятор посчитает за минуту. Осмотр занимает 1–2 часа, а полный акт с фото вы получаете на месте — за 15 минут.</p></details>
     </div>
   </div>
 </section>

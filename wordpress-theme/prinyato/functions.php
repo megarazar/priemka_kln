@@ -8,6 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action( 'after_setup_theme', function () {
     add_theme_support( 'post-thumbnails' );
+    // Кадр карточки блога (лента/категории) и обложки статьи — обрезка по центру.
+    add_image_size( 'prinyato-card', 760, 480, true );   // 3:2, карточка в ленте
+    add_image_size( 'prinyato-cover', 1200, 630, true );  // обложка статьи + OG
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
     add_theme_support( 'title-tag' ); // title теперь ведёт WordPress/Yoast (в шаблоне <title> убран)
@@ -26,6 +29,17 @@ add_action( 'after_setup_theme', function () {
  */
 add_filter( 'wpseo_json_ld_output', '__return_false' );
 
+// Фавикон прописан вручную в header.php — не даём WP выводить свой wp_site_icon() через wp_head().
+remove_action( 'wp_head', 'wp_site_icon' );
+
+/**
+ * Главную рисует front-page.php, но «страница на главной» = служебная стр. «Главная»
+ * (нужна, чтобы блог работал «страницей записей»). Из-за этого Yoast ставит на /
+ * canonical/og:url служебной страницы (/glavnaya/). Форсим корень сайта.
+ */
+add_filter( 'wpseo_canonical',     function ( $u ) { return is_front_page() ? home_url( '/' ) : $u; } );
+add_filter( 'wpseo_opengraph_url', function ( $u ) { return is_front_page() ? home_url( '/' ) : $u; } );
+
 // Контентная ширина (для медиа в записях блога фазы 2).
 if ( ! isset( $content_width ) ) $content_width = 800;
 
@@ -34,6 +48,58 @@ if ( ! isset( $content_width ) ) $content_width = 800;
  * (Тип услуги, Район, Застройщик) — см. wp_structure_prinyato.md §3.2-3.3.
  * Пока главная самодостаточна, оставляем заготовку.
  */
+
+/* ======================================================================
+ * БЛОГ (стандартные записи WordPress) — see wp_structure_prinyato.md §4.5
+ * Шаблоны: home.php (лента /blog/), archive.php (категории/теги), single.php.
+ * ====================================================================== */
+
+/**
+ * Время чтения записи, мин. Считаем по русскому счёту слов
+ * (кириллица + латиница) из «сырого» контента без тегов; ~180 слов/мин.
+ */
+function prinyato_reading_time( $post = null ) {
+    $post = get_post( $post );
+    if ( ! $post ) return 1;
+    $text  = wp_strip_all_tags( strip_shortcodes( $post->post_content ) );
+    $words = preg_match_all( '/[\p{L}\p{N}]+/u', $text, $m );
+    return max( 1, (int) ceil( $words / 180 ) );
+}
+
+/**
+ * Первичная рубрика записи (для «eyebrow» и хлебных крошек).
+ * Возвращает WP_Term или null.
+ */
+function prinyato_primary_category( $post = null ) {
+    $cats = get_the_category( get_post( $post ) ? get_post( $post )->ID : null );
+    return ! empty( $cats ) ? $cats[0] : null;
+}
+
+/**
+ * Единый CTA-блок в конце информационных статей (seo/08-informatsionnye-zaprosy.md).
+ * Секция #cta уже получает бежевый фон и рваный край в styles.css (переиспользуем ID).
+ */
+function prinyato_blog_cta() { ?>
+<section class="sec blog-cta" id="cta" data-section="cta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Нужна помощь инженера?</span>
+      <h2 class="sh">Приёмка с экспертом в Калининграде и области</h2>
+      <p class="sec-lead">Найдём скрытые дефекты, оформим официальный акт и добьёмся устранения за счёт застройщика. Работаем и дистанционно — по доверенности.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
+      <a class="btn ghost" href="tel:+79062377902">+7 (906) 237-79-02</a>
+    </div>
+  </div>
+</section>
+<?php }
+
+/**
+ * Длина и «хвост» анонса записи в ленте блога.
+ */
+add_filter( 'excerpt_length', function () { return 28; } );
+add_filter( 'excerpt_more',  function () { return '…'; } );
 
 // Contact Form 7: отключаем авто-<p>/<br>, иначе wpautop оборачивает поля в <p>
 // и вставляет <br> между ними — наша grid-вёрстка формы (Имя/Фамилия в ряд) ломается.

@@ -72,6 +72,20 @@
   </div>
 </div>
 
+<?php /* [АРХИВ] Кастомный виджет быстрой связи (TG+MAX) отключён; вместо него чат-виджет Suvvy (скрипт ниже). Разметка сохранена для быстрого возврата; стили .cfab (css/styles.css) и логика #contactFab (js/main.js) инертны без этого блока. */ if (false): ?>
+<!-- Плавающий виджет быстрой связи (TG + MAX) — появляется после 2-го экрана -->
+<div class="cfab" id="contactFab">
+  <div class="cfab__opts">
+    <a class="cfab__opt cfab__opt--tg" href="https://t.me/prinyatoprokld" target="_blank" rel="noopener noreferrer" aria-label="Написать менеджеру в Telegram" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+    <a class="cfab__opt cfab__opt--max" href="https://max.ru/u/f9LHodD0cOK3Yq9kgn81PXJtOp0m5d_rycDzkp4gQoCqpfLeI7UFhFmELIk" target="_blank" rel="noopener noreferrer" aria-label="Написать менеджеру в MAX" tabindex="-1"><svg viewBox="0 0 1000 1000" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z"/></svg></a>
+  </div>
+  <button class="cfab__toggle" type="button" id="contactFabToggle" aria-expanded="false" aria-label="Быстрая связь: Telegram и MAX">
+    <svg class="cfab__ic cfab__ic--chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg class="cfab__ic cfab__ic--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+<?php endif; /* /АРХИВ cfab */ ?>
+
 <!-- вендоры (локально, buildless, вне критического пути LCP) -->
 <?php
 /* версия = mtime файла: сбрасывает 7-дневный браузерный кэш статики при каждом деплое */
@@ -87,6 +101,12 @@ prinyato_js($T, 'main.js');
 prinyato_js($T, 'lead.js');
 prinyato_js($T, 'quiz.js');
 ?>
+<!-- Suvvy — виджет ИИ-чата (агент: консультация + запись через YClients/CRM; внутри ссылки на Telegram/MAX) -->
+<script src="https://storage1.suvvy.ai/widget/loader.js"
+  data-widget-id="6a043e6c21465c6acd75b9756a4e3f231d6ab0d238c3b2fa"
+  data-lang="ru"
+  async
+></script>
 <?php wp_footer(); /* обязателен: грузит AJAX-скрипт CF7 (отправка без перезагрузки + событие wpcf7mailsent для редиректа на /spasibo/) */ ?>
 </body>
 </html>

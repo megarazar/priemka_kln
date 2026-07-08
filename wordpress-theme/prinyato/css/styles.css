@@ -137,6 +137,16 @@ h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
 .mobile-menu a{font-family:var(--f-display);text-transform:uppercase;font-size:18px;color:var(--ink);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line)}
 .mobile-menu a.phone{font-size:22px;border-bottom:none}
 .mobile-menu a.btn{color:#fff;text-align:center;margin-top:10px;border-bottom:none}
+/* соцсети: кликабельные иконки TG/VK в шапке (ПК) и в мобильном меню */
+.head-social{display:flex;align-items:center;gap:12px}
+.head-social a{display:inline-flex;color:var(--ink);transition:color .18s ease,transform .05s ease}
+.head-social a svg{width:26px;height:26px;display:block}
+.head-social a:hover{color:var(--red)}
+.head-social a:active{transform:translateY(1px)}
+.mm-social{display:flex;justify-content:flex-end;align-items:center;gap:22px;padding-top:16px;margin-top:2px}
+.mm-social a{display:inline-flex;color:var(--ink)}
+.mm-social a svg{width:34px;height:34px;display:block}
+.mm-social a:active{color:var(--red)}
 
 /* ===== HERO (чистый, без фоновой плиты) ===== */
 .hero{position:relative;padding:40px 0 64px}
@@ -160,8 +170,14 @@ h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
 .cta-note{font-size:24px;transform:rotate(-5deg)}
 .cta-sub{font-size:13px;color:var(--ink-soft);margin-top:10px}
 .hero-second{margin-top:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:18px;font-weight:600;color:var(--ink)}
-.hero-second .msgs{display:flex;gap:12px}
+.hero-second .msgs{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .hero-second .msgs a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:3px}
+/* иконки мессенджеров менеджера на hero (TG + MAX) — монохром под стиль «акта» */
+.hero-second .msgs a.msg-ic{display:inline-flex;align-items:center;color:var(--ink);text-decoration:none;transition:color .18s ease,transform .05s ease}
+.hero-second .msgs a.msg-ic svg{width:24px;height:24px;display:block}
+.hero-second .msgs a.msg-ic--max svg{width:30px;height:30px} /* у MAX глиф занимает ~76% вьюбокса — крупнее, чтобы оптически совпасть с TG */
+.hero-second .msgs a.msg-ic:hover{color:var(--red)}
+.hero-second .msgs a.msg-ic:active{transform:translateY(1px)}
 /* фото */
 .photo-wrap{position:relative}
 .photo{width:100%;aspect-ratio:4/5;object-fit:cover;border:8px solid #fff;box-shadow:4px 6px 0 rgba(34,29,22,.18);display:block;background:#cfc7b6}
@@ -713,6 +729,7 @@ a.more:hover{text-decoration:underline}
   .dist-grid,.guarant-grid,.geo-grid,.rev-grid{grid-template-columns:1fr}
   .nav{display:none}
   .head-contact{display:none}
+  .head-social{display:none} /* на мобиле иконки соцсетей живут в выдвижном меню (.mm-social) */
   .burger{display:flex}
 }
 @media(max-width:680px){
@@ -991,3 +1008,45 @@ a.more:hover{text-decoration:underline}
   .post .prose > p:first-of-type{font-size:18px}
 }
 @media(prefers-reduced-motion:reduce){.blog-card{transition:none}.blog-card:hover{transform:none}}
+
+/* ===== Лендинги-заявки под рекламу (.page-zayavka: /priemka-kvartiry-zayavka/, /tehnadzor-zayavka/) =====
+   Требование: на мобиле заголовок + форма ЦЕЛИКОМ в первом экране —
+   фото lead-band прячем, верхний отступ секции ужимаем. */
+@media(max-width:820px){
+  .page-zayavka .sec.lead{padding:10px 0 40px}
+  .page-zayavka .lead-right{display:none}
+}
+
+/* ===== Плавающий виджет быстрой связи (TG + MAX) — показываем после 2-го экрана ===== */
+.cfab{position:fixed;right:20px;bottom:20px;z-index:45;
+  opacity:0;visibility:hidden;transform:translateY(16px);
+  transition:opacity .3s ease,transform .3s ease,visibility .3s;pointer-events:none}
+.cfab.is-visible{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+/* выезжающие иконки — абсолютно над кнопкой, в закрытом виде не занимают место */
+.cfab__opts{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:12px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none}
+.cfab__opt{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;
+  background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.28);
+  opacity:0;transform:scale(.5) translateY(10px);pointer-events:none;
+  transition:opacity .2s ease,transform .2s ease,background .18s ease}
+.cfab__opt svg{width:26px;height:26px;display:block}
+.cfab__opt--max svg{width:33px;height:33px} /* глиф MAX занимает ~76% вьюбокса — крупнее для оптического паритета */
+.cfab__opt:hover{background:var(--red)}
+.cfab.open .cfab__opt{opacity:1;transform:none;pointer-events:auto}
+.cfab.open .cfab__opt--tg{transition-delay:.04s}
+.cfab__toggle{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;
+  border:none;cursor:pointer;background:var(--red);color:#fff;position:relative;
+  box-shadow:0 8px 22px rgba(204,32,24,.38);transition:transform .2s ease,box-shadow .2s ease}
+.cfab__toggle:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(204,32,24,.45)}
+.cfab__toggle:active{transform:translateY(0)}
+.cfab__ic{position:absolute;width:28px;height:28px;transition:opacity .2s ease,transform .25s ease}
+.cfab__ic--close{opacity:0;transform:rotate(-90deg)}
+.cfab.open .cfab__ic--chat{opacity:0;transform:rotate(90deg)}
+.cfab.open .cfab__ic--close{opacity:1;transform:rotate(0)}
+@media(max-width:680px){
+  .cfab{right:14px;bottom:14px}
+  body:has(.sticky-cta) .cfab{bottom:88px} /* приподнимаем над мобильной sticky-cta-плашкой */
+}
+@media(prefers-reduced-motion:reduce){
+  .cfab,.cfab__opt,.cfab__ic,.cfab__toggle{transition-duration:.01ms}
+}

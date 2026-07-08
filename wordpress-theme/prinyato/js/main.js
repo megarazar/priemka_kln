@@ -646,3 +646,39 @@
 
   paint();
 })();
+
+/* ===== Плавающий виджет быстрой связи (TG + MAX): появляется после 2-го экрана ===== */
+(function () {
+  var fab = document.getElementById('contactFab');
+  if (!fab) return;
+  var toggle = document.getElementById('contactFabToggle');
+  function close() {
+    fab.classList.remove('open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+  function upd() {
+    if (window.pageYOffset > window.innerHeight * 1.8) {
+      fab.classList.add('is-visible');
+    } else {
+      fab.classList.remove('is-visible');
+      close();
+    }
+  }
+  window.addEventListener('scroll', upd, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
+  if (toggle) {
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = fab.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  /* закрыть по клику вне виджета и по Esc */
+  document.addEventListener('click', function (e) {
+    if (fab.classList.contains('open') && !fab.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();

@@ -1050,3 +1050,37 @@ a.more:hover{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){
   .cfab,.cfab__opt,.cfab__ic,.cfab__toggle{transition-duration:.01ms}
 }
+
+/* ===== Уведомление о сборе данных (152-ФЗ) — плашка справа снизу, один раз ===== */
+.pd-consent{position:fixed;right:20px;bottom:96px;z-index:1000001;max-width:360px;
+  background:var(--panel);color:var(--ink);border:2px solid var(--ink);border-radius:12px;
+  box-shadow:0 12px 30px rgba(30,20,8,.24);padding:18px 20px 16px;
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease}
+.pd-consent.is-shown{opacity:1;transform:none;pointer-events:auto}
+.pd-consent__text{font-size:13.5px;line-height:1.5;margin:0 0 14px;padding-right:14px}
+.pd-consent__text a{color:var(--red-mark);text-decoration:underline;text-underline-offset:2px}
+.pd-consent__btn{display:block;width:100%;text-align:center;background:var(--ink);color:#fff;
+  border:none;border-radius:8px;padding:11px 16px;cursor:pointer;
+  font-family:var(--f-display);text-transform:uppercase;letter-spacing:.03em;font-size:13px}
+.pd-consent__btn:hover{background:#000}
+.pd-consent__close{position:absolute;top:6px;right:10px;width:26px;height:26px;border:none;background:none;
+  color:var(--ink-soft);font-size:24px;line-height:1;cursor:pointer;padding:0}
+.pd-consent__close:hover{color:var(--ink)}
+@media(max-width:680px){
+  /* мобилка: плашка компактнее (меньше шрифт/отступы), у нижнего края */
+  .pd-consent{left:12px;right:12px;bottom:12px;max-width:none;padding:14px 16px 13px;border-radius:10px}
+  body:has(.sticky-cta) .pd-consent{bottom:88px} /* над мобильной sticky-cta-плашкой */
+  .pd-consent__text{font-size:12px;line-height:1.45;margin-bottom:11px;padding-right:6px}
+  .pd-consent__btn{padding:10px 14px;font-size:12px}
+  .pd-consent__close{top:4px;right:8px;font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .pd-consent{transition-duration:.01ms}
+}
+
+/* ===== Арбитражный лендинг Telegram (.page-telegram, /telegram/) =====
+   Буллиты на первом экране (тёмный lead-band) — галочки вместо браузерных маркеров. */
+.tg-bullets{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:11px}
+.tg-bullets li{position:relative;padding-left:28px;color:#e6ddc9;font-size:15px;line-height:1.5}
+.tg-bullets li::before{content:"";position:absolute;left:0;top:3px;width:16px;height:16px;background:#2aabee;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E") center/contain no-repeat}

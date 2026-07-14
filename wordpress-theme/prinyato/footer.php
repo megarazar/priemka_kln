@@ -23,8 +23,8 @@
           <ul>
             <li><a href="/o-nas/">О нас</a></li>
             <li><a href="/tseny/">Цены</a></li>
-            <li><a href="/otzyvy/">Отзывы</a></li>
             <li><a href="/blog/">Блог</a></li>
+            <li><a href="/zhk/">Объекты и ЖК</a></li>
             <li><a href="/kontakty/">Контакты</a></li>
           </ul>
         </div>
@@ -72,6 +72,13 @@
   </div>
 </div>
 
+<!-- Уведомление о сборе данных (152-ФЗ) — показывается один раз (запоминается в localStorage) -->
+<div class="pd-consent" id="pdConsent" role="region" aria-label="Уведомление об обработке персональных данных">
+  <button class="pd-consent__close" type="button" data-pd-close aria-label="Скрыть сообщение">&times;</button>
+  <p class="pd-consent__text">При посещении сайта происходит автоматический сбор обезличенных данных с использованием сервиса Яндекс.Метрика. <a href="/privacy-policy/">Обработка персональных данных</a> осуществляется в соответствии с Федеральным законом №152-ФЗ «О персональных данных».</p>
+  <button class="pd-consent__btn" type="button" data-pd-close>ОК, скрыть сообщение</button>
+</div>
+
 <?php /* [АРХИВ] Кастомный виджет быстрой связи (TG+MAX) отключён; вместо него чат-виджет Suvvy (скрипт ниже). Разметка сохранена для быстрого возврата; стили .cfab (css/styles.css) и логика #contactFab (js/main.js) инертны без этого блока. */ if (false): ?>
 <!-- Плавающий виджет быстрой связи (TG + MAX) — появляется после 2-го экрана -->
 <div class="cfab" id="contactFab">
@@ -101,12 +108,32 @@ prinyato_js($T, 'main.js');
 prinyato_js($T, 'lead.js');
 prinyato_js($T, 'quiz.js');
 ?>
-<!-- Suvvy — виджет ИИ-чата (агент: консультация + запись через YClients/CRM; внутри ссылки на Telegram/MAX) -->
-<script src="https://storage1.suvvy.ai/widget/loader.js"
-  data-widget-id="6a043e6c21465c6acd75b9756a4e3f231d6ab0d238c3b2fa"
-  data-lang="ru"
-  async
-></script>
+<!-- Suvvy — виджет ИИ-чата (агент: консультация + запись через YClients/CRM; внутри ссылки на Telegram/MAX).
+     Грузим не сразу, а после прокрутки первого экрана — чтобы кнопка не появлялась при первом взгляде.
+     НЕ грузим на арбитражных лендингах /telegram/ и /max/ — там ничего не продаём. -->
+<?php if ( ! is_page( array( 'telegram', 'max' ) ) ) : ?>
+<script>
+(function () {
+  var loaded = false;
+  function loadSuvvy() {
+    if (loaded) return;
+    loaded = true;
+    window.removeEventListener('scroll', onScroll);
+    var s = document.createElement('script');
+    s.src = 'https://storage1.suvvy.ai/widget/loader.js';
+    s.async = true;
+    s.setAttribute('data-widget-id', '6a043e6c21465c6acd75b9756a4e3f231d6ab0d238c3b2fa');
+    s.setAttribute('data-lang', 'ru');
+    document.body.appendChild(s);
+  }
+  function onScroll() {
+    if (window.pageYOffset > window.innerHeight * 0.9) loadSuvvy();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+<?php endif; /* /Suvvy — не на /telegram/ и /max/ */ ?>
 <?php wp_footer(); /* обязателен: грузит AJAX-скрипт CF7 (отправка без перезагрузки + событие wpcf7mailsent для редиректа на /spasibo/) */ ?>
 </body>
 </html>

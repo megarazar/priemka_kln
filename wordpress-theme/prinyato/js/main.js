@@ -682,3 +682,22 @@
     if (e.key === 'Escape') close();
   });
 })();
+
+/* ===== Уведомление о сборе данных (152-ФЗ): показываем один раз, запоминаем выбор ===== */
+(function () {
+  var el = document.getElementById('pdConsent');
+  if (!el) return;
+  var KEY = 'pdConsentAccepted';
+  var accepted = false;
+  try { accepted = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (!accepted) {
+    requestAnimationFrame(function () { el.classList.add('is-shown'); });
+  }
+  function dismiss() {
+    el.classList.remove('is-shown');
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+  el.querySelectorAll('[data-pd-close]').forEach(function (b) {
+    b.addEventListener('click', dismiss);
+  });
+})();

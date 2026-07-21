@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<!-- VK Реклама / Top.Mail.Ru counter (id 3775817) -->
+<!-- VK Реклама / Top.Mail.Ru counter (id 3781311) -->
 <script type="text/javascript">
 var _tmr = window._tmr || (window._tmr = []);
-_tmr.push({id: "3775817", type: "pageView", start: (new Date()).getTime()});
+_tmr.push({id: "3781311", type: "pageView", start: (new Date()).getTime()});
 (function (d, w, id) {
   if (d.getElementById(id)) return;
   var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
@@ -17,7 +17,7 @@ _tmr.push({id: "3775817", type: "pageView", start: (new Date()).getTime()});
   if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
 })(document, window, "tmr-code");
 </script>
-<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3775817;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3781311;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
 <!-- /Top.Mail.Ru counter -->
 
 <!-- Яндекс.Метрика (id 109746105). Была плагином — после взлома 2026-07-14 плагины удалили;

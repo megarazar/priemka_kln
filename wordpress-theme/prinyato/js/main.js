@@ -701,3 +701,46 @@
     b.addEventListener('click', dismiss);
   });
 })();
+
+/* ===== Модалка видео (ВКонтакте embed): iframe создаётся только при открытии ===== */
+(function () {
+  var modal = document.getElementById('video-modal');
+  var frame = document.getElementById('video-modal-frame');
+  if (!modal || !frame) return;
+
+  function open(embedSrc) {
+    if (!embedSrc) return;
+    var iframe = document.createElement('iframe');
+    iframe.src = embedSrc;
+    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    iframe.allowFullscreen = true;
+    frame.appendChild(iframe);
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    frame.textContent = ''; /* останавливаем проигрывание — убираем iframe из DOM */
+  }
+
+  document.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-video-open]');
+    if (opener) {
+      e.preventDefault();
+      open(opener.getAttribute('data-video-embed'));
+      return;
+    }
+    if (modal.classList.contains('is-open')) {
+      if (e.target.closest('[data-video-close]') || e.target.classList.contains('video-modal__overlay')) {
+        e.preventDefault();
+        close();
+      }
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();

@@ -23,7 +23,7 @@ get_header(); $T = get_template_directory_uri(); ?>
     </div>
     <div class="svc-grid" data-reveal>
       <div class="svc"><h3>Телефон</h3><p><a href="tel:+79062377902">+7 (906) 237-79-02</a></p></div>
-      <div class="svc"><h3>Telegram</h3><p><a href="https://t.me/prinyatopro" target="_blank" rel="noopener noreferrer">@prinyatopro</a></p></div>
+      <div class="svc"><h3>Telegram</h3><p><a href="https://telegram.me/prinyatopro" target="_blank" rel="noopener noreferrer">@prinyatopro</a></p></div>
       <div class="svc"><h3>ВКонтакте</h3><p><a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">vk.com/prinyatopro</a></p></div>
       <div class="svc"><h3>E-mail</h3><p><a href="mailto:info@prinyato-pro.ru">info@prinyato-pro.ru</a></p></div>
       <div class="svc"><h3>Режим работы</h3><p>Ежедневно с 9:00 до 19:00</p></div>

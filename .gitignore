@@ -18,6 +18,7 @@ node_modules/
 # Локальный мусор инструментов (IDE / MCP)
 .cursor/
 .playwright-mcp/
+.mcp.json
 
 # Референс-тексты в legal/ (примеры с PII другого клиента — не часть проекта)
 legal/Пример*

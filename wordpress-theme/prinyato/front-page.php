@@ -251,6 +251,41 @@
   </div>
 </section>
 
+<!-- ===================== 3.5 РИЛСЫ ИЗ ВК (вертикальная лента 9:16) ===================== -->
+<section class="sec" id="reels" data-section="reels">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Живые съёмки</span>
+      <h2 class="sh">Как это выглядит на объекте</h2>
+      <p class="sec-lead">Короткие видео с реальных приёмок: что находим, чем меряем и как дефект попадает в акт. Снимаем сами, без постановки.</p>
+    </div>
+    <div class="hs" data-hscroll>
+      <div class="hs-pin">
+        <div class="reels-track" data-hscroll-track>
+          <!-- TODO: подставить реальные клипы ВК (data-video-embed + обложка) -->
+          <article class="reel" data-reveal>
+            <div class="reel-thumb"><span class="vsoon">Скоро</span></div>
+            <p class="reel-cap">Тепловизор находит продувание по контуру окна.</p>
+          </article>
+          <article class="reel" data-reveal>
+            <div class="reel-thumb"><span class="vsoon">Скоро</span></div>
+            <p class="reel-cap">Перепад стяжки под правилом: почему это важно до ремонта.</p>
+          </article>
+          <article class="reel" data-reveal>
+            <div class="reel-thumb"><span class="vsoon">Скоро</span></div>
+            <p class="reel-cap">Проверка вентиляции: обратная тяга за одну минуту.</p>
+          </article>
+          <article class="reel" data-reveal>
+            <div class="reel-thumb"><span class="vsoon">Скоро</span></div>
+            <p class="reel-cap">Дефект попадает в акт — и застройщик его устраняет.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <p class="micro" data-reveal>Больше коротких видео — в нашем сообществе <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">ВКонтакте</a>.</p>
+  </div>
+</section>
+
 <!-- ===================== 4. ЛЕНТА ЭТАПОВ (scroll-snap карусель) ===================== -->
 <section class="sec process" id="process" data-section="process">
   <div class="wrap">

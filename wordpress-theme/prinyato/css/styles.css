@@ -404,8 +404,18 @@ a.more:hover{text-decoration:underline}
 .vthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vthumb .play{position:relative;z-index:2;width:54px;height:54px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 .vthumb .play svg{width:22px;height:22px;color:#fff;margin-left:3px}
-.vthumb .vsoon{position:relative;z-index:2;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:20px;letter-spacing:.08em;color:#fff;border:3px double #fff;border-radius:8px;padding:8px 18px;transform:rotate(-13deg);opacity:.92;box-shadow:inset 0 0 0 2px rgba(255,255,255,.2);background:rgba(204,32,24,.55)}
+.vthumb .vsoon,.reel-thumb .vsoon{position:relative;z-index:2;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:20px;letter-spacing:.08em;color:#fff;border:3px double #fff;border-radius:8px;padding:8px 18px;transform:rotate(-13deg);opacity:.92;box-shadow:inset 0 0 0 2px rgba(255,255,255,.2);background:rgba(204,32,24,.55)}
 .vcard p{padding:16px;font-size:var(--fs-text);color:var(--ink-soft);line-height:1.5}
+/* ===== Рилсы из ВК (#reels): вертикальная лента 9:16, листается пальцем ===== */
+.reels-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:18px;margin-top:8px;max-width:940px}
+.reel{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow-card)}
+.reel-thumb{aspect-ratio:9/16;background:#1a1610;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.reel-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+button.reel-thumb{border:none;padding:0;width:100%;cursor:pointer;font:inherit;display:flex}
+.reel-thumb .play{position:relative;z-index:2;width:54px;height:54px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.reel-thumb .play svg{width:22px;height:22px;color:#fff;margin-left:3px}
+.reel-cap{padding:14px 16px 16px;font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.45}
+@media(max-width:900px) and (min-width:681px){.reels-track{max-width:none;grid-auto-columns:minmax(0,1fr)}}
 
 /* ===== ОТЗЫВЫ ===== */
 .rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
@@ -661,8 +671,8 @@ a.more:hover{text-decoration:underline}
 .statband.statband--ink .stat span{color:#d3c8b2}
 
 /* ===== РВАНЫЕ ГРАНИЦЫ МЕЖДУ ВСЕМИ БЛОКАМИ ===== */
-#srok,#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta,#shots{position:relative}
-#srok::before,#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{
+#srok,#trust,#quiz,#check,#reels,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta,#shots{position:relative}
+#srok::before,#trust::before,#quiz::before,#check::before,#reels::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{
   content:"";position:absolute;left:0;right:0;top:-22px;height:24px;z-index:3;pointer-events:none;
   background:var(--sec-bg,var(--paper));
   -webkit-mask:var(--torn-edge-top);mask:var(--torn-edge-top);
@@ -670,10 +680,10 @@ a.more:hover{text-decoration:underline}
   -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
 }
 #trust,#distance,#granicy,#shots{--sec-bg:var(--ink)}
-#srok,#quiz,#process,#video,#geo,#dop,#cta,#granicy-o,#post-related{--sec-bg:var(--paper-2)}
+#srok,#reels,#quiz,#process,#video,#geo,#dop,#cta,#granicy-o,#post-related{--sec-bg:var(--paper-2)}
 #check,#uslugi,#garant,#experts,#reviews,#faq,#vhodit{--sec-bg:var(--paper)}
 @supports not ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
-  #srok::before,#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{display:none}
+  #srok::before,#trust::before,#quiz::before,#check::before,#reels::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{display:none}
 }
 
 /* ===== КАРТОЧКИ-«КЛОЧКИ» (рваные края clip-path, желтоватая бумага) ===== */
@@ -782,6 +792,7 @@ a.more:hover{text-decoration:underline}
   }
   [data-hscroll] [data-hscroll-track]::-webkit-scrollbar{display:none}
   [data-hscroll] .equip-card{width:76vw;flex:0 0 auto}
+  [data-hscroll] .reel{width:62vw;flex:0 0 auto}
   [data-hscroll] .exp{width:60vw;flex:0 0 auto}
   [data-hscroll] .exp .meta{font-size:13.5px}
   /* в режиме пина ужимаем вертикаль, чтобы экран влезал целиком */

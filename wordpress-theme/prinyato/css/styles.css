@@ -41,6 +41,7 @@ h3.sh3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;fon
 /* ПК: однострочные заголовки секций (квиз/процесс/доказательства) + акты ровно в 2 строки */
 @media(min-width:1100px){
   #process .sec-head h2.sh,
+  #srok .sec-head h2.sh,
   #video .sec-head h2.sh{white-space:nowrap;width:fit-content;max-width:none}
   #garant .sec-head h2.sh{font-size:clamp(44px,4vw,50px);line-height:1.14;width:max-content;max-width:none}
   /* страница «Цены»: длинные заголовки в одну строку (пометка по тексту) + воздух между плотными секциями */

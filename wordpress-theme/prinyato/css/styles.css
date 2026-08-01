@@ -243,6 +243,7 @@ h2.sh,h3.sh3{width:-webkit-fit-content;width:fit-content;max-width:100%}
   [data-hscroll].hs-on [data-hscroll-track]{overflow:visible;width:max-content;margin-inline:0;padding:8px 0 14px;will-change:transform}
 }
 .equip{margin-top:40px}
+.reels{margin-top:40px}
 .equip-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:18px}
 .equip-card{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:18px 16px;text-align:left}
 .ec-photo{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block;margin-bottom:12px;border:4px solid #fff;box-shadow:2px 3px 0 rgba(34,29,22,.14);background:#cfc7b6}
@@ -671,8 +672,8 @@ button.reel-thumb{border:none;padding:0;width:100%;cursor:pointer;font:inherit;d
 .statband.statband--ink .stat span{color:#d3c8b2}
 
 /* ===== РВАНЫЕ ГРАНИЦЫ МЕЖДУ ВСЕМИ БЛОКАМИ ===== */
-#srok,#trust,#quiz,#check,#reels,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta,#shots{position:relative}
-#srok::before,#trust::before,#quiz::before,#check::before,#reels::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{
+#srok,#trust,#quiz,#check,#process,#uslugi,#distance,#garant,#lead,#experts,#video,#reviews,#geo,#faq,#dop,#vhodit,#granicy,#cta,#shots{position:relative}
+#srok::before,#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{
   content:"";position:absolute;left:0;right:0;top:-22px;height:24px;z-index:3;pointer-events:none;
   background:var(--sec-bg,var(--paper));
   -webkit-mask:var(--torn-edge-top);mask:var(--torn-edge-top);
@@ -680,10 +681,10 @@ button.reel-thumb{border:none;padding:0;width:100%;cursor:pointer;font:inherit;d
   -webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;
 }
 #trust,#distance,#granicy,#shots{--sec-bg:var(--ink)}
-#srok,#reels,#quiz,#process,#video,#geo,#dop,#cta,#granicy-o,#post-related{--sec-bg:var(--paper-2)}
+#srok,#quiz,#process,#video,#geo,#dop,#cta,#granicy-o,#post-related{--sec-bg:var(--paper-2)}
 #check,#uslugi,#garant,#experts,#reviews,#faq,#vhodit{--sec-bg:var(--paper)}
 @supports not ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
-  #srok::before,#trust::before,#quiz::before,#check::before,#reels::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{display:none}
+  #srok::before,#trust::before,#quiz::before,#check::before,#process::before,#uslugi::before,#distance::before,#garant::before,#experts::before,#video::before,#reviews::before,#geo::before,#faq::before,#dop::before,#vhodit::before,#granicy::before,#cta::before,#granicy-o::before,#shots::before,#post-related::before{display:none}
 }
 
 /* ===== КАРТОЧКИ-«КЛОЧКИ» (рваные края clip-path, желтоватая бумага) ===== */

@@ -712,7 +712,7 @@
     if (!embedSrc) return;
     var iframe = document.createElement('iframe');
     iframe.src = embedSrc;
-    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock';
     iframe.allowFullscreen = true;
     frame.appendChild(iframe);
     modal.classList.add('is-open');

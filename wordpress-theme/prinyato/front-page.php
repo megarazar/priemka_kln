@@ -250,7 +250,14 @@ foreach ($pp_reels as $r) :
             </article>
 <?php endforeach; ?>
           </div>
-          <p class="micro" data-reveal>Больше коротких видео — в нашем сообществе <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">ВКонтакте</a>.</p>
+          <div class="reels-cta" data-reveal>
+            <p class="reels-cta__text">Хотите, чтобы так же тщательно проверили вашу квартиру?</p>
+            <div class="cta-row">
+              <a class="btn lg" href="#lead-modal" data-lead-open>Оставить заявку</a>
+              <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
+            </div>
+            <p class="micro">Ответим в рабочее время и подберём дату приёмки. Больше коротких видео — <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">в нашем сообществе ВКонтакте</a>.</p>
+          </div>
         </div>
       </div>
     </div>

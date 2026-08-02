@@ -872,7 +872,10 @@ button.reel-thumb{border:none;padding:0;width:100%;cursor:pointer;font:inherit;d
 @media(max-width:560px){.thanks-card{padding:36px 20px 36px}.thanks-main{padding:48px 0 60px}}
 
 /* ===== Страницы услуг: бежевые секции (#dop, #cta) + светлый icon-list ===== */
-#dop,#cta,#granicy-o,.sec.reels{background:var(--paper-2)}
+#dop,#cta,#granicy-o,.sec.reels,#video{background:var(--paper-2)}
+/* #video после бежевой секции (страница «Цены»: #cta → #video) — иначе два
+   paper-2 сливаются в одно пятно и рваный край режет его посередине */
+#cta + #video,#dop + #video,#granicy-o + #video{background:var(--paper);--sec-bg:var(--paper)}
 /* финальный бежевый CTA вплотную к футеру: гасим зазор margin-top:50px футера,
    чтобы рваный верх футера «врезался» в бежевый фон, а не в paper-зазор */
 #cta,#granicy-o{margin-bottom:-50px}

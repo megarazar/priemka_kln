@@ -59,6 +59,17 @@
   </div>
 </footer>
 
+<!-- Модалка проигрывателя видео (ВКонтакте embed) — iframe создаётся только при открытии.
+     Живёт в футере, а не в шаблоне страницы: рилсы и видео есть на главной,
+     страницах услуг и «Ценах» — модалка нужна везде, где они выводятся. -->
+<div class="video-modal" id="video-modal" aria-hidden="true">
+  <div class="video-modal__overlay" data-video-close></div>
+  <div class="video-modal__card" role="dialog" aria-modal="true" aria-label="Видео приёмки">
+    <button class="video-modal__close" type="button" data-video-close aria-label="Закрыть">&times;</button>
+    <div class="video-modal__frame" id="video-modal-frame"></div>
+  </div>
+</div>
+
 <!-- ===================== МОДАЛЬНАЯ ФОРМА ЗАЯВКИ ===================== -->
 <div class="lead-modal" id="lead-modal" aria-hidden="true">
   <div class="lead-modal__overlay" data-lead-close></div>

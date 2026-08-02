@@ -237,5 +237,8 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<!-- ===== РЕАЛЬНЫЕ ПРИЁМКИ НА ВИДЕО ===== -->
+<?php get_template_part( 'template-parts/video' ); ?>
+
 </main>
 <?php get_footer(); ?>

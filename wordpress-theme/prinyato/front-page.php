@@ -439,42 +439,7 @@
 </section>
 
 <!-- ===================== 9. ВИДЕО / КЕЙСЫ ===================== -->
-<section class="sec" id="video" data-section="video" style="background:var(--paper-2)">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">Доказательства</span>
-      <h2 class="sh">Реальные приёмки на видео</h2>
-      <p class="sec-lead">Не на словах, а на видео. Снимаем реальные приёмки: как тепловизор находит дефект, как он попадает в акт, как застройщик его устраняет. Первые ролики появятся здесь совсем скоро — вы увидите процесс ещё до того, как что-то закажете.</p>
-    </div>
-    <div class="video-grid">
-      <div class="vcard" data-reveal>
-        <button type="button" class="vthumb" data-video-open data-video-embed="https://vk.ru/video_ext.php?oid=-239384119&amp;id=456239039&amp;autoplay=1" aria-label="Смотреть видео: приёмка квартиры в новостройке">
-          <img src="<?php echo $T; ?>/assets/img/video-1.jpg?v=<?php echo filemtime(get_template_directory().'/assets/img/video-1.jpg'); ?>" alt="Акт технической приёмки: чек-лист, локальная смета и инженер на объекте" loading="lazy" decoding="async">
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-        </button>
-        <p>Приёмка квартиры в новостройке: как тепловизор находит дефект и как он попадает в акт.</p>
-      </div>
-      <div class="vcard" data-reveal>
-        <div class="vthumb"><img src="<?php echo $T; ?>/assets/img/video-2.jpg" alt="Инженер проверяет стену лазерным нивелиром в новостройке" loading="lazy" decoding="async"><span class="vsoon">Скоро</span></div>
-        <p>Дистанционная приёмка для клиента из другого города — весь процесс онлайн.</p>
-      </div>
-      <div class="vcard" data-reveal>
-        <div class="vthumb"><img src="<?php echo $T; ?>/assets/img/video-3.jpg" alt="Эксперт заполняет дефектную ведомость на приёмке" loading="lazy" decoding="async"><span class="vsoon">Скоро</span></div>
-        <p>Приёмка дома на побережье: что проверяем в ИЖС.</p>
-      </div>
-    </div>
-    <p class="micro" data-reveal>Снимаем реальные приёмки и публикуем их здесь по мере выхода.</p>
-  </div>
-</section>
-
-<!-- Модалка проигрывателя видео (ВКонтакте embed) — iframe создаётся только при открытии -->
-<div class="video-modal" id="video-modal" aria-hidden="true">
-  <div class="video-modal__overlay" data-video-close></div>
-  <div class="video-modal__card" role="dialog" aria-modal="true" aria-label="Видео приёмки">
-    <button class="video-modal__close" type="button" data-video-close aria-label="Закрыть">&times;</button>
-    <div class="video-modal__frame" id="video-modal-frame"></div>
-  </div>
-</div>
+<?php get_template_part( 'template-parts/video' ); ?>
 
 <!-- ===================== 10. ОТЗЫВЫ ===================== -->
 <section class="sec" id="reviews" data-section="reviews">

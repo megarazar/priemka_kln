@@ -11,6 +11,16 @@
  *   'tag'   — 'section' (по умолчанию, отдельная секция) или 'div' (подблок).
  *   'title' — заголовок; по умолчанию «Как это выглядит на объекте».
  *   'lead'  — подводка под заголовком.
+ *   'eyebrow' — надзаголовок в режиме секции (по умолчанию «Живые съёмки»).
+ *   CTA под лентой (по умолчанию — заявка на приёмку; на арбитражных лендингах
+ *   /telegram/ и /max/ заменяется на переход в канал):
+ *   'cta_text'   — текст над кнопкой.
+ *   'cta_label'  — надпись на кнопке.
+ *   'cta_url'    — ссылка кнопки; если задана, кнопка ведёт на неё в новой вкладке
+ *                  (без телефона и без data-lead-open).
+ *   'cta_attrs'  — доп. атрибуты кнопки (строка), напр. крючки аналитики.
+ *   'cta_icon'   — готовый <svg> перед надписью на кнопке.
+ *   'cta_micro'  — мелкий текст под кнопкой (пустая строка — не выводить).
  *
  * Заголовок: h2 в режиме секции, h3 — в режиме подблока.
  */
@@ -19,6 +29,13 @@ $pp_tag   = ( isset( $args['tag'] ) && 'div' === $args['tag'] ) ? 'div' : 'secti
 $pp_is_div = ( 'div' === $pp_tag );
 $pp_title = isset( $args['title'] ) ? $args['title'] : 'Как это выглядит на объекте';
 $pp_lead  = isset( $args['lead'] ) ? $args['lead'] : 'Короткие видео с реальных приёмок: что находим, чем меряем и как дефект попадает в акт. Снимаем сами, без постановки.';
+$pp_eyebrow = isset( $args['eyebrow'] ) ? $args['eyebrow'] : 'Живые съёмки';
+$pp_cta_text  = isset( $args['cta_text'] ) ? $args['cta_text'] : 'Хотите, чтобы так же тщательно проверили вашу квартиру?';
+$pp_cta_url   = isset( $args['cta_url'] ) ? $args['cta_url'] : '';
+$pp_cta_label = isset( $args['cta_label'] ) ? $args['cta_label'] : 'Оставить заявку';
+$pp_cta_attrs = isset( $args['cta_attrs'] ) ? $args['cta_attrs'] : '';
+$pp_cta_icon  = isset( $args['cta_icon'] ) ? $args['cta_icon'] : '';
+$pp_cta_micro = isset( $args['cta_micro'] ) ? $args['cta_micro'] : '';
 $pp_T     = get_template_directory_uri();
 
 $pp_reels = array(
@@ -46,7 +63,7 @@ $pp_reels = array(
       <h3 class="sh3" data-reveal><?php echo esc_html( $pp_title ); ?></h3>
 <?php else : ?>
       <div class="sec-head" data-reveal>
-        <span class="eyebrow">Живые съёмки</span>
+        <span class="eyebrow"><?php echo esc_html( $pp_eyebrow ); ?></span>
         <h2 class="sh"><?php echo esc_html( $pp_title ); ?></h2>
       </div>
 <?php endif; ?>
@@ -66,12 +83,22 @@ $pp_reels = array(
 <?php endforeach; ?>
       </div>
       <div class="reels-cta" data-reveal>
-        <p class="reels-cta__text">Хотите, чтобы так же тщательно проверили вашу квартиру?</p>
+        <p class="reels-cta__text"><?php echo esc_html( $pp_cta_text ); ?></p>
         <div class="cta-row">
-          <a class="btn lg" href="#lead-modal" data-lead-open>Оставить заявку</a>
+<?php if ( '' !== $pp_cta_url ) : /* арбитражный режим: одна кнопка — переход в канал */ ?>
+          <a class="btn lg" href="<?php echo esc_url( $pp_cta_url ); ?>" target="_blank" rel="noopener noreferrer"<?php echo $pp_cta_attrs ? ' ' . $pp_cta_attrs : ''; ?>><?php echo $pp_cta_icon; ?><?php echo esc_html( $pp_cta_label ); ?></a>
+<?php else : ?>
+          <a class="btn lg" href="#lead-modal" data-lead-open><?php echo esc_html( $pp_cta_label ); ?></a>
           <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
+<?php endif; ?>
         </div>
+<?php if ( '' !== $pp_cta_url ) : ?>
+<?php   if ( '' !== $pp_cta_micro ) : ?>
+        <p class="micro"><?php echo esc_html( $pp_cta_micro ); ?></p>
+<?php   endif; ?>
+<?php else : ?>
         <p class="micro">Ответим в рабочее время и подберём дату приёмки. Больше коротких видео — <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">в нашем сообществе ВКонтакте</a>.</p>
+<?php endif; ?>
       </div>
     </div>
   </div>

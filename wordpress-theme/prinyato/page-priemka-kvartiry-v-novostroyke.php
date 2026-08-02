@@ -75,6 +75,9 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<!-- ===== РИЛСЫ ВК (живые съёмки) ===== -->
+<?php get_template_part( 'template-parts/reels' ); ?>
+
 <!-- ===== РЕАЛЬНЫЕ ПРИЁМКИ (фото с выездов) ===== -->
 <section class="sec distance" id="shots" data-section="shots">
   <div class="wrap">

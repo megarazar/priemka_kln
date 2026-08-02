@@ -218,49 +218,7 @@
     </div>
 
     <!-- рилсы ВК: живые съёмки с приёмок (подблок #check, перед оборудованием) -->
-    <div class="reels" id="reels">
-      <div class="hs" data-hscroll>
-        <div class="hs-pin">
-          <h3 class="sh3" data-reveal>Как это выглядит на объекте</h3>
-          <p class="sec-lead" data-reveal>Короткие видео с реальных приёмок: что находим, чем меряем и как дефект попадает в акт. Снимаем сами, без постановки.</p>
-          <div class="reels-track" data-hscroll-track>
-<?php
-$pp_reels = array(
-  array(456239049, 'reel-1.jpg', 'ЖК «Суздальский», Калининград', 'Примыкание наличника входной двери со стороны МОП.'),
-  array(456239045, 'reel-2.jpg', 'Зачем нужна приёмка', 'Зачем вообще принимать квартиру у застройщика — коротко о главном.'),
-  array(456239044, 'reel-3.jpg', 'ЖК «Клевер»: ключ застрял', 'Ключ застрял в замке прямо на приёмке — и такое находим.'),
-  array(456239037, 'reel-4.jpg', 'ЖК «Речной парк»', 'Приёмка квартиры в ЖК «Речной парк».'),
-  array(456239031, 'reel-5.jpg', 'ЖК «Русская Европа»', 'Приёмка в ЖК «Русская Европа»: с чего начинаем осмотр.'),
-  array(456239029, 'reel-6.jpg', 'Пионерский', 'Приёмка квартиры в Пионерском — выезжаем и на побережье.'),
-  array(456239026, 'reel-7.jpg', 'ЖК «Ключи»', 'Приёмка квартиры от застройщика в ЖК «Ключи».'),
-  array(456239047, 'reel-8.jpg', 'Знакомство с командой', 'Кто приезжает к вам на приёмку.'),
-  array(456239042, 'reel-9.jpg', 'Центр Калининграда', 'Приёмка квартиры в центре Калининграда.'),
-  array(456239035, 'reel-10.jpg', 'ЖК «Клевер», застройщик «СтройИнвест»', 'Честно о качестве: ЖК «Клевер» от «СтройИнвест».'),
-);
-foreach ($pp_reels as $r) :
-  list($vid, $img, $title, $cap) = $r;
-  $src = get_template_directory().'/assets/img/'.$img;
-?>
-            <article class="reel" data-reveal>
-              <button type="button" class="reel-thumb" data-video-open data-video-embed="https://vk.ru/video_ext.php?oid=-239384119&amp;id=<?php echo $vid; ?>&amp;autoplay=1" aria-label="Смотреть видео: <?php echo esc_attr($title); ?>">
-                <img src="<?php echo $T; ?>/assets/img/<?php echo $img; ?>?v=<?php echo file_exists($src) ? filemtime($src) : '1'; ?>" alt="<?php echo esc_attr($title); ?> — приёмка квартиры, ПринятоПро" width="360" height="640" loading="lazy" decoding="async">
-                <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-              </button>
-              <p class="reel-cap"><?php echo esc_html($cap); ?></p>
-            </article>
-<?php endforeach; ?>
-          </div>
-          <div class="reels-cta" data-reveal>
-            <p class="reels-cta__text">Хотите, чтобы так же тщательно проверили вашу квартиру?</p>
-            <div class="cta-row">
-              <a class="btn lg" href="#lead-modal" data-lead-open>Оставить заявку</a>
-              <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
-            </div>
-            <p class="micro">Ответим в рабочее время и подберём дату приёмки. Больше коротких видео — <a href="https://vk.com/prinyatopro" target="_blank" rel="noopener noreferrer">в нашем сообществе ВКонтакте</a>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php get_template_part( 'template-parts/reels', null, array( 'tag' => 'div' ) ); ?>
 
     <div class="equip">
       <div class="hs" data-hscroll>

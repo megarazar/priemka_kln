@@ -67,6 +67,9 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<!-- ===== РИЛСЫ ВК (живые съёмки) ===== -->
+<?php get_template_part( 'template-parts/reels' ); ?>
+
 <!-- ===== ЧТО ПРОВЕРЯЕМ ===== -->
 <section class="sec" id="check" data-section="check">
   <div class="wrap">

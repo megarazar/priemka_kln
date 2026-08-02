@@ -60,6 +60,9 @@ get_header(); $T = get_template_directory_uri(); ?>
   </div>
 </section>
 
+<!-- ===== РИЛСЫ ВК (живые съёмки) ===== -->
+<?php get_template_part( 'template-parts/reels' ); ?>
+
 <!-- ===== КАК ПРОХОДИТ (paper, dl-light список + фото) ===== -->
 <section class="sec" id="vhodit" data-section="vhodit">
   <div class="wrap">

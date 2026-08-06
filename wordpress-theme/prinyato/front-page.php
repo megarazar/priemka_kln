@@ -7,7 +7,7 @@
     <div class="akt">
       <h1>Профессиональная приёмка квартир<br>и&nbsp;домов в&nbsp;Калининграде<br>и&nbsp;на&nbsp;побережье</h1>
       <div class="hero-grid">
-        <div>
+        <div class="hero-col">
           <p class="lead-red">Находим то, что застройщик прячет за свежей краской, и&nbsp;<span id="mark-lead">фиксируем так, что отмахнуться уже нельзя</span>.</p>
           <ul class="hero-bullets">
             <li>
@@ -28,6 +28,8 @@
             <a href="#quiz" class="btn lg">Рассчитать стоимость за минуту</a>
             <span class="hand cta-note">4 вопроса —<br>и узнаете цену!</span>
           </div>
+
+          <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'bar' ) ); ?>
 
           <div class="hero-second">
             <span>Связаться можно здесь:</span>
@@ -79,6 +81,7 @@
 <!-- ===================== КВИЗ (захват, сразу после цифр) ===================== -->
 <section class="sec quiz" id="quiz" data-section="quiz">
   <div class="wrap">
+    <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'card' ) ); ?>
     <div class="sec-head" data-reveal style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow" style="justify-content:center">Расчёт за минуту</span>
       <h2 class="sh">Узнайте стоимость приёмки</h2>

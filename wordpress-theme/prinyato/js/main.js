@@ -89,6 +89,18 @@
       }
     } catch (e) {}
 
+    /* промо-полоса акции: подчёркивание «красным карандашом».
+       На мобиле не рисуем: текст переносится в 2 строки (multiline кладёт обе линии
+       под вторую), плюс рядом уже есть подчёркивание #mark-lead — два одинаковых
+       приёма подряд в одном экране обесценивают друг друга. */
+    try {
+      var promoTxt = document.querySelector('.promo-bar__text');
+      if (promoTxt && window.matchMedia('(min-width:681px)').matches) {
+        var p = RN.annotate(promoTxt, { type: 'underline', color: '#cc2018', strokeWidth: 2.5, padding: 3, iterations: 2, animationDuration: 900 });
+        setTimeout(function () { p.show(); }, 1000);
+      }
+    } catch (e) {}
+
     /* hero: обводка блока «Telegram · ВКонтакте · Позвонить» — все три разом */
     try {
       var msgs = document.getElementById('heroMsgs');

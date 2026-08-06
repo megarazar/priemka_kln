@@ -36,6 +36,7 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Рассчитать стоимость</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
+        <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'bar' ) ); ?>
     <p class="micro" data-reveal>Приёмка по доверенности · Видеосвязь в реальном времени · Официальный акт осмотра · Без вашего приезда в Калининград</p>
     <div class="statband statband--ink" data-reveal>
       <div class="stat"><b>+3 000 ₽</b><span>надбавка за дистант</span></div>
@@ -91,6 +92,7 @@ get_header(); $T = get_template_directory_uri(); ?>
 <!-- ===== КВИЗ (расчёт стоимости) — тот же, что на главной ===== -->
 <section class="sec quiz" id="quiz" data-section="quiz">
   <div class="wrap">
+    <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'card' ) ); ?>
     <div class="sec-head" data-reveal style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow" style="justify-content:center">Калькулятор</span>
       <h2 class="sh">Рассчитайте стоимость</h2>

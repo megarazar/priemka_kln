@@ -27,6 +27,13 @@ get_header(); $T = get_template_directory_uri(); ?>
       <a class="btn lg" href="#lead-modal" data-lead-open>Подобрать и рассчитать</a>
       <a class="btn ghost" href="tel:+79062377902">Позвонить</a>
     </div>
+    <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'bar' ) ); ?>
+  </div>
+</section>
+
+<section class="sec" data-section="promo">
+  <div class="wrap">
+    <?php get_template_part( 'template-parts/promo', null, array( 'variant' => 'card' ) ); ?>
   </div>
 </section>
 

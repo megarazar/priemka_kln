@@ -27,8 +27,11 @@ $pp_T = get_template_directory_uri();
         <p>Приёмка квартиры в новостройке: как тепловизор находит дефект и как он попадает в акт.</p>
       </div>
       <div class="vcard" data-reveal>
-        <div class="vthumb"><img src="<?php echo $pp_T; ?>/assets/img/video-2.jpg" alt="Инженер проверяет стену лазерным нивелиром в новостройке" loading="lazy" decoding="async"><span class="vsoon">Скоро</span></div>
-        <p>Дистанционная приёмка для клиента из другого города — весь процесс онлайн.</p>
+        <button type="button" class="vthumb" data-video-open data-video-embed="https://vk.ru/video_ext.php?oid=-239384119&amp;id=456239061&amp;autoplay=1" aria-label="Смотреть видео: приёмка квартиры от застройщика в Балтийске">
+          <img src="<?php echo $pp_T; ?>/assets/img/video-2.jpg?v=<?php echo filemtime( get_template_directory() . '/assets/img/video-2.jpg' ); ?>" alt="Приёмка квартиры от застройщика в Балтийске: этапы, ошибки, как не потерять деньги" loading="lazy" decoding="async">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <p>Приёмка квартиры от застройщика в ЖК «Балтийский бриз»: разбираем этапы и типичные ошибки.</p>
       </div>
       <div class="vcard" data-reveal>
         <div class="vthumb"><img src="<?php echo $pp_T; ?>/assets/img/video-3.jpg" alt="Эксперт заполняет дефектную ведомость на приёмке" loading="lazy" decoding="async"><span class="vsoon">Скоро</span></div>

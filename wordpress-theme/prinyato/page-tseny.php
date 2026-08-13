@@ -66,6 +66,13 @@ get_header(); $T = get_template_directory_uri(); ?>
         <div class="price">от 15 000 ₽ <small>по площади</small></div>
         <a class="more" href="/finalnaya-priemka-remonta/">Подробнее →</a>
       </div>
+      <div class="svc">
+        <span class="num-tag">05</span>
+        <h3>Досудебная экспертиза</h3>
+        <p>Заключение с расчётом стоимости устранения каждого дефекта и ссылками на нарушенные нормы — когда застройщик не исправил недостатки по акту. Стоимость зависит от площади и количества дефектов, первичная консультация бесплатная.</p>
+        <div class="price">по запросу <small>по объёму дефектов</small></div>
+        <a class="more" href="/dosudebnaya-ekspertiza/">Подробнее →</a>
+      </div>
     </div>
   </div>
 </section>

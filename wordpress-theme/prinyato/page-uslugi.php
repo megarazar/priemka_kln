@@ -80,6 +80,13 @@ get_header(); $T = get_template_directory_uri(); ?>
         <div class="price">от 11 000 ₽ <small>по доверенности</small></div>
         <a class="more" href="/distantsionnaya-priemka/">Подробнее →</a>
       </div>
+      <div class="svc">
+        <span class="num-tag">06</span>
+        <h3>Досудебная экспертиза</h3>
+        <p>Застройщик не исправил дефекты по акту? Готовим заключение с расчётом стоимости устранения каждого дефекта и обоснованием нарушенных норм — документ для претензии и суда.</p>
+        <div class="price">по запросу <small>по объёму дефектов</small></div>
+        <a class="more" href="/dosudebnaya-ekspertiza/">Подробнее →</a>
+      </div>
       <div class="svc" style="justify-content:center;align-items:flex-start;background:var(--ink);color:var(--paper-2)">
         <h3 style="color:#fff">Не знаете, что выбрать?</h3>
         <p style="color:#d3c8b2">Опишите объект и стадию — подберём услугу и посчитаем ориентировочную цену.</p>

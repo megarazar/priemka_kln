@@ -119,6 +119,7 @@ function prinyato_service_map() {
         'distantsionnaya-priemka'           => 'Дистанционная приёмка',
         'razovyy-audit-remonta'             => 'Разовый аудит ремонта',
         'finalnaya-priemka-remonta'         => 'Финальная приёмка ремонта',
+        'dosudebnaya-ekspertiza'            => 'Досудебная экспертиза',
         'priemka-kvartir-zelenogradsk'      => 'Приёмка в Зеленоградске',
         'priemka-kvartir-svetlogorsk'       => 'Приёмка в Светлогорске',
         'priemka-kvartir-pionerskiy'        => 'Приёмка в Пионерском',
